@@ -1,0 +1,9 @@
+$(function(){
+    $(".change-btn").click(function(){
+        if($(this).text()==='並び替え（投稿が古い順）'){
+            $(this).text('並び替え（投稿が新しい順）');
+        }else{
+            $(this).text('並び替え（投稿が古い順）');
+        }
+    });
+});

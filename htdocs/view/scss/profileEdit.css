@@ -1,0 +1,353 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+body {
+  padding-top: 120px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+main {
+  margin: 50px 10px 85px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+h1, h2, .font-size--15, .font-size--20 {
+  font-family: "Yu Gothic";
+}
+
+h1 {
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.font-size--15 {
+  font-size: 15px;
+}
+
+.font-size--20 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.english-font {
+  font-family: "Arial";
+  font-style: italic;
+}
+
+input {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+textarea {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+select {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+.border_radius--small {
+  border-radius: 5px;
+}
+
+.border_radius--middle {
+  border-radius: 10px;
+}
+
+.border_radius--big {
+  border-radius: 15px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 120px;
+  height: 50px;
+  color: black;
+  line-height: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.btn--normal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #FDCAEC;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--normal:hover {
+  background-color: #FFF0FA;
+}
+.btn--back::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #CBCDFF;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--back:hover {
+  background-color: #E7E8FF;
+}
+
+.edit {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+  max-width: 850px;
+  border: 3px solid #CBCDFF;
+  background-color: white;
+  overflow: visible;
+  padding: 0.5em;
+}
+.edit__ribbon {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+  width: calc(100% + 20px);
+  height: 50px;
+  margin-right: -18px;
+  margin-bottom: 80px;
+  margin-left: -18px;
+}
+.edit__ribbon::before, .edit__ribbon:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-width: 20px 20px;
+}
+.edit__ribbon::before {
+  left: -33px;
+  border-style: solid;
+  border-color: #FFE8F7 #FFE8F7 #FFE8F7 transparent;
+}
+.edit__ribbon::after {
+  right: -33px;
+  border-style: solid;
+  border-color: #FFE8F7 transparent #FFE8F7 #FFE8F7;
+}
+.edit__title {
+  line-height: 3em;
+  position: relative;
+  z-index: 1;
+  height: inherit;
+  margin-bottom: 0;
+  text-align: center;
+  color: black;
+  background: #FFF0FA;
+}
+.edit__title::before, .edit__title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #FDCAEC;
+}
+.edit__title::before {
+  left: 0;
+  border-left: 7px solid transparent;
+}
+.edit__title::after {
+  right: 0;
+  border-right: 7px solid transparent;
+}
+.edit__form {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.edit__input {
+  border: 2px solid #CBCDFF;
+  height: 30px;
+  width: 80%;
+}
+.edit__input:focus {
+  outline: none;
+  background-color: #E7E8FF;
+}
+.edit__group {
+  margin: 25px 5px;
+  padding: 10px;
+}
+.edit__group .icon__label {
+  display: inline-block;
+  color: black; /* ラベルテキストの色を指定する */
+  padding: 5px 10px; /* ラベルとテキスト間の余白を指定する */
+  margin: 5px 10px;
+  border: solid 4px #E7E8FF; /* ラベルのボーダーを指定する */
+  transition: 0.5s;
+}
+.edit__group .icon__label:hover {
+  border: 4px solid #CBCDFF;
+  background-color: #E7E8FF;
+  cursor: pointer;
+}
+.edit__group .icon__input {
+  display: none;
+}
+.edit__group #preview {
+  margin-left: 15%;
+  text-align: center;
+  border: 2px solid #CBCDFF;
+  border-radius: 5px;
+  width: 80px;
+  height: 80px;
+  background-color: lightgreen;
+  background-image: url("../image/f_f_event_3_s128_f_event_3_2bg.png");
+  background-size: cover;
+}
+.edit__group #preview img {
+  width: 76px;
+  height: 76px;
+  border-radius: 5px;
+}
+.edit__group .img-reset__btn {
+  border: 1px solid #CBCDFF;
+  font-size: small;
+  height: 25px;
+  width: 50px;
+}
+.edit__group .img-reset__btn:hover {
+  background-color: #E7E8FF;
+  cursor: pointer;
+}
+.edit__group .error-message {
+  display: none;
+  color: red;
+  width: 80%;
+}
+.edit__group .edit-info {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.edit__group .count-text {
+  display: flex;
+  justify-content: right;
+}
+.edit__attention {
+  display: block;
+}
+.edit table {
+  border-collapse: collapse;
+}
+.edit table tr {
+  border-bottom: 1px solid #EEE;
+}
+.edit table tr th {
+  width: 55%;
+  padding: 10px;
+  font-weight: normal;
+}
+.edit table tr td {
+  width: 45%;
+  padding: 10px 5px 10px 10%;
+  text-align: left;
+}
+.edit table tr td textarea {
+  display: block;
+  height: 80px;
+  width: 80%;
+  resize: none;
+}
+.edit table tr td textarea::-webkit-scrollbar-thumb {
+  background: rgba(149, 48, 250, 0.5);
+}
+.edit .btn {
+  display: inline-block;
+  margin: 15px;
+}
+.edit .hissu, .edit .ninni {
+  padding-right: 4rem;
+  position: relative;
+}
+.edit .hissu::after, .edit .ninni::after {
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -12px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 90%;
+  font-family: "Yu Gothic";
+}
+.edit .hissu::after {
+  content: "必須";
+  background: #d40000;
+  color: #FFF;
+}
+.edit .ninni::after {
+  content: "任意";
+  background: #d2e5ff;
+  color: #333;
+}/*# sourceMappingURL=profileEdit.css.map */

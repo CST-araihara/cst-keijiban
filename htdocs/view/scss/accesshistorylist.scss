@@ -1,0 +1,128 @@
+@use "reset";
+@use "variables";
+@use "base";
+
+.title-position {
+    width: 100%;
+    padding: 0 10%;
+    display: flex;
+    justify-content:space-between;
+
+    .btn {
+        top: -18px;
+        width: 7%;
+        height: 35px;
+
+        &--back {
+            &::before {
+                top: -6px;
+                left: -6px;
+            }
+
+            &:hover::before {
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+    .pagetitle {
+        display: inline-block;
+        position: relative;
+        height: 40px;
+        text-align: center;
+    
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            bottom: -10px;
+            z-index: 1;
+            border: 15px solid variables.$pink;
+        }
+    
+        &::before {
+            left: -25px;
+            border-left-color: transparent;
+        }
+    
+        &::after {
+            right: -25px;
+            border-right-color: transparent;
+        }
+    
+        .access {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0 20px;
+            line-height: 40px;
+            background-color: variables.$light_pink;
+            font-style: italic;
+            z-index: 3;
+    
+            &::before, &::after {
+                position: absolute;
+                content: '';
+                top: 100%;
+                border: none;
+                border-bottom: solid 10px transparent;
+            }
+    
+            &::before {
+                left: 0;
+                border-right: solid 15px variables.$dark_pink;
+            }
+    
+            &::after {
+                right: 0;
+                border-left: solid 15px variables.$dark_pink;
+            }
+        }
+    }
+
+    .none {
+        visibility: hidden;
+    }
+}
+
+.tablearea {
+    table {
+        margin: 25px auto;
+        table-layout: fixed;
+        width: 90%;
+        max-width: 1300px;
+        border-collapse:  collapse;
+        text-align: center;
+
+        & tr {
+            border: 2px solid variables.$dark_purple;
+
+            &:nth-child(2n) td {
+                background-color: variables.$gray;
+            }
+
+            .id {
+                width: 70px;
+            }
+
+            & td {
+                padding: 5px 0;
+
+                .red, .blue {
+                    &:hover {
+                        color: variables.$hover_purple;
+                    }
+                }
+
+                .red {
+                    color: red;
+                }
+    
+                .blue {
+                    color: blue;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,277 @@
+@use "reset";
+@use "variables";
+@use "base";
+
+.signup {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+    max-width: 850px;
+    border: 3px solid variables.$dark_purple;
+    background-color: white;
+    overflow: visible;
+    padding: 0.5em;
+
+    &__ribbon {
+        position: absolute;
+        z-index: 2;
+        top: 15px;
+        width: calc(100% + 20px);
+        height: 50px;
+        margin-right: -18px;
+        margin-bottom: 80px;
+        margin-left: -18px;
+
+        &::before,&:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: -10px;
+            width: 0;
+            height: 0;
+            border-width: 20px 20px;
+        }
+
+        &::before {
+            left: -33px;
+            border-style: solid;
+            border-color: variables.$pink variables.$pink variables.$pink transparent;
+        }
+
+        &:after {
+            right: -33px;
+            border-style: solid;
+            border-color: variables.$pink transparent variables.$pink variables.$pink;
+        }
+    }
+    
+    &__title {
+        line-height: 3em;
+        position: relative;
+        z-index: 1;
+        height: inherit;
+        margin-bottom: 0;
+        text-align: center;
+        color: black;
+        background: variables.$light_pink;
+
+        &::before,&::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid variables.$dark_pink;
+        }
+
+        &::before {
+            left: 0;
+            border-left: 7px solid transparent;
+        }
+
+        &::after {
+            right: 0;
+            border-right: 7px solid transparent;
+        }
+        
+        p {
+            font-weight: bold;
+        }
+    }
+
+    .error-message {
+        display: none;
+        color: red;
+        width: 80%;
+
+        &__box {
+            border:3px double orange;
+            background-color: antiquewhite;
+            width: 80%;
+            margin: 20px auto;
+        }
+    }
+    
+    &__form {
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    &__input {
+        border: 2px solid variables.$dark_purple;
+        height: 30px;
+        width: 80%;
+
+        &:focus {
+            outline: none;
+            background-color: variables.$light_purple;
+        }
+    }
+    
+    &__select {
+        -webkit-appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, variables.$dark_purple 50%),linear-gradient(135deg, variables.$dark_purple 50%, transparent 50%);
+        background-size: 5px 5px, 5px 5px;
+        background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+        background-repeat: no-repeat;
+        padding: 0 5px;
+        cursor: pointer;
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(variables.$hover_purple,0.5);
+        }
+
+        &--long {
+            width: 70px;
+        }
+
+        &--short {
+            width: 50px;
+        }
+    }
+
+    &__group {
+        margin: 15px 5px;
+        padding: 10px;
+
+        .icon {
+            &__label {
+                display: inline-block;
+                color: black;
+                padding: 5px 10px;
+                margin: 5px 10px;
+                border: solid 4px variables.$light_purple;
+                transition: 0.5s;
+    
+                &:hover {
+                    border: 4px solid variables.$dark_purple;
+                    background-color: variables.$light_purple;
+                    cursor: pointer;
+                }
+            }
+
+            &__input {
+                display: none;
+            }
+        }
+
+        #preview {
+            // margin:0 auto;
+            margin-left: 15%;
+            text-align: center;
+            border: 2px solid variables.$dark_purple;
+            border-radius: 5px;
+            width: 80px;
+            height: 80px;
+            background-color: lightgreen;
+            background-image: url("../image/f_f_event_3_s128_f_event_3_2bg.png");
+            background-size: cover;
+        }
+
+        #preview img {
+            width: 76px;
+            height: 76px;
+            // width: 80px;
+            // height: 80px;
+            // margin: 0 auto;
+            // border:2px solid variables.$dark_purple;
+            border-radius: 5px;
+        }
+
+        .img-reset__btn {
+            border: 1px solid variables.$dark_purple;
+            font-size: small;
+            height: 25px;
+            width: 50px;
+
+            &:hover {
+                background-color: variables.$light_purple;
+                cursor: pointer;
+            }
+        }
+
+        .signup-info {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .count-text {
+            display: flex;
+            justify-content: right;
+        }
+    }
+
+    &__attention {
+        display: block;
+    }
+
+    table {
+        border-collapse: collapse;
+
+        tr {
+            border-bottom: 1px solid #EEE;
+
+            th {
+                width: 55%;
+                padding: 10px;
+                font-weight: normal;
+            }
+
+            td {
+                width: 45%;
+                // padding:5px 20px;
+                padding: 10px 5px 10px 10%;
+                text-align: left;
+
+                textarea {
+                    display: block;
+                    height: 80px;
+                    width: 80%;
+                    resize: none;
+
+                    &::-webkit-scrollbar-thumb {
+                        background: rgba(variables.$hover_purple,0.5);
+                    }
+                }
+            }
+        }
+    }
+    
+    .btn {
+        display: inline-block;
+        margin: 15px;
+    }
+    .hissu,.ninni {
+        padding-right: 4rem;
+        position: relative;
+
+        &::after {
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            margin-top: -12px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            padding: 0 5px;
+            font-size: 90%;
+            font-family: 'Yu Gothic';
+        }
+    }
+
+    .hissu::after {
+        content: "必須";
+        background: #d40000;
+        color: #FFF;
+    }
+
+    .ninni::after {
+        content: "任意";
+        background: #d2e5ff;
+        color: #333;
+    }
+}

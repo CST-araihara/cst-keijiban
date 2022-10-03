@@ -1,0 +1,145 @@
+body {
+  padding-top: 120px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+main {
+  margin: 50px 10px 85px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+h1, h2, .font-size--15, .font-size--20 {
+  font-family: "Yu Gothic";
+}
+
+h1 {
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.font-size--15 {
+  font-size: 15px;
+}
+
+.font-size--20 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.english-font {
+  font-family: "Arial";
+  font-style: italic;
+}
+
+input {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+textarea {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+select {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+.border_radius--small {
+  border-radius: 5px;
+}
+
+.border_radius--middle {
+  border-radius: 10px;
+}
+
+.border_radius--big {
+  border-radius: 15px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 120px;
+  height: 50px;
+  color: black;
+  line-height: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.btn--normal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #FDCAEC;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--normal:hover {
+  background-color: #FFF0FA;
+}
+.btn--back::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #CBCDFF;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--back:hover {
+  background-color: #E7E8FF;
+}/*# sourceMappingURL=base.css.map */

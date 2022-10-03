@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+body {
+  padding-top: 120px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+main {
+  margin: 50px 10px 85px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+h1, h2, .font-size--15, .font-size--20 {
+  font-family: "Yu Gothic";
+}
+
+h1 {
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.font-size--15 {
+  font-size: 15px;
+}
+
+.font-size--20 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.english-font {
+  font-family: "Arial";
+  font-style: italic;
+}
+
+input {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+textarea {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+select {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+.border_radius--small {
+  border-radius: 5px;
+}
+
+.border_radius--middle {
+  border-radius: 10px;
+}
+
+.border_radius--big {
+  border-radius: 15px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 120px;
+  height: 50px;
+  color: black;
+  line-height: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.btn--normal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #FDCAEC;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--normal:hover {
+  background-color: #FFF0FA;
+}
+.btn--back::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #CBCDFF;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--back:hover {
+  background-color: #E7E8FF;
+}
+
+.threadCreate {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 1000px;
+}
+.threadCreate .title-position {
+  width: 100%;
+  text-align: center;
+}
+.threadCreate .title-position .pagetitle {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  text-align: center;
+}
+.threadCreate .title-position .pagetitle::before, .threadCreate .title-position .pagetitle::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  bottom: -10px;
+  z-index: 1;
+  border: 15px solid #FFE8F7;
+}
+.threadCreate .title-position .pagetitle::before {
+  left: -25px;
+  border-left-color: transparent;
+}
+.threadCreate .title-position .pagetitle::after {
+  right: -25px;
+  border-right-color: transparent;
+}
+.threadCreate .title-position .pagetitle .Thread {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0 20px;
+  line-height: 40px;
+  background-color: #FFF0FA;
+  z-index: 3;
+}
+.threadCreate .title-position .pagetitle .Thread::before, .threadCreate .title-position .pagetitle .Thread::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  border: none;
+  border-bottom: solid 10px transparent;
+}
+.threadCreate .title-position .pagetitle .Thread::before {
+  left: 0;
+  border-right: solid 15px #FDCAEC;
+}
+.threadCreate .title-position .pagetitle .Thread::after {
+  right: 0;
+  border-left: solid 15px #FDCAEC;
+}
+.threadCreate .create__group {
+  margin: 25px 0;
+}
+.threadCreate .create__group--btn {
+  display: flex;
+  justify-content: right;
+  margin: 0 auto;
+}
+.threadCreate .create__group--btn .btn {
+  margin: 15px;
+}
+.threadCreate .create__group--bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.threadCreate .create__group .count-text {
+  display: flex;
+  justify-content: right;
+}
+.threadCreate .create__group textarea {
+  display: block;
+}
+.threadCreate .create__group .error-message {
+  visibility: hidden;
+  color: red;
+  width: 80%;
+}
+.threadCreate .create__text {
+  position: relative;
+  display: inline-block;
+}
+.threadCreate .create__text::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  height: 8px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(-45deg, #CBCDFF, #CBCDFF 2px, white 4px, white 8px);
+}
+.threadCreate .create__input {
+  resize: none;
+  width: 100%;
+}
+.threadCreate .create__input--title {
+  height: 50px;
+  border: 3px solid #CBCDFF;
+}
+.threadCreate .create__input--title:focus {
+  outline: none;
+  background-color: #E7E8FF;
+}
+.threadCreate .create__input--content {
+  height: 100px;
+  border: 3px solid #CBCDFF;
+}
+.threadCreate .create__input--content:focus {
+  outline: none;
+  background-color: #E7E8FF;
+}
+.threadCreate .create__input--select {
+  height: 35px;
+  width: 40%;
+  padding: 5px;
+  border: 3px solid #CBCDFF;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #CBCDFF 50%), linear-gradient(135deg, #CBCDFF 50%, transparent 50%);
+  background-size: 5px 5px, 5px 5px;
+  background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.threadCreate .create__input--select::-moz-expand {
+  display: none;
+}
+.threadCreate .create__input--select:focus {
+  outline: none;
+  background-color: #E7E8FF;
+}/*# sourceMappingURL=threadCreate.css.map */

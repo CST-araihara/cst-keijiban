@@ -1,0 +1,151 @@
+@use "reset";
+@use "variables";
+@use "base";
+
+.back-position {
+    width: 100%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        top: -18px;
+        width: 7%;
+        height: 35px;
+
+        &--back {
+            &::before {
+                top: -6px;
+                left: -6px;
+            }
+
+            &:hover::before {
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+    div {
+        width: 7%;
+        height: 35px;
+    }
+}
+
+.list {
+    position: relative;
+    margin: 25px auto;
+    text-align: center;
+    width: 70%;
+    max-width: 800px;
+    height: 100%;
+    border: 3px solid variables.$dark_purple;
+    background-color: white;
+    overflow: visible;
+    padding: 0.5em;
+    z-index: 1;
+
+    &__ribbon {
+        position: absolute;
+        top: 15px;
+        width: calc(100% + 20px);
+        height: 50px;
+        margin-right: -18px;
+        margin-bottom: 80px;
+        margin-left: -18px;
+        z-index: 2;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: -10px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 20px 20px;
+        }
+
+        &::before {
+            left: -33px;
+            border-color: variables.$pink variables.$pink variables.$pink transparent;
+        }
+
+        &::after {
+            right: -33px;
+            border-color: variables.$pink transparent variables.$pink variables.$pink;
+        }
+    }
+
+    &__title {
+        line-height: 3em;
+        position: relative;
+        height: inherit;
+        margin-bottom: 0;
+        text-align: center;
+        background: variables.$light_pink;
+        z-index: 1;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid variables.$dark_pink;
+        }
+
+        &::before {
+            left: 0;
+            border-left: 7px solid transparent;
+        }
+
+        &::after {
+            right: 0;
+            border-right: 7px solid transparent;
+        }
+    }
+
+    &__contents {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0 20px 0;
+
+        .friends {
+            display: flex;
+            width: 80%;
+            height: 80px;
+            margin: 5px 0;
+            border: 3px solid variables.$dark_purple;
+
+            &__h-name {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60%;
+                height: 100%;
+                color: black;
+                text-decoration: none;
+
+                &:hover {
+                    color: variables.$hover_purple;
+                }
+            }
+
+            &__btn {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 40%;
+                height: 100%;
+
+                .btn {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}

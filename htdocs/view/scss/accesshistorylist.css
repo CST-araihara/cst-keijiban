@@ -1,0 +1,252 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+body {
+  padding-top: 120px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+main {
+  margin: 50px 10px 85px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+h1, h2, .font-size--15, .font-size--20 {
+  font-family: "Yu Gothic";
+}
+
+h1 {
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.font-size--15 {
+  font-size: 15px;
+}
+
+.font-size--20 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.english-font {
+  font-family: "Arial";
+  font-style: italic;
+}
+
+input {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+textarea {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+select {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+.border_radius--small {
+  border-radius: 5px;
+}
+
+.border_radius--middle {
+  border-radius: 10px;
+}
+
+.border_radius--big {
+  border-radius: 15px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 120px;
+  height: 50px;
+  color: black;
+  line-height: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.btn--normal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #FDCAEC;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--normal:hover {
+  background-color: #FFF0FA;
+}
+.btn--back::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #CBCDFF;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--back:hover {
+  background-color: #E7E8FF;
+}
+
+.title-position {
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.title-position .btn {
+  top: -18px;
+  width: 7%;
+  height: 35px;
+}
+.title-position .btn--back::before {
+  top: -6px;
+  left: -6px;
+}
+.title-position .btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.title-position .pagetitle {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  text-align: center;
+}
+.title-position .pagetitle::before, .title-position .pagetitle::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  bottom: -10px;
+  z-index: 1;
+  border: 15px solid #FFE8F7;
+}
+.title-position .pagetitle::before {
+  left: -25px;
+  border-left-color: transparent;
+}
+.title-position .pagetitle::after {
+  right: -25px;
+  border-right-color: transparent;
+}
+.title-position .pagetitle .access {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0 20px;
+  line-height: 40px;
+  background-color: #FFF0FA;
+  font-style: italic;
+  z-index: 3;
+}
+.title-position .pagetitle .access::before, .title-position .pagetitle .access::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  border: none;
+  border-bottom: solid 10px transparent;
+}
+.title-position .pagetitle .access::before {
+  left: 0;
+  border-right: solid 15px #FDCAEC;
+}
+.title-position .pagetitle .access::after {
+  right: 0;
+  border-left: solid 15px #FDCAEC;
+}
+.title-position .none {
+  visibility: hidden;
+}
+
+.tablearea table {
+  margin: 25px auto;
+  table-layout: fixed;
+  width: 90%;
+  max-width: 1300px;
+  border-collapse: collapse;
+  text-align: center;
+}
+.tablearea table tr {
+  border: 2px solid #CBCDFF;
+}
+.tablearea table tr:nth-child(2n) td {
+  background-color: #F1F1F1;
+}
+.tablearea table tr .id {
+  width: 70px;
+}
+.tablearea table tr td {
+  padding: 5px 0;
+}
+.tablearea table tr td .red:hover, .tablearea table tr td .blue:hover {
+  color: #9530FA;
+}
+.tablearea table tr td .red {
+  color: red;
+}
+.tablearea table tr td .blue {
+  color: blue;
+}/*# sourceMappingURL=accesshistorylist.css.map */

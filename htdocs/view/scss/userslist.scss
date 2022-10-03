@@ -1,0 +1,196 @@
+@use "reset";
+@use "variables";
+@use "base";
+
+.title-position {
+    width: 100%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        top: -18px;
+        width: 7%;
+        height: 35px;
+
+        &--back {
+            &::before {
+                top: -6px;
+                left: -6px;
+            }
+
+            &:hover::before {
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+
+    .pagetitle {
+        display: inline-block;
+        position: relative;
+        height: 40px;
+        text-align: center;
+    
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            bottom: -10px;
+            z-index: 1;
+            border: 15px solid variables.$pink;
+        }
+    
+        &::before {
+            left: -25px;
+            border-left-color: transparent;
+        }
+    
+        &::after {
+            right: -25px;
+            border-right-color: transparent;
+        }
+    
+        .userlist {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0 20px;
+            line-height: 40px;
+            background-color: variables.$light_pink;
+            font-style: italic;
+            z-index: 3;
+    
+            &::before, &::after {
+                position: absolute;
+                content: '';
+                top: 100%;
+                border: none;
+                border-bottom: solid 10px transparent;
+            }
+    
+            &::before {
+                left: 0;
+                border-right: solid 15px variables.$dark_pink;
+            }
+    
+            &::after {
+                right: 0;
+                border-left: solid 15px variables.$dark_pink;
+            }
+        }
+    }
+
+    .none {
+        visibility: hidden;
+    }
+}
+
+.search-position {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+
+    .search {
+        width: 70%;
+        max-width: 800px;
+        margin: 0 auto;
+
+        &__box {
+            width: 85%;
+            height: 30px;
+            border: 3px solid variables.$dark_pink;
+
+            &:focus {
+                outline: none;
+                background-color: variables.$light_pink;
+            }
+        }
+
+        &__btn {
+            width: 40px;
+            height: 30px;
+            border: 3px solid variables.$dark_pink;
+            background-color: variables.$dark_pink;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+.tablearea {
+    table {
+        margin: 25px auto;
+        table-layout: fixed;
+        width: 90%;
+        max-width: 1500px;
+        border-collapse: collapse;
+        text-align: center;
+
+        .th_tr {
+            border: 3px solid variables.$dark_purple;
+        }
+
+        & tr {
+            &:nth-child(2n) td {
+                background-color: variables.$gray;
+            }
+
+            .sort {
+                cursor: pointer;
+                position: relative;
+
+                &::before, &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 2px;
+                    width: 5px;
+                    height: 5px;
+                    border-top: 1px solid gray;
+                    border-right: 1px solid gray;
+                }
+
+                &::before {
+                    transform: translateY(-6px) rotate(-45deg);
+                }
+
+                &::after {
+                    transform: translateY(0px) rotate(135deg);
+                }
+
+                &.asc::before {
+                    border-top: 1px solid black;
+                    border-right: 1px solid black;
+                }
+
+                &.desc::after {
+                    border-top: 1px solid black;
+                    border-right: 1px solid black;
+                }
+            }
+        }
+
+        & td {
+            padding: 5px 0;
+
+            .black, .red, .blue {
+                &:hover {
+                    color: variables.$hover_purple;
+                }
+            }
+
+            .black {
+                color: black;
+            }
+
+            .red {
+                color: red;
+            }
+
+            .blue {
+                color: blue;
+            }
+        }
+    }
+}

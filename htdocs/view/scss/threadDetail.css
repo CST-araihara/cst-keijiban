@@ -1,0 +1,433 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+body {
+  padding-top: 120px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+main {
+  margin: 50px 10px 85px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+h1, h2, .font-size--15, .font-size--20 {
+  font-family: "Yu Gothic";
+}
+
+h1 {
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.font-size--15 {
+  font-size: 15px;
+}
+
+.font-size--20 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.english-font {
+  font-family: "Arial";
+  font-style: italic;
+}
+
+input {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+textarea {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+select {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+.border_radius--small {
+  border-radius: 5px;
+}
+
+.border_radius--middle {
+  border-radius: 10px;
+}
+
+.border_radius--big {
+  border-radius: 15px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 120px;
+  height: 50px;
+  color: black;
+  line-height: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.btn--normal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #FDCAEC;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--normal:hover {
+  background-color: #FFF0FA;
+}
+.btn--back::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #CBCDFF;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--back:hover {
+  background-color: #E7E8FF;
+}
+
+.threadDatail .threadDatail-position {
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.threadDatail .threadDatail-position .btn {
+  top: -18px;
+  width: 7%;
+  height: 35px;
+}
+.threadDatail .threadDatail-position .btn--back::before {
+  top: -6px;
+  left: -6px;
+}
+.threadDatail .threadDatail-position .btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.threadDatail .threadDatail-position div {
+  width: 5%;
+  height: 30px;
+}
+.threadDatail .thread, .threadDatail .tab {
+  width: 70%;
+  max-width: 1000px;
+  margin: 25px auto;
+}
+.threadDatail .thread_item, .threadDatail .tab_item {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid #CBCDFF;
+  background-color: #F1F1F1;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.threadDatail .thread_item:hover, .threadDatail .tab_item:hover {
+  cursor: pointer;
+  background-color: #E7E8FF;
+}
+.threadDatail .thread input[name=tab_item], .threadDatail .tab input[name=tab_item] {
+  display: none;
+}
+.threadDatail .thread__switching, .threadDatail .tab__switching {
+  display: none;
+  padding: 20px;
+  clear: both;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.threadDatail .thread__contents, .threadDatail .tab__contents {
+  list-style: none;
+}
+.threadDatail .thread .contents__top, .threadDatail .thread .contents__bottom, .threadDatail .tab .contents__top, .threadDatail .tab .contents__bottom {
+  width: 100%;
+  height: 50px;
+}
+.threadDatail .thread .contents__top, .threadDatail .tab .contents__top {
+  display: flex;
+  border-bottom: 2px solid #CBCDFF;
+}
+.threadDatail .thread .contents__middle, .threadDatail .tab .contents__middle {
+  border-bottom: 2px solid #CBCDFF;
+}
+.threadDatail .thread .contents__main, .threadDatail .tab .contents__main {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  border: 3px solid #CBCDFF;
+  background-color: white;
+}
+.threadDatail .thread .contents__ribbon, .threadDatail .tab .contents__ribbon {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  height: 20px;
+  padding: 5px 10px;
+  padding-right: 40px;
+  color: black;
+  background: #E7E8FF;
+  line-height: 10px;
+}
+.threadDatail .thread .contents__ribbon::before, .threadDatail .tab .contents__ribbon::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  border: 3px solid transparent;
+  border-top: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+}
+.threadDatail .thread .contents__ribbon::after, .threadDatail .tab .contents__ribbon::after {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  content: "";
+  border-top: 10px solid #E7E8FF;
+  border-right: 0px solid transparent;
+  border-bottom: 10px solid #E7E8FF;
+  border-left: 0 solid #E7E8FF;
+}
+.threadDatail .thread .contents__title, .threadDatail .thread .contents__name, .threadDatail .tab .contents__title, .threadDatail .tab .contents__name {
+  width: 60%;
+  height: 100%;
+  border-right: 2px solid #CBCDFF;
+}
+.threadDatail .thread .contents__datetime, .threadDatail .tab .contents__datetime {
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+}
+.threadDatail .thread .contents__sub, .threadDatail .tab .contents__sub {
+  display: flex;
+  justify-content: space-between;
+}
+.threadDatail .thread .contents__admin, .threadDatail .tab .contents__admin {
+  display: flex;
+  width: 50%;
+}
+.threadDatail .thread .contents__delete, .threadDatail .tab .contents__delete {
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-bottom: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
+}
+.threadDatail .thread .contents__delete a, .threadDatail .tab .contents__delete a {
+  color: red;
+}
+.threadDatail .thread .contents__delete a:hover, .threadDatail .tab .contents__delete a:hover {
+  color: #9530FA;
+}
+.threadDatail .thread .contents__recover, .threadDatail .tab .contents__recover {
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-bottom: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+}
+.threadDatail .thread .contents__recover a, .threadDatail .tab .contents__recover a {
+  color: blue;
+}
+.threadDatail .thread .contents__recover a:hover, .threadDatail .tab .contents__recover a:hover {
+  color: #9530FA;
+}
+.threadDatail .thread .contents__good, .threadDatail .tab .contents__good {
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-bottom: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
+}
+.threadDatail .thread .contents__char-center, .threadDatail .tab .contents__char-center {
+  padding-top: 20px;
+  text-align: center;
+}
+.threadDatail .thread .contents__char-top, .threadDatail .tab .contents__char-top {
+  padding: 5px 10px;
+}
+.threadDatail .thread #new_threadtab:checked ~ #thread_content,
+.threadDatail .thread #many_responsetab:checked ~ #response_content,
+.threadDatail .thread #many_goodtab:checked ~ #good_content, .threadDatail .thread #new_restab:checked ~ #newres_content,
+.threadDatail .thread #old_restab:checked ~ #oldres_content, .threadDatail .tab #new_threadtab:checked ~ #thread_content,
+.threadDatail .tab #many_responsetab:checked ~ #response_content,
+.threadDatail .tab #many_goodtab:checked ~ #good_content, .threadDatail .tab #new_restab:checked ~ #newres_content,
+.threadDatail .tab #old_restab:checked ~ #oldres_content {
+  display: block;
+}
+.threadDatail .thread .page-btn, .threadDatail .tab .page-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.threadDatail .thread .page-btn--previous, .threadDatail .thread .page-btn--next, .threadDatail .thread .page-btn--first, .threadDatail .thread .page-btn--last, .threadDatail .tab .page-btn--previous, .threadDatail .tab .page-btn--next, .threadDatail .tab .page-btn--first, .threadDatail .tab .page-btn--last {
+  border: 1px solid lightgray;
+  margin: 0 3px;
+  text-decoration: none;
+  padding: 3px 8px;
+}
+.threadDatail .thread .page-btn--previous:hover, .threadDatail .thread .page-btn--next:hover, .threadDatail .thread .page-btn--first:hover, .threadDatail .thread .page-btn--last:hover, .threadDatail .tab .page-btn--previous:hover, .threadDatail .tab .page-btn--next:hover, .threadDatail .tab .page-btn--first:hover, .threadDatail .tab .page-btn--last:hover {
+  background-color: #F1F1F1;
+}
+.threadDatail .thread .page-btn--first, .threadDatail .tab .page-btn--first {
+  border-radius: 30px 10px 10px 30px;
+}
+.threadDatail .thread .page-btn--last, .threadDatail .tab .page-btn--last {
+  border-radius: 10px 30px 30px 10px;
+}
+.threadDatail .thread .page-btn .page-text, .threadDatail .tab .page-btn .page-text {
+  text-decoration: none;
+  color: black;
+}
+.threadDatail .thread .page-btn .page-text--previous, .threadDatail .thread .page-btn .page-text--first, .threadDatail .tab .page-btn .page-text--previous, .threadDatail .tab .page-btn .page-text--first {
+  position: relative;
+  padding-left: 12px;
+}
+.threadDatail .thread .page-btn .page-text--previous::before, .threadDatail .thread .page-btn .page-text--first::before, .threadDatail .tab .page-btn .page-text--previous::before, .threadDatail .tab .page-btn .page-text--first::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 8px 6px 0;
+  border-color: transparent #CBCDFF transparent transparent;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -6px;
+}
+.threadDatail .thread .page-btn .page-text--first::after, .threadDatail .tab .page-btn .page-text--first::after {
+  content: "";
+  left: -1px;
+  top: 20%;
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  border-radius: 3px;
+  background: #CBCDFF;
+}
+.threadDatail .thread .page-btn .page-text--next, .threadDatail .thread .page-btn .page-text--last, .threadDatail .tab .page-btn .page-text--next, .threadDatail .tab .page-btn .page-text--last {
+  position: relative;
+  padding-right: 12px;
+}
+.threadDatail .thread .page-btn .page-text--next::before, .threadDatail .thread .page-btn .page-text--last::before, .threadDatail .tab .page-btn .page-text--next::before, .threadDatail .tab .page-btn .page-text--last::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 8px;
+  border-color: transparent transparent transparent #CBCDFF;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -6px;
+}
+.threadDatail .thread .page-btn .page-text--last::after, .threadDatail .tab .page-btn .page-text--last::after {
+  content: "";
+  right: -1px;
+  top: 20%;
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  border-radius: 3px;
+  background: #CBCDFF;
+}
+.threadDatail .tab input:checked + .tab_item {
+  background-color: #E7E8FF;
+}
+.threadDatail__middle {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.threadDatail__middle .res-list {
+  text-align: center;
+  margin: auto 0 0 0;
+  position: relative;
+  padding: 0.3em;
+}
+.threadDatail__middle .res-list::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  height: 10px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(-45deg, #CBCDFF, #CBCDFF 2px, white 4px, white 8px);
+}/*# sourceMappingURL=threadDetail.css.map */

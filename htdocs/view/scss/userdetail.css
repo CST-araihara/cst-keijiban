@@ -1,0 +1,508 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+body {
+  padding-top: 120px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+main {
+  margin: 50px 10px 85px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+h1, h2, .font-size--15, .font-size--20 {
+  font-family: "Yu Gothic";
+}
+
+h1 {
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.font-size--15 {
+  font-size: 15px;
+}
+
+.font-size--20 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.english-font {
+  font-family: "Arial";
+  font-style: italic;
+}
+
+input {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+textarea {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+select {
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: "Yu Gothic";
+}
+
+.border_radius--small {
+  border-radius: 5px;
+}
+
+.border_radius--middle {
+  border-radius: 10px;
+}
+
+.border_radius--big {
+  border-radius: 15px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  width: 120px;
+  height: 50px;
+  color: black;
+  line-height: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Yu Gothic";
+  background-color: #F1F1F1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.btn--normal::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #FDCAEC;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--normal:hover {
+  background-color: #FFF0FA;
+}
+.btn--back::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: 3px solid #CBCDFF;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.btn--back:hover {
+  background-color: #E7E8FF;
+}
+
+.title-position {
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.title-position .btn {
+  top: -18px;
+  width: 7%;
+  height: 35px;
+}
+.title-position .btn--back::before {
+  top: -6px;
+  left: -6px;
+}
+.title-position .btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.title-position .pagetitle {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  text-align: center;
+}
+.title-position .pagetitle::before, .title-position .pagetitle::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  bottom: -10px;
+  z-index: 1;
+  border: 15px solid #FFE8F7;
+}
+.title-position .pagetitle::before {
+  left: -25px;
+  border-left-color: transparent;
+}
+.title-position .pagetitle::after {
+  right: -25px;
+  border-right-color: transparent;
+}
+.title-position .pagetitle .profile {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0 20px;
+  line-height: 40px;
+  background-color: #FFF0FA;
+  font-style: italic;
+  z-index: 3;
+}
+.title-position .pagetitle .profile::before, .title-position .pagetitle .profile::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  border: none;
+  border-bottom: solid 10px transparent;
+}
+.title-position .pagetitle .profile::before {
+  left: 0;
+  border-right: solid 15px #FDCAEC;
+}
+.title-position .pagetitle .profile::after {
+  right: 0;
+  border-left: solid 15px #FDCAEC;
+}
+.title-position .none {
+  visibility: hidden;
+}
+
+.profile-top {
+  margin-top: 25px;
+  width: 100%;
+  height: 200px;
+  display: flex;
+}
+.profile-top .icon-position {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: right;
+  padding-right: 10px;
+}
+.profile-top .icon-position .icon {
+  width: 120px;
+  height: 120px;
+  border: 3px solid #CBCDFF;
+  overflow: hidden;
+}
+.profile-top .name-position {
+  width: 25%;
+  height: 100%;
+}
+.profile-top .name-position .name {
+  width: 100%;
+  height: 50%;
+  padding: 10px 50px 10px 10px;
+}
+.profile-top .name-position .name__handlename, .profile-top .name-position .name__id {
+  border-bottom: 3px solid #CBCDFF;
+}
+.profile-top .name-position .name__handlename p, .profile-top .name-position .name__id p {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
+.profile-top .name-position .friends {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  padding-right: 50px;
+}
+.profile-top .name-position .friends__people {
+  height: 20%;
+  color: black;
+  text-decoration: none;
+  border-bottom: 2px solid #CBCDFF;
+}
+.profile-top .name-position .friends__people:hover {
+  color: #FDCAEC;
+  border-bottom: 2px solid #FDCAEC;
+}
+.profile-top .name-position .friends .btn {
+  top: -18px;
+  width: 25%;
+  height: 30px;
+}
+.profile-top .name-position .friends .btn--normal::before {
+  top: -6px;
+  left: -6px;
+}
+.profile-top .name-position .friends .btn--normal:hover::before {
+  top: 0;
+  left: 0;
+}
+.profile-top .comment-position {
+  width: 25%;
+  height: 100%;
+}
+.profile-top .comment-position .comment {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  padding: 0 20px;
+  text-align: center;
+  border: 3px solid #CBCDFF;
+}
+.profile-top .comment-position .comment__righttop {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 72px;
+  height: 91px;
+  overflow: hidden;
+}
+.profile-top .comment-position .comment__righttop span {
+  display: inline-block;
+  position: absolute;
+  padding: 5px 0;
+  left: -5px;
+  top: 12px;
+  width: 105px;
+  background: linear-gradient(to right, #E7E8FF 0%, #CBCDFF 100%);
+  transform: rotate(45deg);
+}
+.profile-top .comment-position .comment__righttop span::before, .profile-top .comment-position .comment__righttop span::after {
+  position: absolute;
+  content: "";
+  border-top: 4px solid #CBCDFF;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  bottom: -4px;
+}
+.profile-top .comment-position .comment__righttop span::before {
+  left: 3px;
+}
+.profile-top .comment-position .comment__righttop span::after {
+  right: 4px;
+}
+.profile-top .comment-position .comment__detail {
+  padding: 15px 0;
+  height: 100%;
+  text-align: left;
+  overflow: hidden;
+}
+.profile-top .btn-position {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  padding-top: 70px;
+}
+.profile-top .btn-position .btn {
+  margin-left: 15px;
+  width: 200px;
+}
+.profile-top .btn-position .none {
+  display: none;
+}
+
+.profile-bottom {
+  width: 100%;
+}
+.profile-bottom .tab {
+  width: 70%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.profile-bottom .tab .tab_item {
+  display: block;
+  float: left;
+  width: 33.3333333333%;
+  height: 30px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid #CBCDFF;
+  background-color: #F1F1F1;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.profile-bottom .tab .tab_item:hover {
+  cursor: pointer;
+  background-color: #E7E8FF;
+}
+.profile-bottom .tab input[name=tab_item] {
+  display: none;
+}
+.profile-bottom .tab__switching {
+  display: none;
+  padding: 20px;
+  clear: both;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.profile-bottom .tab__contents {
+  list-style: none;
+}
+.profile-bottom .tab .contents__main {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  border: 3px solid #CBCDFF;
+  background-color: white;
+}
+.profile-bottom .tab .contents__top, .profile-bottom .tab .contents__bottom {
+  width: 100%;
+  height: 50px;
+}
+.profile-bottom .tab .contents__top {
+  display: flex;
+  border-bottom: 2px solid #CBCDFF;
+}
+.profile-bottom .tab .contents__sub {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.profile-bottom .tab .contents__admin {
+  display: flex;
+  width: 50%;
+}
+.profile-bottom .tab .contents__delete {
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-bottom: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
+}
+.profile-bottom .tab .contents__delete a {
+  color: red;
+}
+.profile-bottom .tab .contents__delete a:hover {
+  color: #9530FA;
+}
+.profile-bottom .tab .contents__recover {
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-bottom: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+}
+.profile-bottom .tab .contents__recover a {
+  color: blue;
+}
+.profile-bottom .tab .contents__recover a:hover {
+  color: #9530FA;
+}
+.profile-bottom .tab .contents__good {
+  width: 85px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-bottom: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
+}
+.profile-bottom .tab .contents__char-center {
+  padding-top: 20px;
+  text-align: center;
+}
+.profile-bottom .tab .contents__char-top {
+  padding: 5px 10px;
+}
+.profile-bottom .tab .contents__ribbon {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  height: 20px;
+  padding: 5px 10px;
+  padding-right: 40px;
+  background: #E7E8FF;
+  line-height: 10px;
+}
+.profile-bottom .tab .contents__ribbon::before {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0px;
+  border: 3px solid transparent;
+  border-top: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+}
+.profile-bottom .tab .contents__ribbon::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -10px;
+  border-top: 10px solid #E7E8FF;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #E7E8FF;
+  border-left: 0 solid #E7E8FF;
+}
+.profile-bottom .tab .contents__title {
+  width: 60%;
+  height: 100%;
+  border-right: 2px solid #CBCDFF;
+}
+.profile-bottom .tab .contents__datetime {
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+}
+.profile-bottom .tab #new_threadtab:checked ~ #thread_content,
+.profile-bottom .tab #new_responsetab:checked ~ #response_content,
+.profile-bottom .tab #goodtab:checked ~ #good_content {
+  display: block;
+}
+.profile-bottom .tab input:checked + .tab_item {
+  background-color: #E7E8FF;
+}/*# sourceMappingURL=userdetail.css.map */

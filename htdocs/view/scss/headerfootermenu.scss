@@ -1,0 +1,271 @@
+@use "reset";
+@use "variables";
+// @use "base";
+
+.top-head {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: variables.$dark_purple;
+
+    .humberger-menu {
+
+        #menu-btn-check:checked ~ .menu-btn span {
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        #menu-btn-check:checked ~ .menu-btn span::before {
+            bottom: 0;
+            transform: rotate(45deg);
+        }
+
+        #menu-btn-check:checked ~ .menu-btn span::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        #menu-btn-check {
+            display: none;
+        }
+
+        #menu-btn-check:checked ~ .menu-list {
+            right: 70%;
+            // left: 0;
+        }
+
+        #menu-btn-check:checked ~ .menu-filter {
+            display: block;
+            opacity: 0.7;
+        }
+        
+        .menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            z-index: 20;
+            border: 3px solid white;
+            cursor: pointer;
+            
+            &__span, &__span::before, &__span::after  {
+                position: absolute;
+                content: '';
+                display: block;
+                width: 18px;
+                height: 3px;
+                background-color: white;
+                transition: all 0.3s;
+                border-radius:5px;
+            }
+
+            &__span::before {
+                bottom: 8px;
+            }
+
+            &__span::after {
+                top: 8px;
+            }
+        }
+
+        .menu-filter {
+            position: fixed;
+            top: 70px;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: none;
+        }
+
+        .menu-list {
+            position: fixed;
+            width: 30%;
+            height: 100%;
+            top: 0;
+            right: 100%;
+            z-index:10;
+            background-color: white;
+            transition: 0.5s;
+
+            &__top {
+                height: 70px;
+                background-color: variables.$dark_purple;
+            }
+
+            &__contents {
+                padding: 5px 10px;
+            }
+
+            &__item {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px 0;
+                width: 100%;
+                height: 40px;
+                font-weight: bold;
+                background-color: variables.$gray;
+                border-radius: 10px;
+                overflow: hidden;
+                z-index: 0;
+                transition: 0.5s;
+
+                a {
+                    display: block;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 40px;
+                    text-decoration: none;
+                    color: black;
+                    z-index: 0;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 20px;
+                    display: block;
+                    border-radius: 10px;
+                    background-color: variables.$dark_purple;
+                    transition: 0.5s;
+                    left: 0;
+                }
+
+                &:nth-child(2n)::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 20px;
+                    display: block;
+                    border-radius: 10px;
+                    background-color: variables.$dark_pink;
+                    transition: 0.5s;
+                    left: 0;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 40%;
+                    right: 10%;
+                    width: 5px;
+                    height: 5px;
+                    border-top: 3px solid white;
+                    border-right: 3px solid white;
+                    transform: rotate(45deg);
+                }
+
+                &:nth-child(2n):after {
+                    content: '';
+                    position: absolute;
+                    top: 40%;
+                    right: 10%;
+                    width: 5px;
+                    height: 5px;
+                    border-top: 3px solid white;
+                    border-right: 3px solid white;
+                    transform: rotate(45deg);
+                }
+
+                &:hover::before {
+                    width: 100%;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+    .top-title {
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+        text-decoration: none;
+        z-index: 10;
+    }
+}
+
+.top-foot {
+    width: 100%;
+    height: 50px;
+
+    .top-list {
+        display: flex;
+        list-style: none;
+        height: 100%;
+
+        &__item {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: variables.$light_purple;
+            border-radius: 0 0 10px 10px;
+            transition: 0.3s;
+
+            &:hover {
+                height: 60px;
+            }
+        
+            &--signup {
+            }
+
+            &--login {
+            }
+        
+            &--logout {
+                display: none;
+            }
+        
+            &--help {
+            }
+
+            a { 
+                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+                border-radius: 0 0 10px 10px;
+                transition: 0.3s;
+
+                &:hover {
+                    color: variables.$hover_purple;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    background-color: variables.$dark_purple;
+    border-radius: 10px 10px 0 0;
+    z-index: 5;
+
+    &__text {
+        color: white;
+        font-size: 10px;
+    }
+}
