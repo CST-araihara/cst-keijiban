@@ -1,5 +1,5 @@
-@use "reset";
-@use "variables";
+@use "partial/reset";
+@use "partial/variables";
 // @use "base";
 
 .top-head {
@@ -61,8 +61,8 @@
                 width: 18px;
                 height: 3px;
                 background-color: white;
+                border-radius: 5px;
                 transition: all 0.3s;
-                border-radius:5px;
             }
 
             &__span::before {

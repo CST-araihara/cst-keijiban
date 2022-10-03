@@ -6,7 +6,7 @@ use Pimple\Container;
 $container = new Container();
 
 $container['db'] = function(){
-    $dbh = new PDO('mysql:dbname=board_db;host=192.168.80.129;port=3306;','root','password');
+    $dbh = new PDO('mysql:dbname=board_db;host=192.168.182.135;port=3306;','root','password');
     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
 };
