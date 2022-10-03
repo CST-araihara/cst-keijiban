@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
@@ -32,8 +33,11 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D0368A), color-stop(99%, #708AD4));
+  background-image: -webkit-linear-gradient(top, #D0368A 0%, #708AD4 99%);
   background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
-  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+          box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
@@ -96,9 +100,18 @@ select {
 
 .btn {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 15px 0;
   width: 120px;
   height: 50px;
@@ -112,6 +125,7 @@ select {
   border-radius: 10px;
   cursor: pointer;
   z-index: 1;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--normal::before {
@@ -123,6 +137,7 @@ select {
   height: calc(100% - 5px);
   border: 3px solid #FDCAEC;
   border-radius: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--normal:hover::before {
@@ -141,6 +156,7 @@ select {
   height: calc(100% - 5px);
   border: 3px solid #CBCDFF;
   border-radius: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--back:hover::before {
@@ -206,6 +222,9 @@ select {
   margin: 50px auto;
   width: 80%;
   height: 450px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 .page-all .page-left {
@@ -215,13 +234,22 @@ select {
   margin: 0 0 0 auto;
   width: 100%;
   height: 30%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 .page-all .page-left .icon-name-position .icon-position {
   width: 50%;
   height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: right;
+  -webkit-box-pack: right;
+  -webkit-justify-content: right;
+      -ms-flex-pack: right;
+          justify-content: right;
   padding-right: 10px;
 }
 .page-all .page-left .icon-name-position .icon-position .icon {
@@ -291,8 +319,14 @@ select {
   float: left;
   width: 50%;
   padding: 0 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   list-style: none;
 }
 .page-all .page-right .category-position li .btn {

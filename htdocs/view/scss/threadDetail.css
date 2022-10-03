@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
@@ -32,8 +33,11 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D0368A), color-stop(99%, #708AD4));
+  background-image: -webkit-linear-gradient(top, #D0368A 0%, #708AD4 99%);
   background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
-  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+          box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
@@ -96,9 +100,18 @@ select {
 
 .btn {
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 15px 0;
   width: 120px;
   height: 50px;
@@ -112,6 +125,7 @@ select {
   border-radius: 10px;
   cursor: pointer;
   z-index: 1;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--normal::before {
@@ -123,6 +137,7 @@ select {
   height: calc(100% - 5px);
   border: 3px solid #FDCAEC;
   border-radius: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--normal:hover::before {
@@ -141,6 +156,7 @@ select {
   height: calc(100% - 5px);
   border: 3px solid #CBCDFF;
   border-radius: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--back:hover::before {
@@ -154,8 +170,14 @@ select {
 .threadDatail .threadDatail-position {
   width: 100%;
   padding: 0 10%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .threadDatail .threadDatail-position .btn {
   top: -18px;
@@ -191,6 +213,7 @@ select {
   text-align: center;
   font-weight: bold;
   overflow: hidden;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .threadDatail .thread_item:hover, .threadDatail .tab_item:hover {
@@ -205,7 +228,8 @@ select {
   padding: 20px;
   clear: both;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .threadDatail .thread__contents, .threadDatail .tab__contents {
   list-style: none;
@@ -215,6 +239,9 @@ select {
   height: 50px;
 }
 .threadDatail .thread .contents__top, .threadDatail .tab .contents__top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   border-bottom: 2px solid #CBCDFF;
 }
@@ -269,10 +296,19 @@ select {
   overflow: hidden;
 }
 .threadDatail .thread .contents__sub, .threadDatail .tab .contents__sub {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .threadDatail .thread .contents__admin, .threadDatail .tab .contents__admin {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -330,8 +366,14 @@ select {
   display: block;
 }
 .threadDatail .thread .page-btn, .threadDatail .tab .page-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 40px;
 }
 .threadDatail .thread .page-btn--previous, .threadDatail .thread .page-btn--next, .threadDatail .thread .page-btn--first, .threadDatail .thread .page-btn--last, .threadDatail .tab .page-btn--previous, .threadDatail .tab .page-btn--next, .threadDatail .tab .page-btn--first, .threadDatail .tab .page-btn--last {
@@ -411,8 +453,14 @@ select {
 .threadDatail__middle {
   width: 70%;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .threadDatail__middle .res-list {
   text-align: center;
@@ -429,5 +477,6 @@ select {
   width: 100%;
   height: 10px;
   border-radius: 10px;
+  background: -webkit-repeating-linear-gradient(135deg, #CBCDFF, #CBCDFF 2px, white 4px, white 8px);
   background: repeating-linear-gradient(-45deg, #CBCDFF, #CBCDFF 2px, white 4px, white 8px);
 }/*# sourceMappingURL=threadDetail.css.map */

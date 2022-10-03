@@ -3,7 +3,7 @@
 <!-- cssの適用 -->
 <?php $url = "scss/login.css"; ?>
 <!-- header共通部分 -->
-<?php include("header.php"); ?>
+<?php include("components/header.php"); ?>
 
 <main>
     <div class="login border_radius--middle" action="#">
@@ -33,4 +33,4 @@
 </main>
 
 <!-- footer共通部分 -->
-<?php include("footer.php"); ?>
+<?php include("components/footer.php"); ?>

@@ -76,9 +76,9 @@
   width: 18px;
   height: 3px;
   background-color: white;
-  border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  border-radius: 5px;
 }
 .top-head .humberger-menu .menu-btn__span::before {
   bottom: 8px;
