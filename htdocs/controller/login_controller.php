@@ -3,8 +3,6 @@ session_start();
 
 if(isset($_SESSION['login'])) {
     session_regenerate_id(TRUE);
-    // header('Location: ../view/login.php');
-    // exit();
 }
 
 $login_id = $_POST['login_id'];
@@ -12,10 +10,10 @@ $pw = $_POST['pw'];
 
 include('../model/login_model.php');
 
-$connect = connect();
-$_SESSION['connect'] = $connect;
+$select = select();
+$_SESSION['select'] = $select;
 
-foreach($connect as $row) {
+foreach($select as $row) {
     $date_30s = date("Y-m-d H:i:s",strtotime("-30 second"));
     $id = $row['id'];
 
@@ -84,7 +82,6 @@ foreach($connect as $row) {
         header('Location: ../view/login.php?mes='.$mes.'&i='.$i);
     }
     else {
-        echo "id No";
         $mes = urlencode("IDもしくはPWが正しくありません。");
         $i = urlencode($login_id);
         $p = urlencode($pw);
