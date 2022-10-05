@@ -20,6 +20,8 @@ class CreateTable extends Migration
             comment varchar(100) NULL,
             icon_img_path varchar(200) NOT NULL,
             role bit(1) NOT NULL,
+            false_count int(2) NULL;
+            disable_flag int(1) NULL;
             delete_flag bit(1) NOT NULL,
             inserted_date datetime NOT NULL,
             updated_date datetime NULL
