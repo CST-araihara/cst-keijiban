@@ -2,16 +2,20 @@
 
 use Phpmig\Migration\Migration;
 
-class UsersTestDataAdd2 extends Migration
+class CreateTableFriend extends Migration
 {
     /**
      * Do the migration
      */
     public function up()
     {
-        $sql ="
-            ALTER TABLE users ADD disable_flag int(1) NULL;
-        ";
+        $sql ="CREATE TABLE friend (
+            id bigint(20) NOT NULL AUTO_INCREMENT,
+            my_user_id int(10) NOT NULL,
+            your_user_id int(10) NOT NULL,
+            inserted_date DATETIME NOT NULL,
+            updated_date DATETIME NULL,
+            PRIMARY KEY (id));";
         $container = $this -> getContainer();
         $container['db']->query($sql);
     }
@@ -21,9 +25,7 @@ class UsersTestDataAdd2 extends Migration
      */
     public function down()
     {
-        $sql = "
-            ALTER TABLE users DROP COLuMN disable_flag;
-        ";
+        $sql = "DROP TABLE friend;";
         $container = $this->getContainer();
         $container['db']->query($sql);
     }

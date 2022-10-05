@@ -2,16 +2,19 @@
 
 use Phpmig\Migration\Migration;
 
-class UsersTestDataAdd extends Migration
+class CreateTableFriendrequest extends Migration
 {
     /**
      * Do the migration
      */
     public function up()
     {
-        $sql ="
-            ALTER TABLE users ADD false_count int(2) NULL;
-        ";
+        $sql ="CREATE TABLE friendrequest(
+            id bigint(20) NOT NULL AUTO_INCREMENT,
+            send_user_id int(10) NOT NULL,
+            receive_user_id int(10) NOT NULL,
+            inserted_date DATETIME NOT NULL,
+            PRIMARY KEY (id));";
         $container = $this -> getContainer();
         $container['db']->query($sql);
     }
@@ -21,9 +24,7 @@ class UsersTestDataAdd extends Migration
      */
     public function down()
     {
-        $sql = "
-            ALTER TABLE users DROP COLuMN false_count;
-        ";
+        $sql = "DROP TABLE friendrequest;";
         $container = $this->getContainer();
         $container['db']->query($sql);
     }

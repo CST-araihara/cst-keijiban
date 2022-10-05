@@ -1,3 +1,4 @@
 htdocs/kenshu-keijiban-front/
 htdocs/vendor/
 mysqlvol/
+PDO_config.php

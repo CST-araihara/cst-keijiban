@@ -1,13 +1,5 @@
 <?php
-
-function connect() {
-    $dsn = 'mysql:dbname=board_db;host=192.168.182.135';
-    $user = 'root';
-    $password = 'password';
-    $dbh = new PDO($dsn, $user, $password);
-
-    return $dbh;
-}
+include('PDO_Connect.php');
 
 function select() {
     $dbh = connect();
