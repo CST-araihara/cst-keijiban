@@ -3,9 +3,20 @@
 <!-- cssの適用 -->
 <?php $url = "scss/mypage.css"; ?>
 <!-- header共通部分 -->
-<?php include("header.php"); ?>
+<?php include("components/header.php"); ?>
+
+<?php
+session_start();
+$handlename = $_SESSION['handlename'];
+$login_id = $_SESSION['login_id'];
+?>
 
 <main>
+        <!-- 便宜上セッションを切るために置いたもの。後で消す -->
+        <form action="karilogout.php" method="post">
+        <input type="submit" value="セッションを切る">
+        </form>
+        <!-- 便宜上セッションを切るために置いたもの。後で消す -->
     <div class="filter"></div>
     <div class="title-position">
         <div class="pagetitle">
@@ -18,8 +29,8 @@
         </div>
         <div class="name-position">
             <div class="name font-size--20">
-                <div class="name__handlename"><p>HN</p>:<?php echo "XXXXX"; ?></div>
-                <div class="name__id"><p>ID</p>:<?php echo "XXXXX"; ?></div>
+                <div class="name__handlename"><p>HN</p>:<?php echo $handlename ?></div>
+                <div class="name__id"><p>ID</p>:<?php echo $login_id  ?></div>
             </div>
             <div class="friends font-size--15">
                 <!-- 友達の人数は計算して出す -->
@@ -244,4 +255,4 @@
 <!-- jsの適用 -->
 <?php $js_url = "js/good.js"; ?>
 <!-- footer共通部分 -->
-<?php include("footer.php"); ?>
+<?php include("components/footer.php"); ?>

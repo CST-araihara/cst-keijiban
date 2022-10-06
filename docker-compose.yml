@@ -9,13 +9,11 @@ services:
       - 8080:80
     volumes:
       - ./htdocs:/var/www/html
-    restart: always
   db:
     container_name: mysql_board
     image: mysql:latest
     volumes:
       - ./mysqlvol:/var/lib/mysql
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: board_db
