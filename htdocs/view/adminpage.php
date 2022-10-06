@@ -12,6 +12,11 @@ $icon = $_SESSION['icon'];
 ?>
 
 <main>
+    <!-- 便宜上セッションを切るために置いたもの。後で消す -->
+    <form action="karilogout.php" method="post">
+        <input type="submit" value="セッションを切る">
+    </form>
+    <!-- 便宜上セッションを切るために置いたもの。後で消す -->
     <div class="title-position">
         <div class="pagetitle">
             <h2 class="admin english-font font-size--20">AdminPage</h2>

@@ -3,6 +3,8 @@ session_start();
 
 if(isset($_SESSION['login'])) {
     session_regenerate_id(TRUE);
+    header("Location: ../view/mypage.php");
+    exit();
 }
 
 $login_id = $_POST['login_id'];
@@ -35,7 +37,7 @@ foreach($select as $row) {
 
             if ($row['role'] == 1) {
                 false_count0($id);
-                header('Location: ../view/adminpage.php');
+                header('Location: ../controller/adminpage_controller.php');
             }
             elseif ($row['role'] == 0) {
                 false_count0($id);

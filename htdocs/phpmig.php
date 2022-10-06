@@ -3,10 +3,18 @@
 use \Phpmig\Adapter;
 use Pimple\Container;
 
+include('config/PDO_config.php');
+
 $container = new Container();
 
 $container['db'] = function(){
-    $dbh = new PDO('mysql:dbname=board_db;host=192.168.182.135;port=3306;','root','password');
+    $dsn = sprintf('mysql:dbname=%s;host=%s;port=3306;'
+        ,constant('MYSQL_DBNAME')
+        ,constant('MYSQL_HOST')
+    );
+
+    $dbh = new PDO($dsn, constant('MYSQL_USER'), constant('MYSQL_PASSWORD'));
+    // $dbh = new PDO('mysql:dbname=board_db;host=192.168.182.139;port=3306;','root','password');
     $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
 };
