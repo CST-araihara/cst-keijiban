@@ -32,8 +32,10 @@ foreach($select as $row) {
         elseif ($pw == $row['pw']) { // ログイン
             session_regenerate_id(TRUE);
             $_SESSION['login'] = $row['id'];
-            $_SESSION['handlename'] = $row['handlename'];
             $_SESSION['login_id'] = $row['login_id'];
+            $_SESSION['handlename'] = $row['handlename'];
+            $_SESSION['icon'] = $row['icon_img_path'];
+            $_SESSION['comment'] = $row['comment'];
 
             if ($row['role'] == 1) {
                 false_count0($id);

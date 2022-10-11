@@ -9,6 +9,7 @@
 session_start();
 $handlename = $_SESSION['handlename'];
 $login_id = $_SESSION['login_id'];
+$icon = $_SESSION['icon'];
 ?>
 
 <main>
@@ -25,7 +26,7 @@ $login_id = $_SESSION['login_id'];
     </div>
     <div class="mypage-top">
         <div class="icon-position">
-            <img class="icon border_radius--middle" src="<?php echo "image/images.jpg"; ?>" alt="">
+            <img class="icon border_radius--middle" src="<?php echo $icon; ?>" alt="">
         </div>
         <div class="name-position">
             <div class="name font-size--20">

@@ -3,7 +3,12 @@
 <!-- cssの適用 -->
 <?php $url = "scss/userslist.css"; ?>
 <!-- header共通部分 -->
-<?php include("header.php"); ?>
+<?php include("components/header.php"); ?>
+
+<?php
+session_start();
+$users = $_SESSION['users'];
+?>
 
 <main>
     <div class="title-position">
@@ -35,51 +40,24 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                foreach ($users as $row) {
+                ?>
                 <tr>
-                    <td><?php echo "1"; ?></td>
-                    <td><?php echo "11111111"; ?></td>
-                    <td><?php echo "OOOOOOOO"; ?></td>
-                    <td><?php echo "関矢"; ?></td>
-                    <td><?php echo "創"; ?></td>
-                    <td><?php echo "2000/01/01"; ?></td>
-                    <td><a class="black" href="#">詳細</a></td>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['login_id']; ?></td>
+                    <td><?php echo $row['handlename']; ?></td>
+                    <td><?php echo $row['last_name']; ?></td>
+                    <td><?php echo $row['first_name']; ?></td>
+                    <td><?php echo $row['dob']; ?></td>
+                    <td><a class="black" href="userdetail.php">詳細</a></td>
                     <!-- 下2行はphpのissetで値があれば表示する -->
-                    <td><a class="red" href="#"></a></td>
-                    <td><a class="blue" href="#">復元</a></td>
+                    <td><a class="red" href="../controller/userslist_delete_controller.php?id=<?php echo $row['id'] ?>"><?php if ($row['delete_flag'] == 0) echo "削除"?></a></td>
+                    <td><a class="blue" href="../controller/userslist_restoration_controller.php?id=<?php echo $row['id'] ?>"><?php if ($row['delete_flag'] == 1) echo "復元"?></a></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>YYYYYYYY</td>
-                    <td>AAAAAAAA</td>
-                    <td>竹政</td>
-                    <td>勇輝</td>
-                    <td>2000/01/02</td>
-                    <td><a class="black" href="#">詳細</a></td>
-                    <td><a class="red" href="#">削除</a></td>
-                    <td><a class="blue" href="#"></a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>ZZZZZZZZ</td>
-                    <td>UUUUUUUU</td>
-                    <td>大嶋</td>
-                    <td>涼巴</td>
-                    <td>2000/01/03</td>
-                    <td><a class="black"  href="#">詳細</a></td>
-                    <td><a class="red" href="#">削除</a></td>
-                    <td><a class="blue" href="#"></a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>XXXXXXXX</td>
-                    <td>EEEEEEEE</td>
-                    <td>新井原</td>
-                    <td>玲衣</td>
-                    <td>2000/01/04</td>
-                    <td><a class="black" href="#">詳細</a></td>
-                    <td><a class="red" href="#">削除</a></td>
-                    <td><a class="blue" href="#"></a></td>
-                </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>
@@ -88,4 +66,4 @@
 <!-- jsの適用 -->
 <?php $js_url = "js/userslist.js"; ?>
 <!-- footer共通部分 -->
-<?php include("footer.php"); ?>
+<?php include("components/footer.php"); ?>

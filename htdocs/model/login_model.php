@@ -3,7 +3,7 @@ include('PDO_Connect.php');
 
 function select() {
     $dbh = connect();
-    $sql = 'SELECT * FROM users';
+    $sql = 'SELECT * FROM users WHERE delete_flag = 0';
     $sth = $dbh->prepare($sql);
     $sth -> execute();
 
