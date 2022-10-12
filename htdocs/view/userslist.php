@@ -52,8 +52,8 @@ $users = $_SESSION['users'];
                     <td><?php echo $row['dob']; ?></td>
                     <td><a class="black" href="userdetail.php">詳細</a></td>
                     <!-- 下2行はphpのissetで値があれば表示する -->
-                    <td><a class="red" href="../controller/userslist_delete_controller.php?id=<?php echo $row['id'] ?>"><?php if ($row['delete_flag'] == 0) echo "削除"?></a></td>
-                    <td><a class="blue" href="../controller/userslist_restoration_controller.php?id=<?php echo $row['id'] ?>"><?php if ($row['delete_flag'] == 1) echo "復元"?></a></td>
+                    <td><a class="red" href="../controller/userslist_controller.php?id=<?php echo $row['id'] ?>.&judge=delete"><?php if ($row['delete_flag'] == 0) echo "削除"?></a></td>
+                    <td><a class="blue" href="../controller/userslist_controller.php?id=<?php echo $row['id'] ?>"><?php if ($row['delete_flag'] == 1) echo "復元"?></a></td>
                 </tr>
                 <?php
                 }

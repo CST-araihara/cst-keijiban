@@ -8,9 +8,36 @@ if (!isset($_SESSION["login"])) {
 
 include('../model/userslist_model.php');
 
-$users = users();
-$_SESSION['users'] = $users;
+if (isset($_GET['judge']) && isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-header('Location: ../view/userslist.php');
+    delete_user($id);
+
+    $alert = "<script>alert('削除しました。');</script>";
+    echo $alert;
+
+    echo '<script>location.href = "userslist_controller.php" ;</script>';
+}
+elseif (!isset($_GET['judge']) && isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+restoration_user($id);
+
+    $alert = "<script>alert('復元しました。');</script>";
+    echo $alert;
+
+    echo '<script>location.href = "userslist_controller.php" ;</script>';
+}
+else {
+    $users = users();
+    $_SESSION['users'] = $users;
+
+    header('Location: ../view/userslist.php');
+}
+
+// $users = users();
+// $_SESSION['users'] = $users;
+
+// header('Location: ../view/userslist.php');
 
 ?>
