@@ -13,9 +13,6 @@ $_SESSION['category'] = $category;
 
 $id = $_SESSION['login'];
 
-$icon = icon($id);
-$_SESSION['icon'] = $icon;
-
 header('Location: ../view/adminpage.php');
 
 ?>

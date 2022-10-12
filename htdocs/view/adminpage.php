@@ -26,13 +26,7 @@ $icon = $_SESSION['icon'];
         <div class="page-left">
             <div class="icon-name-position">
                 <div class="icon-position">
-                    <?php
-                    foreach ($icon as $row) {
-                    ?>
-                    <img class="icon border_radius--middle" src="<?php echo $row['icon_img_path']; ?>" alt="">
-                    <?php
-                    }
-                    ?>
+                    <img class="icon border_radius--middle" src="<?php echo $icon ?>" alt="">
                 </div>
                 <div class="name-position">
                     <div class="name font-size--20">
@@ -43,7 +37,7 @@ $icon = $_SESSION['icon'];
             </div>
             <div class="btn-position">
                 <button class="btn btn--normal" type="button" onclick="location.href='index.php'">トップページを表示する</button>
-                <button class="btn btn--normal" type="button" onclick="location.href='userslist.php'">ユーザー一覧</button>
+                <button class="btn btn--normal" type="button" onclick="location.href='../controller/userslist_controller.php'">ユーザー一覧</button>
                 <button class="btn btn--normal" type="button" onclick="location.href='accesshistorylist.php'">アクセス履歴</button>
             </div>
         </div>
