@@ -256,9 +256,6 @@
 .top-foot .top-list__item:hover {
   height: 60px;
 }
-.top-foot .top-list__item--logout {
-  display: none;
-}
 .top-foot .top-list__item a {
   display: block;
   display: -webkit-box;

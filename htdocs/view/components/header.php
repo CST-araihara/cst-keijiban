@@ -9,6 +9,15 @@
         <link rel="stylesheet" href="<?=$url?>">
         <link rel="icon" type="image/x-icon" href="image/favicon.ico">
     </head>
+    <?php
+    session_start();
+    if (!isset($_SESSION['category'])) {
+        header("Location: ../../controller/header_controller.php");
+    }
+    else {
+        $category = $_SESSION['category'];
+    }
+    ?>
     <body>
         <header>
             <div class="top-head">
@@ -21,19 +30,34 @@
                         <ul class="menu-list__contents font-size--15">
                             <!-- カテゴリはループ表示 -->
                             <!-- ログイン等の表示切替 -->
-                            <li class="menu-list__item menu-list__btn"><a href="top.php">トップ</a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="login.php">ログイン</a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="#">ログアウト</a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="signup.php">新規登録</a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="mypage.php">マイページ</a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="categoryList.php"><?php echo "カテゴリ1"; ?></a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="#"><?php echo "カテゴリ2"; ?></a></li>
-                            <li class="menu-list__item menu-list__btn"><a href="#"><?php echo "カテゴリ3"; ?></a></li>
+                            <li class="menu-list__item menu-list__btn"><a href="index.php">トップ</a></li>
+                            <?php
+                            if (isset($_SESSION['login'])) {
+                                echo '<li class="menu-list__item menu-list__btn"><a href="../controller/logout_controller.php">ログアウト</a></li>';
+                                if ($_SESSION['role'] == 1) {
+                                    echo '<li class="menu-list__item menu-list__btn"><a href="adminpage.php">管理者ページ</a></li>';
+                                }
+                                else {
+                                    echo '<li class="menu-list__item menu-list__btn"><a href="mypage.php">マイページ</a></li>';
+                                }
+                                // echo '<li class="menu-list__item menu-list__btn"><a href="mypage.php">マイページ</a></li>';
+                            }
+                            else {
+                                echo '<li class="menu-list__item menu-list__btn"><a href="login.php">ログイン</a></li>';
+                                echo '<li class="menu-list__item menu-list__btn"><a href="signup.php">新規登録</a></li>';
+                            }
+
+                            foreach ($category as $row) {
+                            ?>
+                            <li class="menu-list__item menu-list__btn"><a href="categoryList.php"><?php echo $row['category_name']; ?></a></li>
+                            <?php
+                            }
+                            ?>
                             <li class="menu-list__item menu-list__btn"><a href="#">ヘルプ</a></li>
                         </ul>
                     </nav>
                 </div>
-                <a href="top.php" class="top-title"><h1>研修掲示板</h1></a>
+                <a href="index.php" class="top-title"><h1>研修掲示板</h1></a>
                 <div class="top-right"></div>
             </div>
             <div class="top-foot">
@@ -45,11 +69,22 @@
                     <li class="top-list__item"></li>
                     <li class="top-list__item"></li>
                     <li class="top-list__item"></li>
-                    <li class="top-list__item"></li>
-                    <li class="top-list__item top-list__item--signup "><a href="signup.php"><p><i class="fa-solid fa-user-plus"></i>新規登録</p></a></li>
-                    <li class="top-list__item top-list__item--login"><a href="login.php"><p><i class="fa-solid fa-arrow-right-to-bracket faa-bounce animated-hover"></i>ログイン</p></a></li>
-                    <li class="top-list__item top-list__item--logout"><a href=""><p><i class="fa-solid fa-arrow-right-from-bracket faa-bounce animated-hover"></i>ログアウト</p></a></li>
-                    <li class="top-list__item top-list__item--help"><a href=""><p><i class="fa-solid fa-circle-question faa-bounce animated-hover"></i>ヘルプ</p></a></li>
+                    <?php 
+                    if (isset($_SESSION['login'])) {
+                        if ($_SESSION['role'] == 1) {
+                            echo '<li class="top-list__item top-list__item--adminpage"><a href="adminpage.php"><p><i class="fa-solid fa-user-gear"></i>管理者ページ</p></a></li>';
+                        }
+                        else {
+                            echo '<li class="top-list__item top-list__item--mypage"><a href="mypage.php"><p><i class="fa-solid fa-user"></i>マイページ</p></a></li>';
+                        }
+                        echo '<li class="top-list__item top-list__item--logout"><a href="../controller/logout_controller.php"><p><i class="fa-solid fa-arrow-right-from-bracket"></i>ログアウト</p></a></li>';
+                    }
+                    else {
+                        echo '<li class="top-list__item top-list__item--signup "><a href="signup.php"><p><i class="fa-solid fa-user-plus"></i>新規登録</p></a></li>';
+                        echo '<li class="top-list__item top-list__item--login"><a href="login.php"><p><i class="fa-solid fa-arrow-right-to-bracket"></i>ログイン</p></a></li>';
+                    }
+                    ?>
+                    <li class="top-list__item top-list__item--help"><a href="#"><p><i class="fa-solid fa-circle-question"></i>ヘルプ</p></a></li>
                 </ul>
             </div>
         </header>

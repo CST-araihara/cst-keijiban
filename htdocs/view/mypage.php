@@ -6,18 +6,17 @@
 <?php include("components/header.php"); ?>
 
 <?php
-session_start();
+if (!isset($_SESSION['login'])) {
+    header("Location: index.php");
+    exit;
+}
+
 $handlename = $_SESSION['handlename'];
 $login_id = $_SESSION['login_id'];
 $icon = $_SESSION['icon'];
 ?>
 
 <main>
-        <!-- 便宜上セッションを切るために置いたもの。後で消す -->
-        <form action="karilogout.php" method="post">
-        <input type="submit" value="セッションを切る">
-        </form>
-        <!-- 便宜上セッションを切るために置いたもの。後で消す -->
     <div class="filter"></div>
     <div class="title-position">
         <div class="pagetitle">

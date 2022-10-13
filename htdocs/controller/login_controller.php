@@ -36,6 +36,7 @@ foreach($select as $row) {
             $_SESSION['handlename'] = $row['handlename'];
             $_SESSION['icon'] = $row['icon_img_path'];
             $_SESSION['comment'] = $row['comment'];
+            $_SESSION['role'] = $row['role'];
 
             if ($row['role'] == 1) {
                 false_count0($id);
