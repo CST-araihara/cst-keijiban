@@ -1,24 +1,14 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
 }
 
 .top-head {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 70px;
   background-color: #CBCDFF;
@@ -28,13 +18,11 @@
 }
 .top-head .humberger-menu #menu-btn-check:checked ~ .menu-btn span::before {
   bottom: 0;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .top-head .humberger-menu #menu-btn-check:checked ~ .menu-btn span::after {
   top: 0;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 .top-head .humberger-menu #menu-btn-check {
   display: none;
@@ -50,18 +38,9 @@
   position: fixed;
   top: 15px;
   left: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -76,7 +55,6 @@
   width: 18px;
   height: 3px;
   background-color: white;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   border-radius: 5px;
 }
@@ -103,7 +81,6 @@
   right: 100%;
   z-index: 10;
   background-color: white;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .top-head .humberger-menu .menu-list__top {
@@ -115,18 +92,9 @@
 }
 .top-head .humberger-menu .menu-list__item {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin: 15px 0;
   width: 100%;
   height: 40px;
@@ -135,23 +103,13 @@
   border-radius: 10px;
   overflow: hidden;
   z-index: 0;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .top-head .humberger-menu .menu-list__item a {
   display: block;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 40px;
   text-decoration: none;
@@ -167,7 +125,6 @@
   display: block;
   border-radius: 10px;
   background-color: #CBCDFF;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   left: 0;
 }
@@ -180,7 +137,6 @@
   display: block;
   border-radius: 10px;
   background-color: #FDCAEC;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   left: 0;
 }
@@ -193,8 +149,7 @@
   height: 5px;
   border-top: 3px solid white;
   border-right: 3px solid white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .top-head .humberger-menu .menu-list__item:nth-child(2n):after {
   content: "";
@@ -205,8 +160,7 @@
   height: 5px;
   border-top: 3px solid white;
   border-right: 3px solid white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .top-head .humberger-menu .menu-list__item:hover::before {
   width: 100%;
@@ -223,34 +177,18 @@
   height: 50px;
 }
 .top-foot .top-list {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   list-style: none;
   height: 100%;
 }
 .top-foot .top-list__item {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  flex: 1;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   background-color: #E7E8FF;
   border-radius: 0 0 10px 10px;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .top-foot .top-list__item:hover {
@@ -261,25 +199,15 @@
 }
 .top-foot .top-list__item a {
   display: block;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   text-decoration: none;
   color: black;
   font-weight: bold;
   border-radius: 0 0 10px 10px;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .top-foot .top-list__item a:hover {
@@ -289,18 +217,9 @@
 .footer {
   position: fixed;
   bottom: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 35px;
   background-color: #CBCDFF;

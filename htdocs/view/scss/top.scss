@@ -216,6 +216,96 @@
         #many_goodtab:checked ~ #good_content {
             display: block;
         }
+        .page-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+
+            &--previous,&--next,&--first,&--last {
+                border: 1px solid lightgray;
+                margin: 0 3px;
+                text-decoration: none;
+                padding: 3px 8px;
+
+                // &:hover {
+                //     background-color: variables.$gray;
+                // }
+            }
+
+            &--first {
+                border-radius: 30px 10px 10px 30px;
+            }
+
+            &--last {
+                border-radius: 10px 30px 30px 10px;
+            }
+
+            .page-text {
+                text-decoration: none;
+                color: black;
+                
+                &--previous,&--first {
+                    position: relative;
+                    padding-left: 12px;
+
+                    &::before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 6px 8px 6px 0;
+                        border-color: transparent variables.$dark_purple transparent transparent;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        margin-top: -6px; 
+                    }
+                }
+
+                &--first {
+                    &::after {
+                        content: '';
+                        left: -1px;
+                        top: 20%;
+                        position: absolute;
+                        width: 2px;
+                        height: 12px;
+                        border-radius: 3px;
+                        background: variables.$dark_purple;
+                    }
+                }
+
+                &--next,&--last {
+                    position: relative;
+                    padding-right: 12px;
+
+                    &::before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 6px 0 6px 8px;
+                        border-color: transparent transparent transparent variables.$dark_purple;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        margin-top: -6px; 
+                    }
+                }
+                &--last {
+                    &::after {
+                        content: '';
+                        right: -1px;
+                        top: 20%;
+                        position: absolute;
+                        width: 2px;
+                        height: 12px;
+                        border-radius: 3px;
+                        background: variables.$dark_purple;
+                    }
+                }
+            }
+        }
     }
     
     .tab input:checked + .tab_item {
