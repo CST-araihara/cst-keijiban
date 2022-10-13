@@ -7,8 +7,9 @@
         $count = $dbh->prepare('SELECT COUNT(*) AS count FROM thread');
         $count->execute();
         $total_count = $count->fetch(PDO::FETCH_ASSOC);
-        $pages = ceil($total_count['count'] / max_view);
-        return $pages;
+        return $total_count;
+        // $pages = ceil($total_count['count'] / max_view);
+        // return $pages;
     }
     //最近作成されたスレッド
     function newstmt($now){
@@ -21,13 +22,13 @@
                                 LIMIT :start,:max ;"
                                 );
         if ($now == 1){
-        //1ページ目の処理
-        $newstmt->bindValue(":start",$now -1,PDO::PARAM_INT);
-        $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+            //1ページ目の処理
+            $newstmt->bindValue(":start",$now -1,PDO::PARAM_INT);
+            $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
         } else {
-        //1ページ目以外の処理
-        $newstmt->bindValue(":start",($now -1 ) * max_view,PDO::PARAM_INT);
-        $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+            //1ページ目以外の処理
+            $newstmt->bindValue(":start",($now -1 ) * max_view,PDO::PARAM_INT);
+            $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
         }
         //実行し結果を取り出しておく
         $newstmt->execute();

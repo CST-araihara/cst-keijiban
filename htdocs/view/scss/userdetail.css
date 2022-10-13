@@ -1,6 +1,5 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
@@ -33,11 +32,8 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#D0368A), color-stop(99%, #708AD4));
-  background-image: -webkit-linear-gradient(top, #D0368A 0%, #708AD4 99%);
   background-image: linear-gradient(180deg, #D0368A 0%, #708AD4 99%);
-  -webkit-box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
-          box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
@@ -100,18 +96,9 @@ select {
 
 .btn {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin: 15px 0;
   width: 120px;
   height: 50px;
@@ -125,7 +112,6 @@ select {
   border-radius: 10px;
   cursor: pointer;
   z-index: 1;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--normal::before {
@@ -137,7 +123,6 @@ select {
   height: calc(100% - 5px);
   border: 3px solid #FDCAEC;
   border-radius: 10px;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--normal:hover::before {
@@ -156,7 +141,6 @@ select {
   height: calc(100% - 5px);
   border: 3px solid #CBCDFF;
   border-radius: 10px;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .btn--back:hover::before {
@@ -170,14 +154,8 @@ select {
 .title-position {
   width: 100%;
   padding: 0 10%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .title-position .btn {
   top: -18px;
@@ -247,22 +225,13 @@ select {
   margin-top: 25px;
   width: 100%;
   height: 200px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 .profile-top .icon-position {
   width: 25%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: right;
-  -webkit-justify-content: right;
-      -ms-flex-pack: right;
-          justify-content: right;
+  justify-content: right;
   padding-right: 10px;
 }
 .profile-top .icon-position .icon {
@@ -291,13 +260,8 @@ select {
 .profile-top .name-position .friends {
   width: 100%;
   height: 50%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  justify-content: space-around;
   padding-right: 50px;
 }
 .profile-top .name-position .friends__people {
@@ -350,11 +314,8 @@ select {
   left: -5px;
   top: 12px;
   width: 105px;
-  background: -webkit-gradient(linear, left top, right top, from(#E7E8FF), to(#CBCDFF));
-  background: -webkit-linear-gradient(left, #E7E8FF 0%, #CBCDFF 100%);
   background: linear-gradient(to right, #E7E8FF 0%, #CBCDFF 100%);
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .profile-top .comment-position .comment__righttop span::before, .profile-top .comment-position .comment__righttop span::after {
   position: absolute;
@@ -379,14 +340,8 @@ select {
 .profile-top .btn-position {
   width: 25%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-  -webkit-justify-content: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  justify-content: left;
   padding-top: 70px;
 }
 .profile-top .btn-position .btn {
@@ -417,7 +372,6 @@ select {
   text-align: center;
   font-weight: bold;
   overflow: hidden;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .profile-bottom .tab .tab_item:hover {
@@ -432,8 +386,7 @@ select {
   padding: 20px;
   clear: both;
   border-radius: 0 0 10px 10px;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .profile-bottom .tab__contents {
   list-style: none;
@@ -450,27 +403,15 @@ select {
   height: 50px;
 }
 .profile-bottom .tab .contents__top {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   border-bottom: 2px solid #CBCDFF;
 }
 .profile-bottom .tab .contents__sub {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin-bottom: 20px;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .profile-bottom .tab .contents__admin {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }

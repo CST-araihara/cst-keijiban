@@ -1,17 +1,65 @@
+<?php session_start(); ?>
 <!-- headのタイトル -->
 <?php $title = "研修掲示板トップページ"; ?>
 <!-- cssの適用 -->
 <?php $url = "scss/top.css"; ?>
 
-<?php include("../controller/index_controller.php"); ?>
+<?php
+    if(!isset($_SESSION['newthread']) && !isset($_SESSION['resthread']) && !isset($_SESSION['goodthread'])){
+        header("Location:../controller/index_controller.php");
+    }
+    if(isset($_SESSION['newthread'])){ 
+        $newthread = $_SESSION['newthread'];
+    }
+    if(isset($_SESSION['resthread'])){ 
+        $resthread = $_SESSION['resthread'];
+    }
+    if(isset($_SESSION['goodthread'])){ 
+        $goodthread = $_SESSION['goodthread'];
+    }
+    if(isset($_SESSION['page'])){ 
+        $pages = $_SESSION['page'];
+    }else{
+        $pages=1;
+    }
+
+    if(isset($_GET['page_id'])){ 
+        $_SESSION['now'] = $_GET['page_id'];
+    }
+    if(isset($_SESSION['now'])){ 
+        $now = $_SESSION['now'];
+    }else{
+        $now = 1;
+    }
+
+    if(isset($_GET['page_id_res'])){ 
+        $_SESSION['now_res'] = $_GET['page_id_res'];
+    }
+    if(isset($_SESSION['now_res'])){
+        $now_res = $_SESSION['now_res'];
+    }else{
+        $now_res = 1;
+    }
+
+    if(isset($_GET['page_id_good'])){ 
+        $_SESSION['now_good'] = $_GET['page_id_good'];
+    }
+    if(isset($_SESSION['now_good'])){
+        $now_good = $_SESSION['now_good'];
+    }else{
+        $now_good = 1;
+    }
+
+    if(!isset($_GET['tab'])){
+        $_GET['tab']="new_threadtab";
+    }
+
+?>
 
 <!-- header共通部分 -->
 <?php include("components/header.php"); ?>
 <!-- main -->
 <main>
-    <!-- ▼たけまさテスト▼ -->
-    <input type="hidden" value="a">
-    <!-- ▲たけまさテスト▲ -->
     <div class="top">
         <form class="search" action="#" method="get">
             <input class="search__input" type="search" size="25" placeholder="キーワード入力">
@@ -21,11 +69,11 @@
         </form>
         <div class="tab font-size--15">
             <!-- inputのidとlabelのforが対になる -->
-            <input id="new_threadtab" type="radio" name="tab_item" <?php if(isset($_GET['page_id'])||(!isset($_GET['page_id']) && !isset($_GET['page_id_res']) && !isset($_GET['page_id_good']))) {echo 'checked';} ?>>
+            <input  class="target" id="new_threadtab" type="radio" name="tab_item"  <?php if($_GET['tab']=="new_threadtab") echo 'checked'; ?>>
             <label class="tab_item" for="new_threadtab">最近作成されたスレッド</label>
-            <input id="many_responsetab" type="radio" name="tab_item" <?php if(isset($_GET['page_id_res'])) {echo 'checked';} ?>>
+            <input  class="target" id="many_responsetab" type="radio" name="tab_item" <?php if($_GET['tab']=="many_responsetab") echo 'checked'; ?>>
             <label class="tab_item" for="many_responsetab">レスの多い順</label>
-            <input id="many_goodtab" type="radio" name="tab_item" <?php if(isset($_GET['page_id_good'])) {echo 'checked';} ?>>
+            <input  class="target" id="many_goodtab" type="radio" name="tab_item" <?php if($_GET['tab']=="many_goodtab") echo 'checked'; ?>>
             <label class="tab_item" for="many_goodtab">いいねの多い順</label>
             <!-- idを任意のものに変える -->
             <div id="thread_content" class="tab__switching">
@@ -76,32 +124,49 @@
                     </li>
                     <?php } ?>
                 </ul>
-                <div>
+                <div class="page-btn">
                 <!-- 最初へボタン -->
                     <?php if($now >= 2){ ?>
-                        <a href='./index.php?page_id=1' style='padding: 5px;'>最初へ</a>
+                        <div class="page-btn--first">
+                            <a href='../controller/index_controller.php?page_id=1' class="page-text page-text--first">最初へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>最初へ</span>
+                        <div class="page-btn--first">
+                            <span  class="page-text page-text--first">最初へ</span>
+                        </div>
                     <?php } ?>
+
                 <!-- 前へボタン -->
                     <?php if($now >= 2){ ?>
-                        <a href='./index.php?page_id= <?php echo ($now - 1);?>' style='padding: 5px;'>前へ</a>
+                        <div class="page-btn--previous border_radius--small">
+                            <a href='../controller/index_controller.php?page_id=<?php echo ($now - 1);?>' class="page-text page-text--previous">前へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>前へ</span>
+                        <div class="page-btn--previous border_radius--small">
+                            <span class="page-text page-text--previous">前へ</span>
+                        </div>
                     <?php } ?>
 
                 <!-- 次へボタン -->
                     <?php if($now < $pages){ ?>
-                        <a href='./index.php?page_id= <?php echo ($now + 1);?>' style='padding: 5px;'>次へ</a>
+                        <div class="page-btn--next border_radius--small">
+                            <a href='../controller/index_controller.php?page_id=<?php echo ($now + 1);?>' class="page-text page-text--next">次へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>次へ</span>
+                        <div class="page-btn--next border_radius--small">
+                            <span class="page-text page-text--next">次へ</span>
+                        </div>
                     <?php } ?>
 
                 <!-- 最後へボタン -->
                     <?php if($now < $pages){ ?>
-                        <a href='./index.php?page_id= <?php echo $pages;?>' style='padding: 5px;'>最後へ</a>
+                        <div class="page-btn--last">
+                            <a href='../controller/index_controller.php?page_id=<?php echo $pages;?>' class="page-text page-text--last">最後へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>最後へ</span>
+                        <div class="page-btn--last">
+                            <span class="page-text page-text--last">最後へ</span>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
@@ -155,32 +220,51 @@
                     </li>
                     <?php } ?>
                 </ul>
-                <div>
+                <div class="page-btn">
                 <!-- 最初へボタン -->
                     <?php if($now_res >= 2){ ?>
-                        <a href='./index.php?page_id_res=1' style='padding: 5px;'>最初へ</a>
+                        <div class="page-btn--first">
+                            <a href='../controller/index_controller.php?page_id_res=1' class="page-text page-text--first">最初へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>最初へ</span>
+                        <div class="page-btn--first">
+                            <span class="page-text page-text--first">最初へ</span>
+                        </div>
                     <?php } ?>
+
                 <!-- 前へボタン -->
                     <?php if($now_res >= 2){ ?>
-                        <a href='./index.php?page_id_res= <?php echo ($now_res - 1);?>' style='padding: 5px;'>前へ</a>
+                        <div class="page-btn--previous border_radius--small">
+                            <a href='../controller/index_controller.php?page_id_res=<?php echo ($now_res - 1);?>' class="page-text page-text--previous">前へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>前へ</span>
+                        <div class="page-btn--previous border_radius--small">
+                            <span class="page-text page-text--previous">前へ</span>
+                        </div>
                     <?php } ?>
 
                 <!-- 次へボタン -->
                     <?php if($now_res < $pages){ ?>
-                        <a href='./index.php?page_id_res= <?php echo ($now_res + 1);?>' style='padding: 5px;'>次へ</a>
+                        <div  class="page-btn--next border_radius--small">
+                            <a href='../controller/index_controller.php?page_id_res=<?php echo ($now_res + 1);?>' class="page-text page-text--next">次へ</a>
+                        </div>
+                        
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>次へ</span>
+                        <div  class="page-btn--next border_radius--small">
+                            <span class="page-text page-text--next">次へ</span>
+                        </div>
+                        
                     <?php } ?>
 
                 <!-- 最後へボタン -->
                     <?php if($now_res < $pages){ ?>
-                        <a href='./index.php?page_id_res= <?php echo $pages;?>' style='padding: 5px;'>最後へ</a>
+                        <div class="page-btn--last">
+                            <a href='../controller/index_controller.php?page_id_res=<?php echo $pages;?>' class="page-text page-text--last">最後へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>最後へ</span>
+                        <div class="page-btn--last">
+                            <span class="page-text page-text--last">最後へ</span>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
@@ -234,37 +318,55 @@
                     </li>
                     <?php } ?>
                 </ul>
-                <div>
+                <div  class="page-btn">
                 <!-- 最初へボタン -->
                     <?php if($now_good >= 2){ ?>
-                        <a href='./index.php?page_id_good=1' style='padding: 5px;'>最初へ</a>
+                        <div class="page-btn--first">
+                            <a href='../controller/index_controller.php?page_id_good=1' class="page-text page-text--first">最初へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>最初へ</span>
+                        <div class="page-btn--first">
+                            <span class="page-text page-text--first">最初へ</span>
+                        </div>
                     <?php } ?>
+
                 <!-- 前へボタン -->
                     <?php if($now_good >= 2){ ?>
-                        <a href='./index.php?page_id_good= <?php echo ($now_good - 1);?>' style='padding: 5px;'>前へ</a>
+                        <div class="page-btn--previous border_radius--small">
+                            <a href='../controller/index_controller.php?page_id_good=<?php echo ($now_good - 1);?>' class="page-text page-text--previous">前へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>前へ</span>
+                        <div class="page-btn--previous border_radius--small">
+                            <span class="page-text page-text--previous">前へ</span>
+                        </div>
                     <?php } ?>
 
                 <!-- 次へボタン -->
                     <?php if($now_good < $pages){ ?>
-                        <a href='./index.php?page_id_good= <?php echo ($now_good + 1);?>' style='padding: 5px;'>次へ</a>
+                        <div  class="page-btn--next border_radius--small">
+                            <a href='../controller/index_controller.php?page_id_good=<?php echo ($now_good + 1);?>' class="page-text page-text--next">次へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>次へ</span>
+                        <div  class="page-btn--next border_radius--small">
+                            <span class="page-text page-text--next">次へ</span>
+                        </div>
                     <?php } ?>
 
                 <!-- 最後へボタン -->
                     <?php if($now_good < $pages){ ?>
-                        <a href='./index.php?page_id_good= <?php echo $pages;?>' style='padding: 5px;'>最後へ</a>
+                        <div class="page-btn--last">
+                            <a href='../controller/index_controller.php?page_id_good=<?php echo $pages;?>' class="page-text page-text--last">最後へ</a>
+                        </div>
                     <?php }else{ ?>
-                        <span style='padding: 5px;'>最後へ</span>
+                        <div class="page-btn--last">
+                            <span class="page-text page-text--last">最後へ</span>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </div>
 </main>
+<?php $js_url = "js/index.js"; ?>
 <!-- footer共通部分 -->
 <?php include("components/footer.php"); ?>
