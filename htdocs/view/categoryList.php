@@ -4,6 +4,8 @@
 <?php $url = "scss/categorylist.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
+<!-- IPアドレスブロック処理 -->
+<?php include("components/blockprocess.php"); ?>
 <!-- main -->
 <main>
     <div class="categoryList font-size--15">

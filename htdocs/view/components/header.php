@@ -13,6 +13,7 @@
     session_start();
     if (!isset($_SESSION['category'])) {
         header("Location: ../../controller/header_controller.php");
+        exit;
     }
     else {
         $category = $_SESSION['category'];

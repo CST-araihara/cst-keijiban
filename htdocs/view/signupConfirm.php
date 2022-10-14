@@ -4,6 +4,8 @@
 <?php $url = "scss/signupConfirm.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
+<!-- IPアドレスブロック処理 -->
+<?php include("components/blockprocess.php"); ?>
 <main>
     <div class="signupConfirm border_radius--middle" action="#">
         <div class="signupConfirm__ribbon">

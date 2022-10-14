@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])) {
 
 include('../model/userslist_model.php');
 
-if (isset($_GET['judge']) && isset($_GET['id'])) {
+if (isset($_GET['judge']) && isset($_GET['id'])) { // ユーザー削除
     $id = $_GET['id'];
 
     delete_user($id);
@@ -18,26 +18,21 @@ if (isset($_GET['judge']) && isset($_GET['id'])) {
 
     echo '<script>location.href = "userslist_controller.php" ;</script>';
 }
-elseif (!isset($_GET['judge']) && isset($_GET['id'])) {
+elseif (!isset($_GET['judge']) && isset($_GET['id'])) { // ユーザー復元
     $id = $_GET['id'];
 
-restoration_user($id);
+    restoration_user($id);
 
     $alert = "<script>alert('復元しました。');</script>";
     echo $alert;
 
     echo '<script>location.href = "userslist_controller.php" ;</script>';
 }
-else {
+else { // ユーザー一覧
     $users = users();
     $_SESSION['users'] = $users;
 
     header('Location: ../view/userslist.php');
 }
-
-// $users = users();
-// $_SESSION['users'] = $users;
-
-// header('Location: ../view/userslist.php');
 
 ?>

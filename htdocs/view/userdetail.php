@@ -4,6 +4,8 @@
 <?php $url = "scss/userdetail.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
+<!-- IPアドレスブロック処理 -->
+<?php include("components/blockprocess.php"); ?>
 
 <main>
     <div class="title-position">

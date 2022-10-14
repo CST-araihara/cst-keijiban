@@ -4,6 +4,8 @@
 <?php $url = "scss/mypage.css"; ?>
 <!-- header共通部分 -->
 <?php include("components/header.php"); ?>
+<!-- IPアドレスブロック処理 -->
+<?php include("components/blockprocess.php"); ?>
 
 <?php
 if (!isset($_SESSION['login'])) {
