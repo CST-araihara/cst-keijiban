@@ -41,7 +41,7 @@
                                 else {
                                     echo '<li class="menu-list__item menu-list__btn"><a href="mypage.php">マイページ</a></li>';
                                 }
-                                // echo '<li class="menu-list__item menu-list__btn"><a href="mypage.php">マイページ</a></li>';
+                                echo '<li class="menu-list__item menu-list__btn"><a href="threadCreate.php">スレッド作成</a></li>';
                             }
                             else {
                                 echo '<li class="menu-list__item menu-list__btn"><a href="login.php">ログイン</a></li>';
@@ -74,19 +74,20 @@
                     <?php 
                     if (isset($_SESSION['login'])) {
                         if ($_SESSION['role'] == 1) {
-                            echo '<li class="top-list__item top-list__item--adminpage"><a href="adminpage.php"><p><i class="fa-solid fa-user-gear"></i>管理者ページ</p></a></li>';
+                            echo '<li class="top-list__item top-list__item--adminpage"><a href="adminpage.php"><p><i class="fa-solid fa-user-gear"></i></p><p>管理者ページ</p></a></li>';
                         }
                         else {
-                            echo '<li class="top-list__item top-list__item--mypage"><a href="mypage.php"><p><i class="fa-solid fa-user"></i>マイページ</p></a></li>';
+                            echo '<li class="top-list__item top-list__item--mypage"><a href="mypage.php"><p><i class="fa-solid fa-user"></i></p><p>マイページ</p></a></li>';
                         }
-                        echo '<li class="top-list__item top-list__item--logout"><a href="../controller/logout_controller.php"><p><i class="fa-solid fa-arrow-right-from-bracket"></i>ログアウト</p></a></li>';
+                        echo '<li class="top-list__item top-list__item--threadCreate"><a href="threadCreate.php"><p><i class="fa-solid fa-pen-to-square"></i></p><p>スレッド作成</p></a></li>';
+                        echo '<li class="top-list__item top-list__item--logout"><a href="../controller/logout_controller.php"><p><i class="fa-solid fa-arrow-right-from-bracket"></i></p><p>ログアウト</p></a></li>';
                     }
                     else {
-                        echo '<li class="top-list__item top-list__item--signup "><a href="signup.php"><p><i class="fa-solid fa-user-plus"></i>新規登録</p></a></li>';
-                        echo '<li class="top-list__item top-list__item--login"><a href="login.php"><p><i class="fa-solid fa-arrow-right-to-bracket"></i>ログイン</p></a></li>';
+                        echo '<li class="top-list__item top-list__item--signup "><a href="signup.php"><p><i class="fa-solid fa-user-plus"></i></p><p>新規登録</p></a></li>';
+                        echo '<li class="top-list__item top-list__item--login"><a href="login.php"><p><i class="fa-solid fa-arrow-right-to-bracket"></i></p><p>ログイン</p></a></li>';
                     }
                     ?>
-                    <li class="top-list__item top-list__item--help"><a href="#"><p><i class="fa-solid fa-circle-question"></i>ヘルプ</p></a></li>
+                    <li class="top-list__item top-list__item--help"><a href="#"><p><i class="fa-solid fa-circle-question"></p><p></i>ヘルプ</p></a></li>
                 </ul>
             </div>
         </header>
