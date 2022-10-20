@@ -4,6 +4,7 @@
 <?php $url = "scss/signup.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
+
 <main>
     <div class="signup border_radius--middle" action="#">
         <div class="signup__ribbon">

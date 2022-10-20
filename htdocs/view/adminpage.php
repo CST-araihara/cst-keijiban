@@ -37,7 +37,7 @@ $icon = $_SESSION['icon'];
             <div class="btn-position">
                 <button class="btn btn--normal" type="button" onclick="location.href='index.php'">トップページを表示する</button>
                 <button class="btn btn--normal" type="button" onclick="location.href='../controller/userslist_controller.php'">ユーザー一覧</button>
-                <button class="btn btn--normal" type="button" onclick="location.href='accesshistorylist.php'">アクセス履歴</button>
+                <button class="btn btn--normal" type="button" onclick="location.href='../controller/accesshistorylist_controller.php'">アクセス履歴</button>
             </div>
         </div>
         <div class="page-right">

@@ -4,6 +4,7 @@
 <?php $url = "scss/categorylist.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
+
 <!-- main -->
 <main>
     <div class="categoryList font-size--15">

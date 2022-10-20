@@ -4,6 +4,7 @@
 <?php $url = "scss/searchResults.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
+
 <!-- main -->
 <main>
     <div class="searchResults font-size--15">
