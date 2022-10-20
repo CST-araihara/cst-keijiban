@@ -1,21 +1,15 @@
-<!-- headのタイトル -->
-<?php $title = "研修掲示板IPアドレスブロック"; ?>
-<!-- cssの適用 -->
-<?php $url = "scss/blockip.css"; ?>
-<!-- header共通部分 -->
-<?php include("components/header.php"); ?>
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>研修掲示板403Forbidden</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
+        <link rel="icon" type="image/x-icon" href="image/favicon.ico">
+    </head>
 <main>
-    <div class="blockip border_radius--middle" action="#">
-        <div class="blockip__ribbon">
-            <div class="blockip__title">
-                <h2>IPアドレスブロック</h2>
-            </div>
-        </div>
+    <div style="text-align: center;">
+        <h1>403 Forbidden</h1>
         <i class="fa-solid fa-user-slash fa-5x"></i>
-        <p class="blockip__mes">お使いのIPアドレスは<br>サイト運営者によりブロックされています。</p>
+        <p style="margin-top: 25px;" class="blockip__mes">アクセスが制限されています。</p>
     </div>
 </main>
-
-<!-- footer共通部分 -->
-<?php include("components/footer.php"); ?>

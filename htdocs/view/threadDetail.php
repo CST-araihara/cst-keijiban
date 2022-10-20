@@ -4,8 +4,6 @@
 <?php $url = "scss/threadDetail.css"; ?>
 <!-- header共通部分 -->
 <?php include("header.php"); ?>
-<!-- IPアドレスブロック処理 -->
-<?php include("components/blockprocess.php"); ?>
 
 <main class="font-size--15">
     <div class="threadDatail">

@@ -4,8 +4,6 @@
 <?php $url = "scss/login.css"; ?>
 <!-- header共通部分 -->
 <?php include("components/header.php"); ?>
-<!-- IPアドレスブロック処理 -->
-<?php include("components/blockprocess.php"); ?>
 
 <main>
     <div class="login border_radius--middle" action="#">

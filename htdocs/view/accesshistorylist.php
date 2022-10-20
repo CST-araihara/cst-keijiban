@@ -4,8 +4,6 @@
 <?php $url = "scss/accesshistorylist.css"; ?>
 <!-- header共通部分 -->
 <?php include("components/header.php"); ?>
-<!-- IPアドレスブロック処理 -->
-<?php include("components/blockprocess.php"); ?>
 
 <?php
 if ($_SESSION['role'] != 1) {
