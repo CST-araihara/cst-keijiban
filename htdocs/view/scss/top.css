@@ -151,6 +151,29 @@ select {
   background-color: #E7E8FF;
 }
 
+.top-position {
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.top-position .btn {
+  top: -18px;
+  width: 7%;
+  height: 35px;
+}
+.top-position .btn--back::before {
+  top: -6px;
+  left: -6px;
+}
+.top-position .btn--back:hover::before {
+  top: 0;
+  left: 0;
+}
+.top-position div {
+  width: 5%;
+  height: 30px;
+}
 .top .search {
   margin: 0 auto;
   width: 70%;
@@ -175,6 +198,29 @@ select {
   height: 30px;
   width: 40px;
   cursor: pointer;
+}
+.top .keyword {
+  text-align: center;
+  margin: 20px auto;
+  width: 75%;
+  max-width: 1100px;
+  position: relative;
+  padding: 0.3em;
+  font-weight: bold;
+}
+.top .keyword::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 18px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(-45deg, #CBCDFF, #CBCDFF 2px, white 4px, white 8px);
+}
+.top .nohit {
+  text-align: center;
 }
 .top .tab {
   width: 70%;
