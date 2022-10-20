@@ -25,7 +25,7 @@
         $_SESSION['now'] = $_GET['page_id'];
     }
 
-    // スレッドを表示させるSQL文をセッションに格納
+    // スレッド内容を表示させるデータをセッションに格納
     if(isset($_GET['keyword'])){
         $_SESSION['newthread'] = keynewstmt($_SESSION['now'],$_GET['keyword']);
     }else{
@@ -57,7 +57,7 @@
         $_SESSION['now_res'] = $_GET['page_id_res'];
     }
 
-    // スレッドを表示させるSQL文をセッションに格納
+    // スレッド内容を表示させるデータをセッションに格納
     if(isset($_GET['keyword'])){
         $_SESSION['resthread'] = keyresstmt( $_SESSION['now_res'],$_GET['keyword']);
     }else{
@@ -89,7 +89,7 @@
         $_SESSION['now_good'] = $_GET['page_id_good'];
     }
 
-    // スレッドを表示させるSQL文をセッションに格納
+    // スレッド内容を表示させるデータをセッションに格納
     if(isset($_GET['keyword'])){
         $_SESSION['goodthread'] = keygoodstmt( $_SESSION['now_good'],$_GET['keyword']);
     }else{
