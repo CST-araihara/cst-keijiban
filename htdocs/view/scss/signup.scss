@@ -81,14 +81,14 @@
     }
 
     .error-message {
-        display: none;
+        // display: none;
         color: red;
         width: 80%;
 
         &__box {
             border:3px double orange;
             background-color: antiquewhite;
-            width: 80%;
+            width: 350px;
             margin: 20px auto;
         }
     }
@@ -99,6 +99,12 @@
         flex-direction: column;
         flex-wrap: wrap;
     }
+
+    // .errorClassName::before {
+    //     content: '\f071';
+    //     font-family: 'Font Awesome 6 Free';
+    //     font-weight: 900;
+    // }
 
     &__input {
         border: 2px solid variables.$dark_purple;
