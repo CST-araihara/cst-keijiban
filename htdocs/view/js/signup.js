@@ -61,6 +61,8 @@ function resetPreview(){
         element.removeChild(element.firstChild);
     }
     // document.getElementById("select-img").innerHTML = "選択";
+    var hidden = document.getElementById("hidden");
+    hidden.value ="";
 }
 
 //文字数カウント

@@ -16,6 +16,7 @@ $month = $_POST['month'];
 $day = $_POST['day'];
 $filename = $_FILES['image']['name'];
 $word = $_POST['word'];
+$hidden = $_POST['hidden_img'];
 
 // ログインID
 if ($login_id =="") { // ログインIDが入力されていない
@@ -110,7 +111,23 @@ $month_char = $month;
 $day_char = $day;
 
 // アイコンの拡張子
-if ($filename =="") {
+if ($filename =="" && $hidden =="") {
+    $filename_mes = "";
+    $filename = "f_f_event_3_s128_f_event_3_2bg.png";
+    $uploaded_path = '../view/image/f_f_event_3_s128_f_event_3_2bg.png';
+}
+elseif ($filename =="" && $hidden !="") {
+    $filename_mes = "";
+    if (strpos($hidden, 'f_f_event_3_s128_f_event_3_2bg.png') !== false) {
+        $filename = "f_f_event_3_s128_f_event_3_2bg.png";
+        $uploaded_path = '../view/image/f_f_event_3_s128_f_event_3_2bg.png';
+    }
+    else {
+        $filename = str_replace('../view/image/tmp/', '', $hidden);
+        $uploaded_path = '../view/image/tmp/'.$filename;
+    }
+}
+elseif ($filename =="") {
     $filename_mes = "";
     $filename = "f_f_event_3_s128_f_event_3_2bg.png";
     $uploaded_path = '../view/image/f_f_event_3_s128_f_event_3_2bg.png';

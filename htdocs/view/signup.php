@@ -190,7 +190,18 @@
                             <input type="file" id="icon-img" name="image" class="icon__input" accept=".png,.jpg,.jpeg" onChange="imgPreview(event);">
                         </label>
                         <input class="img-reset__btn" type="button" value="Reset" onclick="resetPreview();">
-                        <div id="preview"></div>
+                        <div id="preview">
+                            <?php
+                            if (!empty($_SESSION["signup"]['filename'][1])) {
+                                echo '<img src="'.$_SESSION["signup"]["filename"][1].'" alt="">';
+                            }
+                            ?>
+                        </div>
+                        <?php
+                        if (!empty($_SESSION["signup"]['filename'][1])) {
+                            echo '<input id="hidden" name="hidden_img" type="hidden" value="'.$_SESSION["signup"]["filename"][1].'">';
+                        }
+                        ?>
                     </td>
                 </tr>
                 <tr class="signup__group">

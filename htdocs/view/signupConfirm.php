@@ -131,7 +131,7 @@
                 </tr>
             </table>
             <div class="signupConfirm__group">
-                <button class="btn btn--back" type="button" onclick="location.href ='signup.php'; alert('アイコンが初期化されます。')">
+                <button class="btn btn--back" type="button" onclick="location.href ='signup.php';">
                     修正する
                 </button>
                 <button class="btn btn--normal" type="button" onclick="location.href='../controller/signupConfirm_controller.php'">
