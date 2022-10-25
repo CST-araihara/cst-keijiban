@@ -3,7 +3,7 @@
 <!-- cssの適用 -->
 <?php $url = "scss/signupConfirm.css"; ?>
 <!-- header共通部分 -->
-<?php include("header.php"); ?>
+<?php include("components/header.php"); ?>
 
 <main>
     <div class="signupConfirm border_radius--middle" action="#">
@@ -25,7 +25,7 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "test123"; ?>
+                            <?php echo $_SESSION['signup']['id'][1]; ?>
                         </p>
                     </td>
                 </tr>
@@ -37,19 +37,7 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "●●●●●●●●"; ?>
-                        </p>
-                    </td>
-                </tr>
-                <tr class="signupConfirm__group">
-                    <th class="hissu">
-                        <label  class="signupConfirm__text font-size--20" for="">
-                            パスワード（確認）
-                        </label>
-                    </th>
-                    <td>
-                        <p class="signupConfirm__input border_radius--small">
-                            <?php echo "●●●●●●●●"; ?>
+                            <?php echo str_repeat('●', mb_strlen($_SESSION['signup']['pw'][1])); ?>
                         </p>
                     </td>
                 </tr>
@@ -61,7 +49,7 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "ハンドルネーム"; ?>
+                            <?php echo $_SESSION['signup']['handlename'][1]; ?>
                         </p>
                     </td>
                 </tr>
@@ -76,7 +64,7 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "山田"; ?>
+                            <?php echo $_SESSION['signup']['l_name'][1]; ?>
                         </p>
                     </td>
                 </tr>
@@ -91,7 +79,7 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "太郎"; ?>
+                            <?php echo $_SESSION['signup']['f_name'][1]; ?>
                         </p>
                     </td>
                 </tr>
@@ -106,7 +94,7 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "1990年1月1日"; ?>
+                            <?php echo $_SESSION['signup']['dob'][1]; echo '年'; echo $_SESSION['signup']['dob'][2]; echo '月'; echo $_SESSION['signup']['dob'][3]; echo '日'; ?>
                         </p>
                     </td>
                 </tr>
@@ -120,7 +108,7 @@
                         </label>
                     </th>
                     <td>
-                        <img src="image/f_f_event_3_s128_f_event_3_2bg.png" class="signupConfirm__img border_radius--small">
+                        <img src="<?php echo $_SESSION['signup']['filename'][1]; ?>" class="signupConfirm__img border_radius--small">
                     </td>
                 </tr>
                 <tr class="signupConfirm__group">
@@ -131,16 +119,22 @@
                     </th>
                     <td>
                         <p class="signupConfirm__input border_radius--small">
-                            <?php echo "よろしくおねがいします！"; ?>
+                            <?php
+                            if ($_SESSION['signup']['word'][1] =="") {
+                                echo "　";
+                            }
+                            else {
+                                echo $_SESSION['signup']['word'][1];
+                            }?>
                         </p>
                     </td>
                 </tr>
             </table>
             <div class="signupConfirm__group">
-                <button class="btn btn--back" type="submit">
+                <button class="btn btn--back" type="button" onclick="location.href ='signup.php';">
                     修正する
                 </button>
-                <button class="btn btn--normal" type="submit" onclick="location.href='mypage.php'">
+                <button class="btn btn--normal" type="button" onclick="location.href='../controller/signupConfirm_controller.php'">
                     登録して<br>ログイン
                 </button>
             </div>
@@ -148,4 +142,4 @@
     </div>
 </main>
 <!-- footer共通部分 -->
-<?php include("footer.php"); ?>
+<?php include("components/footer.php"); ?>

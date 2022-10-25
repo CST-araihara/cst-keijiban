@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 }, false);
 
-// パスワードマスクre
+// パスワードマスク
 document.addEventListener('DOMContentLoaded', function(event) {
 
     const retargetElement = document.getElementById('reinputPassword');
@@ -31,32 +31,28 @@ document.addEventListener('DOMContentLoaded', function(event) {
 }, false);
 
 // 画像表示
-function previewFile(file) {
-    // プレビュー画像を追加する要素
-    const preview = document.getElementById('preview');
+function imgPreview(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    var preview = document.getElementById('preview');
+    var previewImage = document.getElementById('previewImage');
 
-    // FileReaderオブジェクトを作成
-    const reader = new FileReader();
-
-    // ファイルが読み込まれたときに実行する
-    reader.onload = function (e) {
-        const imageUrl = e.target.result; // 画像のURLはevent.target.resultで呼び出せる
-        const img = document.createElement("img"); // img要素を作成
-        img.src = imageUrl; // 画像のURLをimg要素にセット
-        preview.appendChild(img); // #previewの中に追加
+    if (previewImage != null) {
+        preview.removeChild(previewImage);
     }
-    // いざファイルを読み込む
+    else if (preview != null) {
+        preview.innerHTML ="";
+    }
+    reader.onload = function(event) {
+        var img = document.createElement('img');
+        img.setAttribute('src',reader.result);
+        img.setAttribute('id','previewImage');
+        preview.appendChild(img);
+    };
+
     reader.readAsDataURL(file);
 }
-    // <input>でファイルが選択されたときの処理
-const fileInput = document.getElementById('icon-img');
-const handleFileSelect = () => {
-    const files = fileInput.files;
-    for (let i = 0; i < files.length; i++) {
-        previewFile(files[i]);
-    }
-}
-fileInput.addEventListener('change', handleFileSelect);
+
 
 // 画像リセットボタン
 function resetPreview(){
@@ -65,17 +61,22 @@ function resetPreview(){
         element.removeChild(element.firstChild);
     }
     // document.getElementById("select-img").innerHTML = "選択";
+    var hidden = document.getElementById("hidden");
+    hidden.value ="";
 }
 
 //文字数カウント
-const textArea = document.querySelector('#textarea'); // テキストエリアの要素
-const length = document.querySelector('.length'); // 残り文字数を表示させる要素
-const maxLength = 100 // 最大文字数
-textArea.addEventListener('input', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    const textArea = document.querySelector('#textarea'); // テキストエリアの要素
+    const length = document.querySelector('.length'); // 残り文字数を表示させる要素
+    const maxLength = 100 // 最大文字数
     length.textContent = maxLength - textArea.value.length;
-    if(maxLength - textArea.value.length < 0){
-        length.style.color = 'red'; // 最大文字数を超過したら赤字で表示する
-    }else{
-        length.style.color = '#444';
-    }
+    textArea.addEventListener('input', () => {
+        length.textContent = maxLength - textArea.value.length;
+        if(maxLength - textArea.value.length < 0){
+            length.style.color = 'red'; // 最大文字数を超過したら赤字で表示する
+        }else{
+            length.style.color = '#444';
+        }
+    }, false);
 }, false);
