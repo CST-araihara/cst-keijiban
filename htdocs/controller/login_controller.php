@@ -34,6 +34,7 @@ foreach($select as $row) {
             $_SESSION['login'] = $row['id'];
             $_SESSION['login_id'] = $row['login_id'];
             $_SESSION['handlename'] = $row['handlename'];
+            $_SESSION['pw'] = $row['pw'];
             $_SESSION['icon'] = $row['icon_img_path'];
             $_SESSION['comment'] = $row['comment'];
             $_SESSION['role'] = $row['role'];

@@ -71,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const length = document.querySelector('.length'); // 残り文字数を表示させる要素
     const maxLength = 100 // 最大文字数
     length.textContent = maxLength - textArea.value.length;
+    if(maxLength - textArea.value.length < 0){
+        length.style.color = 'red'; // 最大文字数を超過したら赤字で表示する
+    }else{
+        length.style.color = '#444';
+    }
     textArea.addEventListener('input', () => {
         length.textContent = maxLength - textArea.value.length;
         if(maxLength - textArea.value.length < 0){

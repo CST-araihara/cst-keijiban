@@ -75,6 +75,19 @@
             border-right: 7px solid transparent;
         }
     }
+
+    .error-message {
+        // display: none;
+        color: red;
+        width: 80%;
+        
+        &__box {
+            border:3px double orange;
+            background-color: antiquewhite;
+            width: 350px;
+            margin: 20px auto;
+        }
+    }
     
     &__form {
         margin-top: 90px;
@@ -150,12 +163,6 @@
                 background-color: variables.$light_purple;
                 cursor: pointer;
             }
-        }
-
-        .error-message {
-            display: none;
-            color: red;
-            width: 80%;
         }
 
         .edit-info {

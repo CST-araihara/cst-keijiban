@@ -14,6 +14,7 @@ if (!isset($_SESSION['login'])) {
 $handlename = $_SESSION['handlename'];
 $login_id = $_SESSION['login_id'];
 $icon = $_SESSION['icon'];
+$comment = $_SESSION['comment'];
 ?>
 
 <main>
@@ -30,7 +31,7 @@ $icon = $_SESSION['icon'];
         <div class="name-position">
             <div class="name font-size--20">
                 <div class="name__handlename"><p>HN</p>:<?php echo $handlename ?></div>
-                <div class="name__id"><p>ID</p>:<?php echo $login_id  ?></div>
+                <div class="name__id"><p>ID</p>:<?php echo $login_id; ?></div>
             </div>
             <div class="friends font-size--15">
                 <!-- 友達の人数は計算して出す -->
@@ -41,7 +42,7 @@ $icon = $_SESSION['icon'];
         <div class="comment-position">
             <div class="comment border_radius--middle font-size--15">
                 <div class="comment__righttop english-font"><span>comment</span></div>
-                <p class="comment__detail"><?php echo "コメント"; ?></p>
+                <p class="comment__detail"><?php echo $comment; ?></p>
             </div>
         </div>
         <div class="btn-position">
