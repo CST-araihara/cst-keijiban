@@ -42,8 +42,8 @@ $icon = $_SESSION['icon'];
         </div>
         <div class="page-right">
             <div class="search-position">
-                <form class="search" action="../controller/adminpage_controller.php" method="post">
-                    <input class="search__box" type="text" name="key_search" size="10" placeholder="キーワード入力">
+                <form class="search" action="../controller/index_controller.php" method="get">
+                    <input class="search__box" type="text" name="keyword" size="10" placeholder="キーワード入力">
                     <button class="search__btn border_radius--small" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
@@ -51,7 +51,7 @@ $icon = $_SESSION['icon'];
                 <?php
                 foreach($category as $row) {
                 ?>
-                <li><button class="btn btn--normal" type="button"><?php echo $row['category_name']; ?></button></li>
+                <li><button class="btn btn--normal" type="button" onclick="location.href='../controller/index_controller.php?category=<?php echo $row['category_name']; ?>'"><?php echo $row['category_name']; ?></button></li>
                 <?php
                 }
                 ?>
