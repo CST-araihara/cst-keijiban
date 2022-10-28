@@ -50,7 +50,7 @@
 
                             foreach ($category as $row) {
                             ?>
-                            <li class="menu-list__item menu-list__btn"><a href="categoryList.php"><?php echo $row['category_name']; ?></a></li>
+                            <li class="menu-list__item menu-list__btn"><a href="../../controller/index_controller.php?category=<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?></a></li>
                             <?php
                             }
                             ?>

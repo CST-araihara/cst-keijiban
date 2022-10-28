@@ -179,15 +179,33 @@ select {
   width: 70%;
   max-width: 800px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 .top .search__input {
   border: 2px solid #FDCAEC;
   height: 30px;
   width: 85%;
   padding: 3px 10px;
-  margin: 0 auto;
 }
-.top .search__input:focus {
+.top .search__select {
+  width: 15%;
+  margin-right: 10px;
+  border: 2px solid #FDCAEC;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #FDCAEC 50%), linear-gradient(135deg, #FDCAEC 50%, transparent 50%);
+  background-size: 5px 5px, 5px 5px;
+  background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  padding: 0 5px;
+  cursor: pointer;
+}
+.top .search__select::-webkit-scrollbar-thumb {
+  background: rgba(149, 48, 250, 0.5);
+}
+.top .search__input:focus, .top .search__select:focus {
   outline: none;
   background-color: #FFF0FA;
 }
@@ -395,7 +413,6 @@ select {
 }
 .top .tab .page-btn .page-text {
   text-decoration: none;
-  color: black;
 }
 .top .tab .page-btn .page-text--previous, .top .tab .page-btn .page-text--first {
   position: relative;
@@ -449,6 +466,22 @@ select {
   border-radius: 3px;
   background: #CBCDFF;
 }
+.top .tab .page-btn .enable-text {
+  color: black;
+}
+.top .tab .page-btn .disable-text {
+  opacity: 0.5;
+}
+.top .tab .page-btn .enable-color:hover {
+  background: #E7E8FF;
+}
+.top .tab .page-btn .disable-color {
+  background-color: #F1F1F1;
+}
 .top .tab input:checked + .tab_item {
   background-color: #E7E8FF;
+}
+.top .pagecount {
+  text-align: center;
+  margin-top: 10px;
 }/*# sourceMappingURL=top.css.map */

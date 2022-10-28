@@ -39,16 +39,37 @@
         max-width: 800px;
         // padding:0 20px;
         text-align: center;
+        display: flex;
+        justify-content: space-between;
     
         &__input {
             border: 2px solid variables.$dark_pink;
             height: 30px;
             width: 85%;
             padding: 3px 10px;
-            margin: 0 auto;
+            // margin: 0 auto;
         }
 
-        &__input:focus {
+        &__select {
+            width: 15%;
+            margin-right: 10px;
+            border: 2px solid variables.$dark_pink;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, variables.$dark_pink 50%),linear-gradient(135deg, variables.$dark_pink 50%, transparent 50%);
+            background-size: 5px 5px, 5px 5px;
+            background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+            background-repeat: no-repeat;
+            padding: 0 5px;
+            cursor: pointer;
+            
+            &::-webkit-scrollbar-thumb {
+                background: rgba(variables.$hover_purple,0.5);
+            }
+        }
+
+        &__input:focus,&__select:focus {
             outline: none;
             background-color: variables.$light_pink;
         }
@@ -281,10 +302,6 @@
                 margin: 0 3px;
                 text-decoration: none;
                 padding: 3px 8px;
-
-                // &:hover {
-                //     background-color: variables.$gray;
-                // }
             }
 
             &--first {
@@ -297,7 +314,7 @@
 
             .page-text {
                 text-decoration: none;
-                color: black;
+                // color: black;
                 
                 &--previous,&--first {
                     position: relative;
@@ -361,10 +378,28 @@
                     }
                 }
             }
+            .enable-text{
+                color:black;
+            }
+            .disable-text{
+                // color:gray;
+                opacity: 0.5;
+            }
+            .enable-color:hover{
+                background: variables.$light_purple;
+            }
+            .disable-color{
+                background-color: variables.$gray;
+            }
         }
     }
     
     .tab input:checked + .tab_item {
         background-color: variables.$light_purple;
+    }
+
+    .pagecount{
+        text-align: center;
+        margin-top:10px;
     }
 }

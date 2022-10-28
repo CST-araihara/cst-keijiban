@@ -9,14 +9,17 @@
 
     // 一ページに表示する記事の数をmax_viewに定数として定義
     define('max_view',10);
-
     // 必要なページ数を求める
-    if(isset($_GET['keyword'])){
+    if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //カテゴリ選択無し
         $_SESSION['page'] = ceil(count_key_page($_GET['keyword'])['count'] / max_view);
-    }else{
+    }else if(isset($_GET['category']) && isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード有
+        $_SESSION['page'] = ceil(count_categorykey_page($_GET['category'],$_GET['keyword'])['count'] / max_view);
+    }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
+        $_SESSION['page'] = ceil(count_category_page($_GET['category'])['count'] / max_view);
+    }else{ //初期
         $_SESSION['page'] = ceil(count_page()['count'] / max_view);
     }
-
+    
     /* -----最近作成されたスレッド----- */
     // 現在いるページのページ番号を取得
     if(!isset($_GET['page_id'])){ 
@@ -26,27 +29,14 @@
     }
 
     // スレッド内容を表示させるデータをセッションに格納
-    if(isset($_GET['keyword'])){
+    if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //カテゴリ選択無し
         $_SESSION['newthread'] = keynewstmt($_SESSION['now'],$_GET['keyword']);
-    }else{
+    }else if(isset($_GET['category']) && isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード有
+        $_SESSION['newthread'] = catekeynewstmt($_SESSION['now'],$_GET['category'],$_GET['keyword']);
+    }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
+        $_SESSION['newthread'] = categorynewstmt($_SESSION['now'],$_GET['category']);
+    }else{ //初期
         $_SESSION['newthread'] = newstmt($_SESSION['now']);
-    }
-
-    //index.phpに戻る・ページネーション検索分岐
-    if($_GET['tab'] == 'new_threadtab'){
-        if(isset($_GET['page_id']) && isset($_GET['keyword'])){ //ページネーション有かつキーワード有
-            header("Location:../view/index.php?tab=new_threadtab&keyword=".$_GET['keyword']."&page_id=".$_GET['page_id']);
-            exit;
-        }else if(isset($_GET['page_id']) && !isset($_GET['keyword'])){ //ページネーション有かつキーワード無
-            header("Location:../view/index.php?tab=new_threadtab&page_id=".$_GET['page_id']);
-            exit;
-        }else if(!isset($_GET['page_id']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
-            header("Location:../view/index.php?tab=new_threadtab&keyword=".$_GET['keyword']);
-            exit;
-        }else{
-            header("Location:../view/index.php?tab=new_threadtab");
-            exit;
-        }
     }
 
     /* -----レスの多い順----- */
@@ -58,27 +48,14 @@
     }
 
     // スレッド内容を表示させるデータをセッションに格納
-    if(isset($_GET['keyword'])){
-        $_SESSION['resthread'] = keyresstmt( $_SESSION['now_res'],$_GET['keyword']);
-    }else{
+    if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //カテゴリ選択無し
+        $_SESSION['resthread'] = keyresstmt($_SESSION['now_res'],$_GET['keyword']);
+    }else if(isset($_GET['category']) && isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード有
+        $_SESSION['resthread'] = catekeyresstmt( $_SESSION['now_res'],$_GET['category'],$_GET['keyword']);
+    }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
+        $_SESSION['resthread'] = categoryresstmt( $_SESSION['now_res'],$_GET['category']);
+    }else{ //初期
         $_SESSION['resthread'] = resstmt( $_SESSION['now_res']);
-    }
-
-      //index.phpに戻る・ページネーション検索分岐
-    if($_GET['tab'] == 'many_responsetab'){
-        if(isset($_GET['page_id_res']) && isset($_GET['keyword'])){ //ページネーション有かつキーワード有
-            header("Location:../view/index.php?tab=many_responsetab&keyword=".$_GET['keyword']."&page_id_res=".$_GET['page_id_res']);
-            exit;
-        }else if(isset($_GET['page_id_res']) && !isset($_GET['keyword'])){ //ページネーション有かつキーワード無
-            header("Location:../view/index.php?tab=many_responsetab&page_id_res=".$_GET['page_id_res']);
-            exit;
-        }else if(!isset($_GET['page_id_res']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
-            header("Location:../view/index.php?tab=many_responsetab&keyword=".$_GET['keyword']);
-            exit;
-        }else{
-            header("Location:../view/index.php?tab=many_responsetab");
-            exit;
-        }
     }
 
     /* -----いいねの多い順-----*/
@@ -90,33 +67,181 @@
     }
 
     // スレッド内容を表示させるデータをセッションに格納
-    if(isset($_GET['keyword'])){
-        $_SESSION['goodthread'] = keygoodstmt( $_SESSION['now_good'],$_GET['keyword']);
+    if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //カテゴリ選択無し
+        $_SESSION['goodthread'] = keygoodstmt($_SESSION['now_good'],$_GET['keyword']);
+    }else if(isset($_GET['category']) && isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード有
+        $_SESSION['goodthread'] = catekeygoodstmt( $_SESSION['now_good'],$_GET['category'],$_GET['keyword']);
+    }else if(isset($_GET['category'])){ //カテゴリ選択無し以外キーワード無
+        $_SESSION['goodthread'] = categorygoodstmt( $_SESSION['now_good'],$_GET['category']);
     }else{
         $_SESSION['goodthread'] = goodstmt($_SESSION['now_good']);
     }
 
-    //index.phpに戻る・ページネーション検索分岐
-    if($_GET['tab'] == 'many_goodtab'){
-        if(isset($_GET['page_id_good']) && isset($_GET['keyword'])){ //ページネーション有かつキーワード有
-            header("Location:../view/index.php?tab=many_goodtab&keyword=".$_GET['keyword']."&page_id_good=".$_GET['page_id_good']);
-            exit;
-        }else if(isset($_GET['page_id_good']) && !isset($_GET['keyword'])){ //ページネーション有かつキーワード無
-            header("Location:../view/index.php?tab=many_goodtab&page_id_good=".$_GET['page_id_good']);
-            exit;
-        }else if(!isset($_GET['page_id_good']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
-            header("Location:../view/index.php?tab=many_goodtab&keyword=".$_GET['keyword']);
-            exit;
-        }else{
-            header("Location:../view/index.php?tab=many_goodtab");
-            exit;
+    // echo $_GET['keyword'].$_GET['category'];
+    //index.phpに戻る・ページネーション検索分岐(最新)
+    if($_GET['tab'] == 'new_threadtab'){
+        if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //選択なし
+            if(isset($_GET['keyword'])){
+                if(isset($_GET['page_id'])){ //キーワード有、ページネーション有
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']."&keyword=".$_GET['keyword']."&page_id=".$_GET['page_id']);
+                    exit;
+                }else{ //キーワード有、ページネーション無
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']."&keyword=".$_GET['keyword']);
+                    exit;
+                }
+            }else{
+                if(isset($_GET['page_id'])){ //キーワード無、ページネーション有
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']."&page_id=".$_GET['page_id']);
+                    exit;
+                }else{ //キーワード無、ページネーション無
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']);
+                    exit;
+                }
+            }
+        }else if(isset($_GET['category'])){ //選択無し以外のカテゴリ
+            if(isset($_GET['keyword'])){
+                if(isset($_GET['page_id'])){ //キーワード有、ページネーション有
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']."&keyword=".$_GET['keyword']."&page_id=".$_GET['page_id']);
+                    exit;
+                }else{ //キーワード有、ページネーション無
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']."&keyword=".$_GET['keyword']);
+                    exit;
+                }
+            }else{
+                if(isset($_GET['page_id'])){ //キーワード無、ページネーション有
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']."&page_id=".$_GET['page_id']);
+                    exit;
+                }else{ //キーワード無、ページネーション無
+                    header("Location:../view/index.php?tab=new_threadtab&category=".$_GET['category']);
+                    exit;
+                }
+            }
+        }else{ //カテゴリ選択無し（初期）
+            if(isset($_GET['page_id']) && isset($_GET['keyword'])){ //ページネーション有かつキーワード有
+                header("Location:../view/index.php?tab=new_threadtab&keyword=".$_GET['keyword']."&page_id=".$_GET['page_id']);
+                exit;
+            }else if(isset($_GET['page_id']) && !isset($_GET['keyword'])){ //ページネーション有かつキーワード無
+                header("Location:../view/index.php?tab=new_threadtab&page_id=".$_GET['page_id']);
+                exit;
+            }else if(!isset($_GET['page_id']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
+                header("Location:../view/index.php?tab=new_threadtab&keyword=".$_GET['keyword']);
+                exit;
+            }else{
+                header("Location:../view/index.php?tab=new_threadtab");
+                exit;
+            }
         }
     }
 
-    // index.phpに戻る・ページネーションしていないとき
-    // if(!isset($_GET['page_id']) && !isset($_GET['page_id_res']) && !isset($_GET['page_id_good'])){
-    //     header("Location:../view/index.php");
-    //     exit;
-    // }
+        //index.phpに戻る・ページネーション検索分岐(レス)
+    if($_GET['tab'] == 'many_responsetab'){
+        if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //選択なし
+            if(isset($_GET['keyword'])){
+                if(isset($_GET['page_id_res'])){ //キーワード有、ページネーション有
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']."&keyword=".$_GET['keyword']."&page_id_res=".$_GET['page_id_res']);
+                    exit;
+                }else{ //キーワード有、ページネーション無
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']."&keyword=".$_GET['keyword']);
+                    exit;
+                }
+            }else{
+                if(isset($_GET['page_id_res'])){ //キーワード無、ページネーション有
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']."&page_id_res=".$_GET['page_id_res']);
+                    exit;
+                }else{ //キーワード無、ページネーション無
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']);
+                    exit;
+                }
+            }
+        }
+        else if(isset($_GET['category'])){ //選択無し以外のカテゴリ
+            if(isset($_GET['keyword'])){
+                if(isset($_GET['page_id_res'])){ //キーワード有、ページネーション有
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']."&keyword=".$_GET['keyword']."&page_id_res=".$_GET['page_id_res']);
+                    exit;
+                }else{ //キーワード有、ページネーション無
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']."&keyword=".$_GET['keyword']);
+                    exit;
+                }
+            }else{
+                if(isset($_GET['page_id_res'])){ //キーワード無、ページネーション有
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']."&page_id_res=".$_GET['page_id_res']);
+                    exit;
+                }else{ //キーワード無、ページネーション無
+                    header("Location:../view/index.php?tab=many_responsetab&category=".$_GET['category']);
+                    exit;
+                }
+            }
+        }else{ //カテゴリ選択無し（初期）
+            if(isset($_GET['page_id_res']) && isset($_GET['keyword'])){ //ページネーション有かつキーワード有
+                header("Location:../view/index.php?tab=many_responsetab&keyword=".$_GET['keyword']."&page_id_res=".$_GET['page_id_res']);
+                exit;
+            }else if(isset($_GET['page_id_res']) && !isset($_GET['keyword'])){ //ページネーション有かつキーワード無
+                header("Location:../view/index.php?tab=many_responsetab&page_id_res=".$_GET['page_id_res']);
+                exit;
+            }else if(!isset($_GET['page_id_res']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
+                header("Location:../view/index.php?tab=many_responsetab&keyword=".$_GET['keyword']);
+                exit;
+            }else{ //それ以外
+                header("Location:../view/index.php?tab=many_responsetab");
+                exit;
+            }
+        }
+    }
+
+    //index.phpに戻る・ページネーション検索分岐(いいね)
+    if($_GET['tab'] == 'many_goodtab'){
+        if(isset($_GET['category']) && $_GET['category']=="選択無し"){ //選択なし
+            if(isset($_GET['keyword'])){
+                if(isset($_GET['page_id'])){ //キーワード有、ページネーション有
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']."&keyword=".$_GET['keyword']."&page_id_good=".$_GET['page_id_good']);
+                    exit;
+                }else{ //キーワード有、ページネーション無
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']."&keyword=".$_GET['keyword']);
+                    exit;
+                }
+            }else{
+                if(isset($_GET['page_id'])){ //キーワード無、ページネーション有
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']."&page_id_good=".$_GET['page_id_good']);
+                    exit;
+                }else{ //キーワード無、ページネーション無
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']);
+                    exit;
+                }
+            }
+        }else if(isset($_GET['category'])){
+            if(isset($_GET['keyword'])){
+                    if(isset($_GET['page_id_good'])){
+                        header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']."&keyword=".$_GET['keyword']."&page_id_good=".$_GET['page_id_good']);
+                    exit;
+                }else{
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']."&keyword=".$_GET['keyword']);
+                    exit;
+                }
+            }else{
+                if(isset($_GET['page_id_good'])){
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']."&page_id_good=".$_GET['page_id_good']);
+                    exit;
+                }else{
+                    header("Location:../view/index.php?tab=many_goodtab&category=".$_GET['category']);
+                    exit;
+                }
+            }
+        }else{
+            if(isset($_GET['page_id_good']) && isset($_GET['keyword'])){ //ページネーション有かつキーワード有
+                header("Location:../view/index.php?tab=many_goodtab&keyword=".$_GET['keyword']."&page_id_good=".$_GET['page_id_good']);
+                exit;
+            }else if(isset($_GET['page_id_good']) && !isset($_GET['keyword'])){ //ページネーション有かつキーワード無
+                header("Location:../view/index.php?tab=many_goodtab&page_id_good=".$_GET['page_id_good']);
+                exit;
+            }else if(!isset($_GET['page_id_good']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
+                header("Location:../view/index.php?tab=many_goodtab&keyword=".$_GET['keyword']);
+                exit;
+            }else{
+                header("Location:../view/index.php?tab=many_goodtab");
+                exit;
+            }
+        }
+    }
 
 ?>
