@@ -413,7 +413,6 @@ select {
 }
 .top .tab .page-btn .page-text {
   text-decoration: none;
-  color: black;
 }
 .top .tab .page-btn .page-text--previous, .top .tab .page-btn .page-text--first {
   position: relative;
@@ -467,6 +466,22 @@ select {
   border-radius: 3px;
   background: #CBCDFF;
 }
+.top .tab .page-btn .enable-text {
+  color: black;
+}
+.top .tab .page-btn .disable-text {
+  opacity: 0.5;
+}
+.top .tab .page-btn .enable-color:hover {
+  background: #E7E8FF;
+}
+.top .tab .page-btn .disable-color {
+  background-color: #F1F1F1;
+}
 .top .tab input:checked + .tab_item {
   background-color: #E7E8FF;
+}
+.top .pagecount {
+  text-align: center;
+  margin-top: 10px;
 }/*# sourceMappingURL=top.css.map */

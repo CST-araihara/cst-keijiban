@@ -302,10 +302,6 @@
                 margin: 0 3px;
                 text-decoration: none;
                 padding: 3px 8px;
-
-                // &:hover {
-                //     background-color: variables.$gray;
-                // }
             }
 
             &--first {
@@ -318,7 +314,7 @@
 
             .page-text {
                 text-decoration: none;
-                color: black;
+                // color: black;
                 
                 &--previous,&--first {
                     position: relative;
@@ -382,10 +378,28 @@
                     }
                 }
             }
+            .enable-text{
+                color:black;
+            }
+            .disable-text{
+                // color:gray;
+                opacity: 0.5;
+            }
+            .enable-color:hover{
+                background: variables.$light_purple;
+            }
+            .disable-color{
+                background-color: variables.$gray;
+            }
         }
     }
     
     .tab input:checked + .tab_item {
         background-color: variables.$light_purple;
+    }
+
+    .pagecount{
+        text-align: center;
+        margin-top:10px;
     }
 }

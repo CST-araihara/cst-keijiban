@@ -130,103 +130,104 @@
                     <!-- 最初へボタン -->
                         <?php if($now >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1&category=<?php echo $_GET['category']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1&category=<?php echo $_GET['category']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=1' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--first">
-                                <span  class="page-text page-text--first">最初へ</span>
+                            <div class="page-btn--first disable-color">
+                                <span class="page-text page-text--first disable-text">最初へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 前へボタン -->
                         <?php if($now >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now - 1);?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--previous border_radius--small">
-                                <span class="page-text page-text--previous">前へ</span>
+                            <div class="page-btn--previous border_radius--small disable-color">
+                                <span class="page-text page-text--previous disable-text">前へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 次へボタン -->
                         <?php if($now < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo ($now + 1);?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php } 
                         }else{ ?>
-                            <div class="page-btn--next border_radius--small">
-                                <span class="page-text page-text--next">次へ</span>
+                            <div class="page-btn--next border_radius--small disable-color">
+                                <span class="page-text page-text--next disable-text disable-text">次へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 最後へボタン -->
                         <?php if($now < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=new_threadtab&page_id=<?php echo $pages;?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--last">
-                                <span class="page-text page-text--last">最後へ</span>
+                            <div class="page-btn--last disable-color">
+                                <span class="page-text page-text--last disable-text">最後へ</span>
                             </div>
                         <?php } ?>
                     </div>
+                    <div class="pagecount"><?php echo $now ?>/<?php echo $pages ?>ページ</div>
                 </div>
                 
                 <!-- idを任意のものに変える -->
@@ -282,103 +283,104 @@
                     <!-- 最初へボタン -->
                         <?php if($now_res >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1&category=<?php echo $_GET['category']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1&category=<?php echo $_GET['category']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=1' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--first">
-                                <span class="page-text page-text--first">最初へ</span>
+                            <div class="page-btn--first disable-color">
+                                <span class="page-text page-text--first disable-text">最初へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 前へボタン -->
                         <?php if($now_res >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res - 1);?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--previous border_radius--small">
-                                <span class="page-text page-text--previous">前へ</span>
+                            <div class="page-btn--previous border_radius--small disable-color">
+                                <span class="page-text page-text--previous disable-text">前へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 次へボタン -->
                         <?php if($now_res < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div  class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next">次へ</a>
+                                <div  class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div  class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>' class="page-text page-text--next">次へ</a>
+                                <div  class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo ($now_res + 1);?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div  class="page-btn--next border_radius--small">
-                                <span class="page-text page-text--next">次へ</span>
+                            <div  class="page-btn--next border_radius--small disable-color">
+                                <span class="page-text page-text--next disable-text">次へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 最後へボタン -->
                         <?php if($now_res < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_res=<?php echo $pages;?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--last">
-                                <span class="page-text page-text--last">最後へ</span>
+                            <div class="page-btn--last disable-color">
+                                <span class="page-text page-text--last disable-text">最後へ</span>
                             </div>
                         <?php } ?>
                     </div>
+                    <div class="pagecount"><?php echo $now_res ?>/<?php echo $pages ?>ページ</div>
                 </div>
                 
                 <!-- idを任意のものに変える -->
@@ -434,103 +436,104 @@
                     <!-- 最初へボタン -->
                         <?php if($now_good >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?PHP }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1&category=<?php echo $_GET['category']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1&category=<?php echo $_GET['category']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?> 
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--first">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1' class="page-text page-text--first">最初へ</a>
+                                <div class="page-btn--first enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=1' class="page-text page-text--first enable-text">最初へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--first">
-                                <span class="page-text page-text--first">最初へ</span>
+                            <div class="page-btn--first disable-color">
+                                <span class="page-text page-text--first disable-text">最初へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 前へボタン -->
                         <?php if($now_good >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_good=<?php echo ($now_good - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_good=<?php echo ($now_good - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--previous border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>' class="page-text page-text--previous">前へ</a>
+                                <div class="page-btn--previous border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--previous border_radius--small">
-                                <span class="page-text page-text--previous">前へ</span>
+                            <div class="page-btn--previous border_radius--small disable-color">
+                                <span class="page-text page-text--previous disable-text">前へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 次へボタン -->
                         <?php if($now_good < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good+ 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good+ 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good + 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--next">次へ</a>
+                                <div class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good + 1);?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div  class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good + 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next">次へ</a>
+                                <div  class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good + 1);?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div  class="page-btn--next border_radius--small">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good + 1);?>' class="page-text page-text--next">次へ</a>
+                                <div  class="page-btn--next border_radius--small enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good + 1);?>' class="page-text page-text--next enable-text">次へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div  class="page-btn--next border_radius--small">
-                                <span class="page-text page-text--next">次へ</span>
+                            <div  class="page-btn--next border_radius--small disable-color">
+                                <span class="page-text page-text--next disable-text">次へ</span>
                             </div>
                         <?php } ?>
 
                     <!-- 最後へボタン -->
                         <?php if($now_good < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>&category=<?php echo $_GET['category']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else if(!isset($_GET['category']) && isset($_GET['keyword'])){ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php }else{ ?>
-                                <div class="page-btn--last">
-                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>' class="page-text page-text--last">最後へ</a>
+                                <div class="page-btn--last enable-color">
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo $pages;?>' class="page-text page-text--last enable-text">最後へ</a>
                                 </div>
                             <?php } ?>
                         <?php }else{ ?>
-                            <div class="page-btn--last">
-                                <span class="page-text page-text--last">最後へ</span>
+                            <div class="page-btn--last disable-color">
+                                <span class="page-text page-text--last disable-text">最後へ</span>
                             </div>
                         <?php } ?>
                     </div>
+                    <div class="pagecount"><?php echo $now_good ?>/<?php echo $pages ?>ページ</div>
                 </div>
             </div>
         <?php } ?>
