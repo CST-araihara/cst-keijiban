@@ -160,12 +160,31 @@
                 border-bottom: 2px solid variables.$dark_purple;
             }
 
+            &__bottom{
+                display: flex;
+                justify-content: space-between;
+            }
+
             &__main {
                 position: relative;
                 margin-top: 20px;
                 width: 100%;
                 border: 3px solid variables.$dark_purple;
                 background-color: white;
+            }
+
+            &__imgicon{
+                margin: auto 0;
+                padding: 0 10px;
+                text-align: center;
+
+                i{
+                    font-size: 1.5em;
+                }
+
+                p{
+                    font-size: 10px;
+                }
             }
 
             &__sub {

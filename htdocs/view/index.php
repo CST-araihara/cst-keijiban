@@ -24,6 +24,12 @@
     if(!isset($_GET['tab'])){
         $_GET['tab'] = "new_threadtab";
     }
+     //スレッド内容
+    // foreach($goodthread as $newthre){
+    //     echo $newthre[0].$newthre[1].$newthre[2].$newthre[3].$newthre[4].$newthre[5];
+    // }
+    // print_r($resthread);
+
 ?>
 <!-- main -->
 <main>
@@ -108,6 +114,19 @@
                                             echo $newthre['contents'];
                                         ?>
                                     </div>
+
+                                    <?php if(isset($newthre['upload_file_path'])){ ?>
+                                        <div class="contents__imgicon">
+                                            <?php if(preg_match('/.mp4/',$newthre['upload_file_path'])){ ?>
+                                                <i class="fa-solid fa-film"></i>
+                                                <p>動画有</p>
+                                            <?php }else{ ?>
+                                                <i class="fa-regular fa-image"></i>
+                                                <p>写真有</p>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
+
                                 </div>
                             </div>
                             <div class="contents__sub">
@@ -261,6 +280,18 @@
                                             echo $resthre['contents'];
                                         ?>
                                     </div>
+                                    
+                                    <?php if(isset($resthre['upload_file_path'])){ ?>
+                                        <div class="contents__imgicon">
+                                            <?php if(preg_match('/.mp4/',$resthre['upload_file_path'])){ ?>
+                                                <i class="fa-solid fa-film"></i>
+                                                <p>動画有</p>
+                                            <?php }else{ ?>
+                                                <i class="fa-regular fa-image"></i>
+                                                <p>写真有</p>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="contents__sub">
@@ -414,6 +445,17 @@
                                             echo $goodthre['contents'];
                                         ?>
                                     </div>
+                                    <?php if(isset($goodthre['upload_file_path'])){ ?>
+                                        <div class="contents__imgicon">
+                                            <?php if(preg_match('/.mp4/',$goodthre['upload_file_path'])){ ?>
+                                                <i class="fa-solid fa-film"></i>
+                                                <p>動画有</p>
+                                            <?php }else{ ?>
+                                                <i class="fa-regular fa-image"></i>
+                                                <p>写真有</p>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="contents__sub">
@@ -462,7 +504,7 @@
                         <?php if($now_good >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
                                 <div class="page-btn--previous border_radius--small enable-color">
-                                    <a href='../controller/index_controller.php?tab=many_responsetab&page_id_good=<?php echo ($now_good - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
+                                    <a href='../controller/index_controller.php?tab=many_goodtab&page_id_good=<?php echo ($now_good - 1);?>&category=<?php echo $_GET['category']; ?>&keyword=<?php echo $_GET['keyword']; ?>' class="page-text page-text--previous enable-text">前へ</a>
                                 </div>
                             <?php }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ ?>
                                 <div class="page-btn--previous border_radius--small enable-color">

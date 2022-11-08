@@ -71,22 +71,21 @@
 
             &--btn {
                 display: flex;
-                justify-content: right;
+                justify-content: center;
                 margin: 0 auto;
                 
                 .btn {
-                    margin: 15px;
+                    margin: 10px 30px;
                 }
             }
 
-            &--bottom {
-                display: flex;
-                justify-content: space-between;
-    
+            // &--bottom {
+            //     display: flex;
+            //     justify-content: space-between;
+            // }
 
-            }
             .count-text {
-                // text-align: right;
+                text-align: right;
                 display: flex;
                 justify-content: right;
             }
@@ -96,9 +95,44 @@
             }
 
             .error-message {
-                visibility: hidden;
+                // visibility: hidden;
                 color: red;
                 width: 80%;
+            }
+
+            .preview_img{
+                display: flex;
+                // border: 3px solid variables.$dark_purple;
+                // height: 100px;
+                
+            }
+
+            .previewImage,.img_view{
+                border: 3px solid variables.$dark_purple;
+                border-radius: 5px;
+                margin: 5px;
+            }
+
+            .reset__btn,.img_del{
+                border: 1px solid variables.$dark_purple;
+                font-size: small;
+                height: 25px;
+                width: 50px;
+
+                &:hover{
+                    background-color: variables.$light_purple;
+                    cursor: pointer;
+                }
+            }
+
+            .thumbnail{
+                display: block;
+                // max-width: 640px;
+                min-width: 100px;
+                min-height: 100px;
+                max-height: 100px;
+                border: 3px solid variables.$dark_purple;
+                border-radius: 5px;
             }
         }
 
@@ -133,7 +167,7 @@
                 }
             }
 
-            &--content {
+            &--contents {
                 height: 100px;
                 border :3px solid variables.$dark_purple;
 
@@ -150,6 +184,7 @@
                 border : 3px solid variables.$dark_purple;
                 -moz-appearance: none;
                 -webkit-appearance: none;
+                appearance: none;
                 background-image: linear-gradient(45deg, transparent 50%, variables.$dark_purple 50%),  linear-gradient(135deg, variables.$dark_purple 50%, transparent 50%);
                 background-size: 5px 5px, 5px 5px;
                 background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
@@ -165,6 +200,60 @@
                     background-color: variables.$light_purple;
                 }
             }
+        }
+
+        .filelabel {
+            background-color: white;
+            color: black;
+            border: 4px solid variables.$light_purple;
+            padding: 5px 10px;
+            margin: 5px 10px;
+            display: inline-block;
+            transition:0.5s;
+        }
+
+        .filelabel:hover {
+            background-color: variables.$light_purple;
+            border: 4px solid variables.$dark_purple;
+            cursor: pointer;
+        }
+        .filesend__btn{
+            display: block;
+        }
+        #filesend {
+            display: none;
+        }
+
+        .hissu,.ninni {
+            // width: 40%;
+            // padding-right: 4rem;
+            position: relative;
+
+            &::before {
+                display: inline-block;
+                position: absolute;
+                right: -40px;
+                top: 50%;
+                margin: -10px;
+                border: 1px solid #CCC;
+                border-radius: 5px;
+                padding: 0 5px;
+                font-size: 11px;
+                font-family: 'Yu Gothic';
+                opacity: 0.8;
+            }
+        }
+    
+        .hissu::before {
+            content: "必須";
+            background: #e23356;
+            color: #FFF;
+        }
+
+        .ninni::before {
+            content: "任意";
+            background: #abcdfc;
+            color: #333;
         }
     }
 }

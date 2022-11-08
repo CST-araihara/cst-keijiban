@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -211,17 +212,14 @@ select {
 }
 .threadCreate .create__group--btn {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   margin: 0 auto;
 }
 .threadCreate .create__group--btn .btn {
-  margin: 15px;
-}
-.threadCreate .create__group--bottom {
-  display: flex;
-  justify-content: space-between;
+  margin: 10px 30px;
 }
 .threadCreate .create__group .count-text {
+  text-align: right;
   display: flex;
   justify-content: right;
 }
@@ -229,9 +227,34 @@ select {
   display: block;
 }
 .threadCreate .create__group .error-message {
-  visibility: hidden;
   color: red;
   width: 80%;
+}
+.threadCreate .create__group .preview_img {
+  display: flex;
+}
+.threadCreate .create__group .previewImage, .threadCreate .create__group .img_view {
+  border: 3px solid #CBCDFF;
+  border-radius: 5px;
+  margin: 5px;
+}
+.threadCreate .create__group .reset__btn, .threadCreate .create__group .img_del {
+  border: 1px solid #CBCDFF;
+  font-size: small;
+  height: 25px;
+  width: 50px;
+}
+.threadCreate .create__group .reset__btn:hover, .threadCreate .create__group .img_del:hover {
+  background-color: #E7E8FF;
+  cursor: pointer;
+}
+.threadCreate .create__group .thumbnail {
+  display: block;
+  min-width: 100px;
+  min-height: 100px;
+  max-height: 100px;
+  border: 3px solid #CBCDFF;
+  border-radius: 5px;
 }
 .threadCreate .create__text {
   position: relative;
@@ -260,11 +283,11 @@ select {
   outline: none;
   background-color: #E7E8FF;
 }
-.threadCreate .create__input--content {
+.threadCreate .create__input--contents {
   height: 100px;
   border: 3px solid #CBCDFF;
 }
-.threadCreate .create__input--content:focus {
+.threadCreate .create__input--contents:focus {
   outline: none;
   background-color: #E7E8FF;
 }
@@ -275,6 +298,7 @@ select {
   border: 3px solid #CBCDFF;
   -moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, #CBCDFF 50%), linear-gradient(135deg, #CBCDFF 50%, transparent 50%);
   background-size: 5px 5px, 5px 5px;
   background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
@@ -287,4 +311,50 @@ select {
 .threadCreate .create__input--select:focus {
   outline: none;
   background-color: #E7E8FF;
+}
+.threadCreate .create .filelabel {
+  background-color: white;
+  color: black;
+  border: 4px solid #E7E8FF;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.threadCreate .create .filelabel:hover {
+  background-color: #E7E8FF;
+  border: 4px solid #CBCDFF;
+  cursor: pointer;
+}
+.threadCreate .create .filesend__btn {
+  display: block;
+}
+.threadCreate .create #filesend {
+  display: none;
+}
+.threadCreate .create .hissu, .threadCreate .create .ninni {
+  position: relative;
+}
+.threadCreate .create .hissu::before, .threadCreate .create .ninni::before {
+  display: inline-block;
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  margin: -10px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-family: "Yu Gothic";
+  opacity: 0.8;
+}
+.threadCreate .create .hissu::before {
+  content: "必須";
+  background: #e23356;
+  color: #FFF;
+}
+.threadCreate .create .ninni::before {
+  content: "任意";
+  background: #abcdfc;
+  color: #333;
 }/*# sourceMappingURL=threadCreate.css.map */
