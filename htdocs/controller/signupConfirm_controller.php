@@ -58,7 +58,7 @@ foreach ($new_user as $row) {
     $_SESSION['role'] = $row['role'];
 }
 
-header("Location: ../view/mypage.php");
+header("Location: ../controller/mypage_controller.php");
 exit;
 
 ?>

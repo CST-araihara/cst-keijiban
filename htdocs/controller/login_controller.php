@@ -45,7 +45,7 @@ foreach($select as $row) {
             }
             elseif ($row['role'] == 0) {
                 false_count0($id);
-                header('Location: ../view/mypage.php');
+                header('Location: ../controller/mypage_controller.php');
             }
             exit();
         }

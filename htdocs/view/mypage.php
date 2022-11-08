@@ -15,6 +15,11 @@ $handlename = $_SESSION['handlename'];
 $login_id = $_SESSION['login_id'];
 $icon = $_SESSION['icon'];
 $comment = $_SESSION['comment'];
+$count = $_SESSION['count_friends'];
+
+foreach($count as $row) {
+    $count = $row['COUNT(*)'];
+}
 ?>
 
 <main>
@@ -35,7 +40,7 @@ $comment = $_SESSION['comment'];
             </div>
             <div class="friends font-size--15">
                 <!-- 友達の人数は計算して出す -->
-                <a class="friends__people" href="friendslist.php">友達:<?php echo "0"; ?>人</a>
+                <a class="friends__people" href="../controller/friendslist_controller.php">友達:<?php echo $count; ?>人</a>
                 <a class="friends__request" href="friendsrequestlist.php">友達リクエスト</a>
             </div>
         </div>
