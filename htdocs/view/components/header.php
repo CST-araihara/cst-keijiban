@@ -31,7 +31,7 @@
                         <ul class="menu-list__contents font-size--15">
                             <!-- カテゴリはループ表示 -->
                             <!-- ログイン等の表示切替 -->
-                            <li class="menu-list__item menu-list__btn"><a href="index.php">トップ</a></li>
+                            <li class="menu-list__item menu-list__btn"><a href="../controller/index_controller.php">トップ</a></li>
                             <?php
                             if (isset($_SESSION['login'])) {
                                 echo '<li class="menu-list__item menu-list__btn"><a href="../controller/logout_controller.php">ログアウト</a></li>';
@@ -58,7 +58,7 @@
                         </ul>
                     </nav>
                 </div>
-                <a href="index.php" class="top-title"><h1>研修掲示板</h1></a>
+                <a href="../controller/index_controller.php" class="top-title"><h1>研修掲示板</h1></a>
                 <div class="top-right"></div>
             </div>
             <div class="top-foot">
