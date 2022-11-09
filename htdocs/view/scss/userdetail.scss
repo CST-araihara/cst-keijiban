@@ -134,34 +134,8 @@
             justify-content: space-around;
             padding-right: 50px;
 
-            &__people {
-                height: 20%;
-                color: black;
-                text-decoration: none;
-                border-bottom: 2px solid variables.$dark_purple;
-
-                &:hover {
-                    color: variables.$dark_pink;
-                    border-bottom: 2px solid variables.$dark_pink;
-                }
-            }
-
             .btn {
-                top: -18px;
-                width: 25%;
-                height: 30px;
-
-                &--normal {
-                    &::before {
-                        top: -6px;
-                        left: -6px;
-                    }
-
-                    &:hover::before {
-                        top: 0;
-                        left: 0;
-                    }
-                }
+                top: -45px;
             }
         }
     }

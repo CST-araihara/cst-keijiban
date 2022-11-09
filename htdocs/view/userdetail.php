@@ -3,7 +3,16 @@
 <!-- cssの適用 -->
 <?php $url = "scss/userdetail.css"; ?>
 <!-- header共通部分 -->
-<?php include("header.php"); ?>
+<?php include("components/header.php"); ?>
+
+<?php
+$icon = $_SESSION['friends_of_friends'][0];
+$handlename = $_SESSION['friends_of_friends'][1];
+$login_id = $_SESSION['friends_of_friends'][2];
+$comment = $_SESSION['friends_of_friends'][3];
+$count = $_SESSION['friends_of_friends'][4];
+$id = $_SESSION['friends_of_friends'][5];
+?>
 
 <main>
     <div class="title-position">
@@ -15,23 +24,20 @@
     </div>
     <div class="profile-top">
         <div class="icon-position">
-            <img class="icon border_radius--middle" src="<?php echo "image/images.jpg"; ?>" alt="">
+            <img class="icon border_radius--middle" src="<?php echo $icon; ?>" alt="">
         </div>
         <div class="name-position">
             <div class="name font-size--20">
-                <div class="name__handlename"><p>HN</p>:<?php echo "XXXXX"; ?></div>
-                <div class="name__id"><p>ID</p>:<?php echo "XXXXX"; ?></div>
+                <div class="name__handlename"><p>HN</p>:<?php echo $handlename; ?></div>
             </div>
             <div class="friends font-size--15">
-                <!-- 友達の人数は計算して出す -->
-                <a class="friends__people" href="#">友達:<?php echo "0"; ?>人</a>
-                <button class="btn btn--normal" type="button">DM</button>
+                <button class="btn btn--normal" type="button" onclick="location.href='dm.php'">DM</button>
             </div>
         </div>
         <div class="comment-position">
             <div class="comment border_radius--middle font-size--15">
                 <div class="comment__righttop english-font"><span>comment</span></div>
-                <p class="comment__detail"><?php echo "コメント"; ?></p>
+                <p class="comment__detail"><?php echo $comment; ?></p>
             </div>
         </div>
         <div class="btn-position">
@@ -248,4 +254,4 @@
 
 
 <!-- footer共通部分 -->
-<?php include("footer.php"); ?>
+<?php include("components/footer.php"); ?>
