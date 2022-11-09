@@ -31,7 +31,7 @@ $id = $_SESSION['friends_of_friends'][5];
                 <div class="name__handlename"><p>HN</p>:<?php echo $handlename; ?></div>
             </div>
             <div class="friends font-size--15">
-                <button class="btn btn--normal" type="button" onclick="location.href='dm.php'">DM</button>
+                <button class="btn btn--normal" type="button" onclick="location.href='../controller/dm_controller.php'">DM</button>
             </div>
         </div>
         <div class="comment-position">

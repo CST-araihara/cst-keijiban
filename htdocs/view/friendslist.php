@@ -34,7 +34,7 @@ $friends = $_SESSION['friends'];
             <div class="friends border_radius--middle">
                 <a href="../controller/userdetail_controller.php?friend_id=<?php echo $row['your_user_id']; ?>" class="friends__h-name font-size--20"><?php echo $row['handlename']; ?></a>
                 <div class="friends__btn">
-                    <button class="btn btn--normal" type="button" onclick="location.href='dm.php'">DM</button>
+                    <button class="btn btn--normal" type="button" onclick="location.href='../controller/dm_controller.php?friend_id=<?php echo $row['your_user_id']; ?>'">DM</button>
                     <button class="btn btn--back" onclick="location.href='../controller/friendslist_controller.php?delete=<?php echo $row['your_user_id']; ?>'">友達<br>解除</button>
                 </div>
             </div>
