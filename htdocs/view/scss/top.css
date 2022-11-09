@@ -283,12 +283,27 @@ select {
   display: flex;
   border-bottom: 2px solid #CBCDFF;
 }
+.top .tab .contents__bottom {
+  display: flex;
+  justify-content: space-between;
+}
 .top .tab .contents__main {
   position: relative;
   margin-top: 20px;
   width: 100%;
   border: 3px solid #CBCDFF;
   background-color: white;
+}
+.top .tab .contents__imgicon {
+  margin: auto 0;
+  padding: 0 10px;
+  text-align: center;
+}
+.top .tab .contents__imgicon i {
+  font-size: 1.5em;
+}
+.top .tab .contents__imgicon p {
+  font-size: 10px;
 }
 .top .tab .contents__sub {
   display: flex;

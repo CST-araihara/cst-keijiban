@@ -71,7 +71,7 @@
         $_SESSION['goodthread'] = keygoodstmt($_SESSION['now_good'],$_GET['keyword']);
     }else if(isset($_GET['category']) && isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード有
         $_SESSION['goodthread'] = catekeygoodstmt( $_SESSION['now_good'],$_GET['category'],$_GET['keyword']);
-    }else if(isset($_GET['category'])){ //カテゴリ選択無し以外キーワード無
+    }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
         $_SESSION['goodthread'] = categorygoodstmt( $_SESSION['now_good'],$_GET['category']);
     }else{
         $_SESSION['goodthread'] = goodstmt($_SESSION['now_good']);

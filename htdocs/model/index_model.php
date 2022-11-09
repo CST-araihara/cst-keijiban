@@ -48,7 +48,7 @@
     //最近作成されたスレッド
     function newstmt($now){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $newstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
@@ -74,7 +74,7 @@
     //最近作成されたスレッドkeyword
     function keynewstmt($now,$keyword){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $newstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
@@ -101,7 +101,7 @@
     //最近作成されたスレッドcategory
     function categorynewstmt($now,$category){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $newstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
@@ -127,7 +127,7 @@
     //最近作成されたスレッドcategorykeyword
     function catekeynewstmt($now,$category,$keyword){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $newstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
@@ -155,11 +155,11 @@
     // レスの多い順
     function resstmt($now_res){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $resstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
-                                ORDER BY rescount DESC
+                                ORDER BY rescount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_res == 1){
@@ -176,16 +176,17 @@
         $resthread = $resstmt->fetchAll(PDO::FETCH_BOTH);
         return $resthread;
     }
+
     // レスの多い順keyword
     function keyresstmt($now_res,$keyword){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $resstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
                                 WHERE title LIKE '%".$keyword."%'
                                 OR contents LIKE '%".$keyword."%'
-                                ORDER BY rescount DESC
+                                ORDER BY rescount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_res == 1){
@@ -202,15 +203,16 @@
         $resthread = $resstmt->fetchAll(PDO::FETCH_BOTH);
         return $resthread;
     }
+
     // レスの多い順category
     function categoryresstmt($now_res,$category){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $resstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
                                 WHERE category_name='".$category."'
-                                ORDER BY rescount DESC
+                                ORDER BY rescount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_res == 1){
@@ -227,17 +229,18 @@
         $resthread = $resstmt->fetchAll(PDO::FETCH_BOTH);
         return $resthread;
     }
+
     // レスの多い順categorykeyword
     function catekeyresstmt($now_res,$category,$keyword){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
+        $resstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM response WHERE thread_id=thread.id) AS rescount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
                                 WHERE category_name='".$category."'
                                 AND (title LIKE '%".$keyword."%'
                                 OR contents LIKE '%".$keyword."%')
-                                ORDER BY rescount DESC
+                                ORDER BY rescount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_res == 1){
@@ -258,11 +261,11 @@
     // いいねの多い順
     function goodstmt($now_good){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
+        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
-                                ORDER BY goodcount DESC
+                                ORDER BY goodcount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_good == 1){
@@ -283,13 +286,13 @@
     // いいねの多い順keyword
     function keygoodstmt($now_good,$keyword){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
+        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
                                 WHERE title LIKE '%".$keyword."%'
                                 OR contents LIKE '%".$keyword."%'
-                                ORDER BY goodcount DESC
+                                ORDER BY goodcount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_good == 1){
@@ -310,12 +313,12 @@
     // いいねの多い順category
     function categorygoodstmt($now_good,$category){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
+        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
                                 WHERE category_name='".$category."'
-                                ORDER BY goodcount DESC
+                                ORDER BY goodcount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_good == 1){
@@ -332,17 +335,18 @@
         $goodthread = $goodstmt->fetchAll(PDO::FETCH_BOTH);
         return $goodthread;
     }
+    
     // いいねの多い順categprykeyword
     function catekeygoodstmt($now_good,$category,$keyword){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
+        $goodstmt = $dbh->prepare("SELECT category_name,title,contents,upload_file_path,handlename,datetime,(SELECT count(*) FROM good WHERE target_id=thread.id AND type=1) AS goodcount
                                 FROM thread
                                 inner join users on thread.user_id=users.id
                                 inner join category on category.id=thread.category_id
                                 WHERE category_name='".$category."'
                                 AND (title LIKE '%".$keyword."%'
                                 OR contents LIKE '%".$keyword."%')
-                                ORDER BY goodcount DESC
+                                ORDER BY goodcount DESC , datetime DESC
                                 LIMIT :start,:max ;"
                                 );
         if ($now_good == 1){
