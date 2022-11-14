@@ -13,7 +13,12 @@ function users() {
 
 function delete_user($id) { 
     $dbh = connect();
-    $sql = 'UPDATE users SET updated_date = CURRENT_TIMESTAMP, delete_flag = 1 WHERE id = :id;';
+    $sql = 'UPDATE
+                users 
+            SET
+                updated_date = CURRENT_TIMESTAMP
+                , delete_flag = 1 WHERE id = :id
+            ;';
     $sth = $dbh->prepare($sql);
     $sth->bindValue(':id',$id);
     $sth -> execute();
@@ -21,7 +26,12 @@ function delete_user($id) {
 
 function restoration_user($id) { 
     $dbh = connect();
-    $sql = 'UPDATE users SET updated_date = CURRENT_TIMESTAMP, delete_flag = 0 WHERE id = :id;';
+    $sql = 'UPDATE
+                users
+            SET
+                updated_date = CURRENT_TIMESTAMP
+                , delete_flag = 0 WHERE id = :id
+            ;';
     $sth = $dbh->prepare($sql);
     $sth->bindValue(':id',$id);
     $sth -> execute();

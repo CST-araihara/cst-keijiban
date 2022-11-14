@@ -31,6 +31,7 @@ elseif (!isset($_GET['judge']) && isset($_GET['id'])) { // ユーザー復元
 else { // ユーザー一覧
     $users = users();
     $_SESSION['users'] = $users;
+    $_SESSION['friends'] = $users;
 
     header('Location: ../view/userslist.php');
 }
