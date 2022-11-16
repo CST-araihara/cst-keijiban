@@ -17,7 +17,8 @@ function delete_user($id) {
                 users 
             SET
                 updated_date = CURRENT_TIMESTAMP
-                , delete_flag = 1 WHERE id = :id
+                , delete_flag = 1
+            WHERE id = :id
             ;';
     $sth = $dbh->prepare($sql);
     $sth->bindValue(':id',$id);
@@ -30,7 +31,8 @@ function restoration_user($id) {
                 users
             SET
                 updated_date = CURRENT_TIMESTAMP
-                , delete_flag = 0 WHERE id = :id
+                , delete_flag = 0
+            WHERE id = :id
             ;';
     $sth = $dbh->prepare($sql);
     $sth->bindValue(':id',$id);
