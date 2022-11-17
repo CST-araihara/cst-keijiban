@@ -247,6 +247,21 @@
         }
 
         .contents {
+            &__top, &__bottom, &__response {
+                width: 100%;
+                height: 50px;
+            }
+
+            &__top{
+                display: flex;
+                border-bottom: 2px solid variables.$dark_purple;
+            }
+
+            &__bottom{
+                display: flex;
+                justify-content: space-between;
+            }
+
             &__main{
                 position: relative;
                 margin-top: 20px;
@@ -255,14 +270,42 @@
                 background-color: white;
             }
 
-            &__top, &__bottom {
-                width: 100%;
-                height: 50px;
+            &__imgicon{
+                margin: auto 0;
+                padding: 0 10px;
+                text-align: center;
+
+                i{
+                    font-size: 1.5em;
+                }
+
+                p{
+                    font-size: 10px;
+                }
             }
 
-            &__top{
+            &__response {
                 display: flex;
-                border-bottom: 2px solid variables.$dark_purple;
+                border-bottom: 3px solid variables.$dark_purple;
+                border-left: 3px solid variables.$dark_purple;
+                border-right: 3px solid variables.$dark_purple;
+            }
+
+
+            &__res {
+                width: 60%;
+                height: 100%;
+                border-right: 2px solid variables.$dark_purple;
+                overflow: hidden;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &__resdatetime {
+                width: 40%;
+                height: 100%;
+                overflow: hidden;
+                padding: 12px;
             }
 
             &__sub{
@@ -278,20 +321,21 @@
             }
 
             &__delete{
-                    width:85px;
-                    height: 30px;
-                    text-align: center;
-                    line-height: 28px;
-                    border-bottom: 3px solid variables.$dark_purple;
-                    border-left: 3px solid variables.$dark_purple;
+                width:85px;
+                height: 30px;
+                text-align: center;
+                line-height: 28px;
+                border-bottom: 3px solid variables.$dark_purple;
+                border-left: 3px solid variables.$dark_purple;
+                border-right: 3px solid variables.$dark_purple;
 
-                    a {
-                        color:red;
-                    }
+                a {
+                    color:red;
+                }
 
-                    a:hover{
-                        color:variables.$hover_purple;
-                    }
+                a:hover{
+                    color:variables.$hover_purple;
+                }
             }
             
             &__recover {
@@ -300,6 +344,7 @@
                 text-align: center;
                 line-height: 28px;
                 border-bottom: 3px solid variables.$dark_purple;
+                border-left: 3px solid variables.$dark_purple;
                 border-right: 3px solid variables.$dark_purple;
 
                 a {
@@ -334,32 +379,26 @@
             &__ribbon {
                 position: absolute;
                 top: -6px;
-                left: -6px;
+                left: -9px;
                 height: 20px;
-                padding: 5px 10px;
-                padding-right: 40px;
-                background: variables.$light_purple;
+                padding: 5px 30px;
+                padding-right: 30px;
                 line-height: 10px;
 
-                &::before {
+                &-before {
                     position: absolute;
                     content: '';
                     top: 100%;
                     left: 0px;
                     border: 3px solid transparent;
-                    border-top: 3px solid variables.$dark_purple;
-                    border-right: 3px solid variables.$dark_purple;
                 }
 
-                &::after {
+                &-after {
                     position: absolute;
                     content: '';
                     top: 0;
                     right: -10px;
-                    border-top: 10px solid variables.$light_purple;
                     border-right: 10px solid transparent;
-                    border-bottom: 10px solid variables.$light_purple;
-                    border-left: 0 solid variables.$light_purple;
                 }
             }
 
@@ -377,14 +416,120 @@
             }
         }
 
-        #new_threadtab:checked ~ #thread_content,
-        #new_responsetab:checked ~ #response_content,
-        #goodtab:checked ~ #good_content {
+        #my_threadtab:checked ~ #mythread_content,
+        #my_responsetab:checked ~ #myresponse_content,
+        #my_goodtab:checked ~ #mygood_content {
             display: block;
+        }
+
+        .page-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+
+            &--previous,&--next,&--first,&--last {
+                border: 1px solid lightgray;
+                margin: 0 3px;
+                text-decoration: none;
+                padding: 3px 8px;
+            }
+
+            &--first {
+                border-radius: 30px 10px 10px 30px;
+            }
+
+            &--last {
+                border-radius: 10px 30px 30px 10px;
+            }
+
+            .page-text {
+                text-decoration: none;
+                // color: black;
+                
+                &--previous,&--first {
+                    position: relative;
+                    padding-left: 12px;
+
+                    &::before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 6px 8px 6px 0;
+                        border-color: transparent variables.$dark_purple transparent transparent;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        margin-top: -6px; 
+                    }
+                }
+
+                &--first {
+                    &::after {
+                        content: '';
+                        left: -1px;
+                        top: 20%;
+                        position: absolute;
+                        width: 2px;
+                        height: 12px;
+                        border-radius: 3px;
+                        background: variables.$dark_purple;
+                    }
+                }
+
+                &--next,&--last {
+                    position: relative;
+                    padding-right: 12px;
+
+                    &::before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 6px 0 6px 8px;
+                        border-color: transparent transparent transparent variables.$dark_purple;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        margin-top: -6px; 
+                    }
+                }
+                
+                &--last {
+                    &::after {
+                        content: '';
+                        right: -1px;
+                        top: 20%;
+                        position: absolute;
+                        width: 2px;
+                        height: 12px;
+                        border-radius: 3px;
+                        background: variables.$dark_purple;
+                    }
+                }
+            }
+            .enable-text{
+                color:black;
+            }
+            .disable-text{
+                // color:gray;
+                opacity: 0.5;
+            }
+            .enable-color:hover{
+                background: variables.$light_purple;
+            }
+            .disable-color{
+                background-color: variables.$gray;
+            }
         }
     }
 
     .tab input:checked + .tab_item {
         background-color: variables.$light_purple;
+    }
+
+    .pagecount{
+        text-align: center;
+        margin-top:10px;
     }
 }
