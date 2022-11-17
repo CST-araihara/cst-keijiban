@@ -115,29 +115,10 @@
             width: 100%;
             height: 100%;
 
-            .icon-position {
-                display: flex;
-                justify-content: flex-end;
-                width: 70px;
-                margin-right: 30px;
-
-                .icon {
-                    width: 70px;
-                    height: 70px;
-                    border-radius: 50%;
-                    border: 3px solid variables.$dark_purple;
-                }
-            }
-
             .detail-position {
-                width: 90%;
-
-                table {
-                    width: 100%;
-                }
+                width: 100%;
 
                 &__receive, &__send {
-                    padding-bottom: 10px;
 
                     p {
                         position: relative;
@@ -156,9 +137,18 @@
 
                 &__receive {
                     display: flex;
-                    justify-content: left;
+                    align-items: center;
+
+                    .icon {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        border: 3px solid variables.$dark_purple;
+                    }
 
                     p {
+                        margin-left: 10px;
+
                         &::before {
                             left: -8px;
                             margin-top: -4px;
@@ -199,48 +189,80 @@
                         }
                     }
                 }
+
+                &__receivetime,
+                &__sendtime {
+                    font-size: 12px;
+                    padding-bottom: 10px;
+                }
+
+                &__receivetime {
+                    padding-left: 60px;
+                }
+
+                &__sendtime {
+                    text-align: right;
+                }
             }
         }
 
         .send-position {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-top: 20px;
             width: 100%;
             height: 100%;
+            margin-top: 60px;
 
-            &__message {
+            &__messages {
+                margin: 0 30px 0 0;
                 width: 60%;
-                height: 30px;
-                margin-right: 15px;
-                border: 3px solid variables.$dark_purple;
 
-                &:focus {
-                    outline: none;
-                    background-color: variables.$light_purple;
+
+                #error {
+                    visibility: hidden;
+                    color: red;
+                }
+
+                .text {
+                    width: 100%;
+                    height: 60px;
+                    resize: none;
+                    margin-right: 30px;
+                    border: 3px solid variables.$dark_purple;
+    
+                    &:focus {
+                        outline: none;
+                        background-color: variables.$light_purple;
+                    }
                 }
             }
 
-            .btn {
-                margin: 0;
-                width: 10%;
-                height: 33px;
-
-                &--normal {
-                    &::before {
-                        top: -6px;
-                        left: -6px;
-                    }
-
-                    &:hover {
-                        background-color: variables.$light_pink;
-
+            &__btn-count {
+                margin-top: 30px;
+                .btn {
+                    margin: 0;
+                    width: 80px;
+                    height: 33px;
+    
+                    &--normal {
                         &::before {
-                            top: 0;
-                            left: 0;
+                            top: -6px;
+                            left: -6px;
+                        }
+    
+                        &:hover {
+                            background-color: variables.$light_pink;
+    
+                            &::before {
+                                top: 0;
+                                left: 0;
+                            }
                         }
                     }
+                }
+
+                .count-text {
+                    display: flex;
                 }
             }
         }
