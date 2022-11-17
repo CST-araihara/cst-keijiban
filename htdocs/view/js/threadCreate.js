@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded',function(){
     const title_length = document.querySelector('.title_length'); // 残り文字数を表示させる要素
     const title_maxlength = 100 // 最大文字数
     title_length.textContent = title_maxlength - title.value.length;//読み込まれたときの文字数を表示
+    if(title_maxlength - title.value.length < 0){
+        title_length.style.color = 'red'; // 最大文字数を超過したら赤字で表示する
+    }else{
+        title_length.style.color = '#444';
+    }
     title.addEventListener('input', () => {
         title_length.textContent = title_maxlength - title.value.length;
         if(title_maxlength - title.value.length < 0){
@@ -19,7 +24,12 @@ document.addEventListener('DOMContentLoaded',function(){
     const contents = document.querySelector('#contents'); // テキストエリアの要素
     const contents_length = document.querySelector('.contents_length'); // 残り文字数を表示させる要素
     const contents_maxlength = 5000 // 最大文字数
-    contents_length.textContent = contents_maxlength - contents.value.length;//読み込まれたときの文字数表示
+    contents_length.textContent = contents_maxlength - contents.value.length;
+    if(contents_maxlength - contents.value.length < 0){
+    contents_length.style.color = 'red'; // 最大文字数を超過したら赤字で表示する
+    }else{
+    contents_length.style.color = '#444';
+    }
     contents.addEventListener('input', () => {
         contents_length.textContent = contents_maxlength - contents.value.length;
         if(contents_maxlength - contents.value.length < 0){
