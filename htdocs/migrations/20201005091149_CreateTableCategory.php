@@ -13,7 +13,10 @@ class CreateTableCategory extends Migration
             id int(2) AUTO_INCREMENT PRIMARY KEY NOT NULL,
             category_name varchar(30) NOT NULL,
             inserted_date datetime NOT NULL,
-            updated_date datetime NULL);";
+            updated_date datetime NULL,
+            main_colorcode varchar(7) NOT NULL,
+            sub_colorcode varchar(7) NOT NULL
+            );";
         $container = $this -> getContainer();
         $container['db']->query($sql);
     }

@@ -367,32 +367,26 @@ select {
 .top .tab .contents__ribbon {
   position: absolute;
   top: -6px;
-  left: -6px;
+  left: -9px;
   height: 20px;
-  padding: 5px 10px;
-  padding-right: 40px;
+  padding: 5px 30px;
+  padding-right: 30px;
   color: black;
   background: #E7E8FF;
   line-height: 10px;
 }
-.top .tab .contents__ribbon::before {
+.top .tab .contents__ribbon-before {
   content: "";
   position: absolute;
   top: 100%;
   left: 0px;
   border: 3px solid transparent;
-  border-top: 3px solid #CBCDFF;
-  border-right: 3px solid #CBCDFF;
 }
-.top .tab .contents__ribbon::after {
+.top .tab .contents__ribbon-after {
   position: absolute;
   top: 0;
   right: -10px;
   content: "";
-  border-top: 10px solid #E7E8FF;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #E7E8FF;
-  border-left: 0 solid #E7E8FF;
 }
 .top .tab .contents__title {
   width: 60%;

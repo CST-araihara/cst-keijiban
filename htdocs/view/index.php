@@ -92,10 +92,21 @@
                         <li class="tab__contents">
                             <div class="contents__main">
                                 <div class="contents__top">
-                                    <div class="contents__ribbon">
-                                        <?php //カテゴリ
-                                            echo $newthre['category_name'];
-                                        ?>
+                                    <div class="contents__ribbon" 
+                                        style="background-color:<?php echo $newthre['main_colorcode']; ?>;">
+                                        <div class="contents__ribbon-before" 
+                                            style="border-top: 3px solid <?php echo $newthre['sub_colorcode']; ?>;
+                                                border-right: 3px solid  <?php  echo $newthre['sub_colorcode']; ?>;">
+                                        </div>
+                                            <?php //カテゴリ
+                                                echo $newthre['category_name'];
+                                            ?>
+                                        <div class="contents__ribbon-after" 
+                                            style="border-top: 10px solid <?php  echo $newthre['main_colorcode']; ?>;
+                                                border-right: 10px solid transparent;
+                                                border-bottom: 10px solid <?php  echo $newthre['main_colorcode']; ?>;
+                                                border-left: 0 solid <?php  echo $newthre['main_colorcode'];?>;">
+                                        </div>
                                     </div>
                                     <p class="contents__title contents__char-center">
                                         <?php //最近作成されたタイトル
@@ -258,10 +269,21 @@
                         <li class="tab__contents">
                             <div class="contents__main">
                                 <div class="contents__top">
-                                    <div class="contents__ribbon">
-                                        <?php //カテゴリ
-                                            echo $resthre['category_name'];
-                                        ?>
+                                    <div class="contents__ribbon"
+                                        style="background-color:<?php echo $resthre['main_colorcode']; ?>;">
+                                        <div class="contents__ribbon-before" 
+                                            style="border-top: 3px solid <?php echo $resthre['sub_colorcode']; ?>;
+                                                border-right: 3px solid  <?php  echo $resthre['sub_colorcode']; ?>;">
+                                        </div>
+                                            <?php //カテゴリ
+                                                echo $resthre['category_name'];
+                                            ?>
+                                        <div class="contents__ribbon-after" 
+                                            style="border-top: 10px solid <?php  echo $resthre['main_colorcode']; ?>;
+                                                border-right: 10px solid transparent;
+                                                border-bottom: 10px solid <?php  echo $resthre['main_colorcode']; ?>;
+                                                border-left: 0 solid <?php  echo $resthre['main_colorcode'];?>;">
+                                        </div>
                                     </div>
                                     <p class="contents__title contents__char-center">
                                         <?php //レス数の多いタイトル
@@ -423,10 +445,21 @@
                         <li class="tab__contents">
                             <div class="contents__main">
                                 <div class="contents__top">
-                                    <div class="contents__ribbon">
-                                        <?php //カテゴリ
-                                            echo $goodthre['category_name'];
-                                        ?>
+                                <div class="contents__ribbon" 
+                                        style="background-color:<?php echo $goodthre['main_colorcode']; ?>;">
+                                        <div class="contents__ribbon-before" 
+                                            style="border-top: 3px solid <?php echo $goodthre['sub_colorcode']; ?>;
+                                                border-right: 3px solid  <?php  echo $goodthre['sub_colorcode']; ?>;">
+                                        </div>
+                                            <?php //カテゴリ
+                                                echo $goodthre['category_name'];
+                                            ?>
+                                        <div class="contents__ribbon-after" 
+                                            style="border-top: 10px solid <?php  echo $goodthre['main_colorcode']; ?>;
+                                                border-right: 10px solid transparent;
+                                                border-bottom: 10px solid <?php  echo $goodthre['main_colorcode']; ?>;
+                                                border-left: 0 solid <?php  echo $goodthre['main_colorcode'];?>;">
+                                        </div>
                                     </div>
                                     <p class="contents__title contents__char-center">
                                         <?php //いいねの多いタイトル
