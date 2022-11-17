@@ -21,8 +21,40 @@ $icon = $_SESSION['icon'];
             <h2 class="admin english-font font-size--20">AdminPage</h2>
         </div>
     </div>
-    <div class="page-all">
-        <div class="page-left">
+    <div class="search-position font-size--15">
+        <form class="search" action="#" method="#">
+            <input class="search__box" type="text" placeholder="キーワード入力">
+            <button class="search__btn border_radius--small" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div class="search__condition">
+                <div class="conditions">
+                    <div>
+                        <input name="type1" id="user_check" value="" type="radio" checked><label class="space" for="user_check">ハンドルネーム</label>
+                    </div>
+                    <div>
+                        <input name="type1" id="keyword_check" value="" type="radio"><label class="space" for="keyword_check">キーワード</label>
+                    </div>
+                    <div>
+                        <input name="type1" id="user_key_check" value="" type="radio"><label class="space" for="user_key_check">ハンドルネームとキーワード</label>
+                    </div>
+                </div>
+                <div class="char-center">で</div>
+                <div class="conditions">
+                    <div>
+                        <input name="type2" id="thread_check" value="" type="radio" checked><label for="thread_check">スレッド</label>
+                    </div>
+                    <div>
+                        <input name="type2" id="res_check" value="" type="radio"><label for="res_check">レス</label>
+                    </div>
+                    <div>
+                        <input name="type2" id="thread_res_check" value="" type="radio"><label for="thread_res_check">スレッドとレス</label>
+                    </div>
+                </div>
+                <div class="char-center">を検索する</div>
+            </div>
+        </form>
+    </div>
+    <div class="page-all font-size--15">
+        <div class="page-top">
             <div class="icon-name-position">
                 <div class="icon-position">
                     <img class="icon border_radius--middle" src="<?php echo $icon ?>" alt="">
@@ -35,18 +67,11 @@ $icon = $_SESSION['icon'];
                 </div>
             </div>
             <div class="btn-position">
-                <button class="btn btn--normal" type="button" onclick="location.href='index.php'">トップページを表示する</button>
                 <button class="btn btn--normal" type="button" onclick="location.href='../controller/userslist_controller.php'">ユーザー一覧</button>
                 <button class="btn btn--normal" type="button" onclick="location.href='../controller/accesshistorylist_controller.php'">アクセス履歴</button>
             </div>
         </div>
-        <div class="page-right">
-            <div class="search-position">
-                <form class="search" action="../controller/index_controller.php" method="get">
-                    <input class="search__box" type="text" name="keyword" size="10" placeholder="キーワード入力">
-                    <button class="search__btn border_radius--small" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-            </div>
+        <div class="page-middle">
             <div class="category-position">
                 <?php
                 foreach($category as $row) {

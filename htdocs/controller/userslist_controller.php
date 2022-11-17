@@ -6,6 +6,21 @@ if (!isset($_SESSION["login"])) {
     exit();
 }
 
+// echo $_POST['id'];
+// echo '<br>';
+// echo $_POST['login_id'];
+// echo '<br>';
+// echo $_POST['handlename'];
+// echo '<br>';
+// echo $_POST['l_name'];
+// echo '<br>';
+// echo $_POST['f_name'];
+// echo '<br>';
+// echo $_POST['delete_check'];
+// echo '<br>';
+// echo $_POST['restoration_check'];
+// exit;
+
 include('../model/userslist_model.php');
 
 if (isset($_GET['judge']) && isset($_GET['id'])) { // ユーザー削除
@@ -31,6 +46,7 @@ elseif (!isset($_GET['judge']) && isset($_GET['id'])) { // ユーザー復元
 else { // ユーザー一覧
     $users = users();
     $_SESSION['users'] = $users;
+    $_SESSION['friends'] = $users;
 
     header('Location: ../view/userslist.php');
 }

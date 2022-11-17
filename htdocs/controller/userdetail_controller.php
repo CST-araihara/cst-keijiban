@@ -7,7 +7,14 @@ $friend_id = $_GET['friend_id'];
 $friends = $_SESSION['friends'];
 
 foreach($friends as $row) {
-    if ($friend_id == $row['your_user_id']) {
+    if ($friend_id == $row['id']) {
+        $icon = $row['icon_img_path'];
+        $handlename = $row['handlename'];
+        $login_id = $row['login_id'];
+        $comment = $row['comment'];
+        $id = $row['id'];
+    }
+    elseif ($friend_id == $row['your_user_id']) {
         $icon = $row['icon_img_path'];
         $handlename = $row['handlename'];
         $login_id = $row['login_id'];

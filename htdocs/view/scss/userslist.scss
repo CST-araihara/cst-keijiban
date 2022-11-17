@@ -89,22 +89,102 @@
 .search-position {
     width: 100%;
     margin-top: 25px;
-    text-align: center;
+    // text-align: center;
 
     .search {
-        width: 70%;
-        max-width: 800px;
+        width: 90%;
+        max-width: 1500px;
         margin: 0 auto;
+        padding: 10px;
+        // background-color: variables.$gray;
+        border-radius: 10px;
+        // box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+        box-shadow: 0 0 5px variables.$dark_purple;
 
-        &__box {
-            width: 85%;
-            height: 30px;
-            border: 3px solid variables.$dark_pink;
+        &__condition1 {
+            // margin: 0 auto;
+            width: 100%;
 
-            &:focus {
-                outline: none;
-                background-color: variables.$light_pink;
+            tr {
+                width: 100%;
             }
+
+            th {
+                text-align: center;
+                width: calc(30%/3);
+                padding: 10px 0;
+            }
+
+            td {
+                width: calc(60%/3);
+
+                .input {
+                    width: 100%;
+                    border: 3px solid variables.$dark_pink;
+
+                    &:focus {
+                    outline: none;
+                    background-color: variables.$light_pink;
+                    }
+                }
+
+                strong {
+                    margin-right: 15px;
+                }
+            }
+        }
+
+        input[type='checkbox'] {
+            display: none;
+
+            &+label {
+                display: none;
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                padding-left: 25px;
+                padding-right: 5px;
+                margin-right: 5px;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    width: 25px;
+                    height: 25px;
+                    margin-top: -20px;
+                    left: 0;
+                    top: 50%;
+                    border: 3px solid;
+                    border-color: variables.$dark_pink;
+                    background-color: white;
+                    border-radius: 5px;
+                }
+            }
+
+            &:checked {
+                &+label {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        width: 20px;
+                        height: 10px;
+                        margin-top: -15px;
+                        top: 50%;
+                        left: 3px;
+                        transform: rotate(-45deg);
+                        border-bottom: 4px solid;
+                        border-left: 4px solid;
+                        border-color: deeppink;
+                    }
+                }
+            }
+        }
+
+        .left {
+            padding-top: 10px;
+            text-align: end;
         }
 
         &__btn {
@@ -129,12 +209,18 @@
 
         .th_tr {
             border: 3px solid variables.$dark_purple;
+            background-color: variables.$light_purple;
         }
 
         & tr {
-            &:nth-child(2n) td {
+            border: 1px solid variables.$dark_purple;
+
+            td:nth-of-type(2n) {
                 background-color: variables.$gray;
             }
+            // &:nth-child(2n) td {
+            //     background-color: variables.$gray;
+            // }
 
             .sort {
                 cursor: pointer;

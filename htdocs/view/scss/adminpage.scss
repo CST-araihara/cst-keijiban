@@ -6,6 +6,7 @@
     width: 100%;
     text-align: center;
 
+
     .pagetitle {
         display: inline-block;
         position: relative;
@@ -61,18 +62,171 @@
     }
 }
 
+.search-position {
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+
+    .search {
+        width: 70%;
+        max-width: 800px;
+        margin: 0 auto;
+
+        &__box {
+            width: 85%;
+            height: 30px;
+            border: 3px solid variables.$dark_pink;
+
+            &:focus {
+                outline: none;
+                background-color: variables.$light_pink;
+            }
+        }
+
+        input[type='radio'] {
+            display: none;
+
+            &+label {
+                display: none;
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                padding-left: 25px;
+                padding-right: 5px;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    box-sizing: border-box;
+                    width: 20px;
+                    height: 20px;
+                    margin-top: -10px;
+                    left: 0;
+                    top: 50%;
+                    border: 2px solid variables.$dark_pink;
+                    background-color: variables.$light_pink;
+                    border-radius: 50%;
+                }
+            }
+
+            &:checked {
+                &+label {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        box-sizing: border-box;
+                        width: 12px;
+                        height: 12px;
+                        margin-top: -6px;
+                        top: 50%;
+                        left: 4px;
+                        background-color: deeppink;
+                        border-radius: 50%;
+                        animation: click 0.2s;
+                    }
+
+                    @keyframes click {
+                        0% {
+                            position: absolute;
+                            margin-top: -1px;
+                            left: 10px;
+                            height: 0px;
+                            width: 0px;
+                        }
+                        100% {
+                            height: 12px;
+                            width: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__checkbox {
+            margin: 0 3px;
+        }
+
+        &__btn {
+            width: 40px;
+            height: 30px;
+            background-color: variables.$dark_pink;
+            border: 3px solid variables.$dark_pink;
+            color: white;
+            cursor: pointer;
+        }
+
+        &__condition {
+            display: flex;
+            justify-content: center;
+            text-align: left;
+            position: relative;
+            margin: 20px auto;
+            width: fit-content;
+            padding: 5px;
+            color: #555;
+            font-size: 16px;
+            border: 3px solid variables.$dark_purple;
+            border-radius: 10px;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -24px;
+                left: 50%;
+                margin-left: -15px;
+                border: 12px solid transparent;
+                border-bottom: 12px solid #FFF;
+                z-index: 2;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                margin-left: -17px;
+                border: 14px solid transparent;
+                border-bottom: 14px solid variables.$dark_purple;
+                z-index: 1;
+            }
+
+            .char-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: fit-content;
+                position: relative;
+                margin: 0 20px;
+
+                &::after {
+                    content: "";
+                    z-index: -1;
+                    position: absolute;
+                    left: 0;
+                    bottom: 25px;
+                    width: 100%;
+                    height: 12px;
+                    border-radius: 10px;
+                    background: repeating-linear-gradient(-45deg, variables.$dark_purple, variables.$dark_purple 2px, white 3px,white 5px);
+                }
+            }
+        }
+    }
+}
+
 .page-all {
     margin: 50px auto;
     width: 80%;
     height: 450px;
-    display: flex;
 
-    .page-left {
-        width: 50%;
+    .page-top {
+        display: flex;
+        width: 100%;
 
         .icon-name-position{
-            margin: 0 0 0 auto;
-            width: 100%;
+            width: 50%;
             height: 30%;
             display: flex;
 
@@ -114,63 +268,42 @@
         }
 
         .btn-position {
-            margin: 0 auto;
-            width: 70%;
+            width: 40%;
             height: 70%;
+            padding-top: 40px;
+            display: flex;
 
             .btn { 
-                margin: 50px 0 0 auto;
-                width: 70%;
+                margin: 0 20px 0 0;
+                width: 45%;
+                max-width: 250px;
             }
         }
     }
 
-    .page-right {
-        width: 50%;
-
-        .search-position {
-            width: 100%;
-            height: 20%;
-
-            .search {
-                padding: 10px 20px;
-
-                &__box {
-                    width: 70%;
-                    height: 30px;
-                    border: 3px solid variables.$dark_pink;
-
-                    &:focus {
-                        outline: none;
-                        background-color: variables.$light_pink;
-                    }
-                }
-
-                &__btn {
-                    width: 40px;
-                    height: 30px;
-                    background-color: variables.$dark_pink;
-                    border: 3px solid variables.$dark_pink;
-                    color: white;
-                    cursor: pointer;
-                }
-            }
-        }
+    .page-middle {
+        margin-top: 50px;
+        width: 100%;
 
         .category-position {
             width: 80%;
-            padding-left: 10px;
+            max-width: 1000px;
+            height: 270px;
+            overflow-x: scroll;
+            padding: 10px 0 0 10px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(0 0 0 / 20%) inset;
 
             li {
                 float: left;
                 width: 50%;
-                padding: 0 10px;
                 display: flex;
                 justify-content: center;
                 list-style: none;
 
                 .btn {
-                    width: 100%;
+                    width: 50%;
                 }
 
                 &:nth-child(1), &:nth-child(4), &:nth-child(5), &:nth-child(8), &:nth-child(9) {
