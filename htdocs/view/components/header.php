@@ -36,10 +36,10 @@
                             if (isset($_SESSION['login'])) {
                                 echo '<li class="menu-list__item menu-list__btn"><a href="../controller/logout_controller.php">ログアウト</a></li>';
                                 if ($_SESSION['role'] == 1) {
-                                    echo '<li class="menu-list__item menu-list__btn"><a href="adminpage.php">管理者ページ</a></li>';
+                                    echo '<li class="menu-list__item menu-list__btn"><a href="../controller/adminpage_controller.php">管理者ページ</a></li>';
                                 }
                                 else {
-                                    echo '<li class="menu-list__item menu-list__btn"><a href="mypage.php">マイページ</a></li>';
+                                    echo '<li class="menu-list__item menu-list__btn"><a href="../controller/mypage_controller.php">マイページ</a></li>';
                                 }
                                 echo '<li class="menu-list__item menu-list__btn"><a href="threadCreate.php">スレッド作成</a></li>';
                             }
@@ -74,10 +74,10 @@
                     <?php 
                     if (isset($_SESSION['login'])) {
                         if ($_SESSION['role'] == 1) {
-                            echo '<li class="top-list__item top-list__item--adminpage"><a href="adminpage.php"><p><i class="fa-solid fa-user-gear"></i></p><p>管理者ページ</p></a></li>';
+                            echo '<li class="top-list__item top-list__item--adminpage"><a href="../controller/adminpage_controller.php"><p><i class="fa-solid fa-user-gear"></i></p><p>管理者ページ</p></a></li>';
                         }
                         else {
-                            echo '<li class="top-list__item top-list__item--mypage"><a href="mypage.php"><p><i class="fa-solid fa-user"></i></p><p>マイページ</p></a></li>';
+                            echo '<li class="top-list__item top-list__item--mypage"><a href="../controller/mypage_controller.php"><p><i class="fa-solid fa-user"></i></p><p>マイページ</p></a></li>';
                         }
                         echo '<li class="top-list__item top-list__item--threadCreate"><a href="threadCreate.php"><p><i class="fa-solid fa-pen-to-square"></i></p><p>スレッド作成</p></a></li>';
                         echo '<li class="top-list__item top-list__item--logout"><a href="../controller/logout_controller.php"><p><i class="fa-solid fa-arrow-right-from-bracket"></i></p><p>ログアウト</p></a></li>';

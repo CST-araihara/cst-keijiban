@@ -471,8 +471,8 @@ select {
   padding: 10px 0 0 10px;
   margin: 0 auto;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset;
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-shadow: 0 0 5px #CBCDFF inset;
+          box-shadow: 0 0 5px #CBCDFF inset;
 }
 .page-all .page-middle .category-position li {
   float: left;
@@ -538,19 +538,7 @@ select {
 .adminpage-bottom .tab__contents {
   list-style: none;
 }
-.adminpage-bottom .tab .fa-star::before {
-  content: "\f005";
-  font-family: "Font Awesome 5 Free";
-  -webkit-text-stroke: 1px white;
-}
-.adminpage-bottom .tab .contents__main {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-  border: 3px solid #CBCDFF;
-  background-color: white;
-}
-.adminpage-bottom .tab .contents__top, .adminpage-bottom .tab .contents__bottom {
+.adminpage-bottom .tab .contents__top, .adminpage-bottom .tab .contents__bottom, .adminpage-bottom .tab .contents__response {
   width: 100%;
   height: 50px;
 }
@@ -560,6 +548,63 @@ select {
   display: -ms-flexbox;
   display: flex;
   border-bottom: 2px solid #CBCDFF;
+}
+.adminpage-bottom .tab .contents__bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.adminpage-bottom .tab .contents__main {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  border: 3px solid #CBCDFF;
+  background-color: white;
+}
+.adminpage-bottom .tab .contents__imgicon {
+  margin: auto 0;
+  padding: 0 10px;
+  text-align: center;
+}
+.adminpage-bottom .tab .contents__imgicon i {
+  font-size: 1.5em;
+}
+.adminpage-bottom .tab .contents__imgicon p {
+  font-size: 10px;
+}
+.adminpage-bottom .tab .contents__response {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
+}
+.adminpage-bottom .tab .contents__res {
+  width: 60%;
+  height: 100%;
+  border-right: 2px solid #CBCDFF;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.adminpage-bottom .tab .contents__resdatetime {
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+  padding: 12px;
 }
 .adminpage-bottom .tab .contents__sub {
   display: -webkit-box;
@@ -586,6 +631,7 @@ select {
   line-height: 28px;
   border-bottom: 3px solid #CBCDFF;
   border-left: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
 }
 .adminpage-bottom .tab .contents__delete a {
   color: red;
@@ -599,6 +645,7 @@ select {
   text-align: center;
   line-height: 28px;
   border-bottom: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
   border-right: 3px solid #CBCDFF;
 }
 .adminpage-bottom .tab .contents__recover a {
@@ -617,6 +664,39 @@ select {
   border-left: 3px solid #CBCDFF;
   cursor: pointer;
 }
+.adminpage-bottom .tab .contents__good .goldstar::before {
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: gold;
+  -webkit-animation: inherit star 1s linear infinite;
+          animation: inherit star 1s linear infinite;
+}
+@-webkit-keyframes star {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+  }
+}
+@keyframes star {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+  }
+}
+.adminpage-bottom .tab .contents__good .whitestar::before {
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  -webkit-text-stroke: 1px white;
+}
 .adminpage-bottom .tab .contents__char-center {
   padding-top: 20px;
   text-align: center;
@@ -627,31 +707,25 @@ select {
 .adminpage-bottom .tab .contents__ribbon {
   position: absolute;
   top: -6px;
-  left: -6px;
+  left: -9px;
   height: 20px;
-  padding: 5px 10px;
-  padding-right: 40px;
-  background: #E7E8FF;
+  padding: 5px 30px;
+  padding-right: 30px;
   line-height: 10px;
 }
-.adminpage-bottom .tab .contents__ribbon::before {
+.adminpage-bottom .tab .contents__ribbon-before {
   position: absolute;
   content: "";
   top: 100%;
   left: 0px;
   border: 3px solid transparent;
-  border-top: 3px solid #CBCDFF;
-  border-right: 3px solid #CBCDFF;
 }
-.adminpage-bottom .tab .contents__ribbon::after {
+.adminpage-bottom .tab .contents__ribbon-after {
   position: absolute;
   content: "";
   top: 0;
   right: -10px;
-  border-top: 10px solid #E7E8FF;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #E7E8FF;
-  border-left: 0 solid #E7E8FF;
 }
 .adminpage-bottom .tab .contents__title {
   width: 60%;
@@ -664,11 +738,105 @@ select {
   height: 100%;
   overflow: hidden;
 }
-.adminpage-bottom .tab #new_threadtab:checked ~ #thread_content,
-.adminpage-bottom .tab #new_responsetab:checked ~ #response_content,
-.adminpage-bottom .tab #goodtab:checked ~ #good_content {
+.adminpage-bottom .tab #admin_threadtab:checked ~ #adminthread_content,
+.adminpage-bottom .tab #admin_responsetab:checked ~ #adminresponse_content,
+.adminpage-bottom .tab #admin_goodtab:checked ~ #admingood_content {
   display: block;
+}
+.adminpage-bottom .tab .page-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 40px;
+}
+.adminpage-bottom .tab .page-btn--previous, .adminpage-bottom .tab .page-btn--next, .adminpage-bottom .tab .page-btn--first, .adminpage-bottom .tab .page-btn--last {
+  border: 1px solid lightgray;
+  margin: 0 3px;
+  text-decoration: none;
+  padding: 3px 8px;
+}
+.adminpage-bottom .tab .page-btn--first {
+  border-radius: 30px 10px 10px 30px;
+}
+.adminpage-bottom .tab .page-btn--last {
+  border-radius: 10px 30px 30px 10px;
+}
+.adminpage-bottom .tab .page-btn .page-text {
+  text-decoration: none;
+}
+.adminpage-bottom .tab .page-btn .page-text--previous, .adminpage-bottom .tab .page-btn .page-text--first {
+  position: relative;
+  padding-left: 12px;
+}
+.adminpage-bottom .tab .page-btn .page-text--previous::before, .adminpage-bottom .tab .page-btn .page-text--first::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 8px 6px 0;
+  border-color: transparent #CBCDFF transparent transparent;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -6px;
+}
+.adminpage-bottom .tab .page-btn .page-text--first::after {
+  content: "";
+  left: -1px;
+  top: 20%;
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  border-radius: 3px;
+  background: #CBCDFF;
+}
+.adminpage-bottom .tab .page-btn .page-text--next, .adminpage-bottom .tab .page-btn .page-text--last {
+  position: relative;
+  padding-right: 12px;
+}
+.adminpage-bottom .tab .page-btn .page-text--next::before, .adminpage-bottom .tab .page-btn .page-text--last::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 8px;
+  border-color: transparent transparent transparent #CBCDFF;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -6px;
+}
+.adminpage-bottom .tab .page-btn .page-text--last::after {
+  content: "";
+  right: -1px;
+  top: 20%;
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  border-radius: 3px;
+  background: #CBCDFF;
+}
+.adminpage-bottom .tab .page-btn .enable-text {
+  color: black;
+}
+.adminpage-bottom .tab .page-btn .disable-text {
+  opacity: 0.5;
+}
+.adminpage-bottom .tab .page-btn .enable-color:hover {
+  background: #E7E8FF;
+}
+.adminpage-bottom .tab .page-btn .disable-color {
+  background-color: #F1F1F1;
 }
 .adminpage-bottom .tab input:checked + .tab_item {
   background-color: #E7E8FF;
+}
+.adminpage-bottom .pagecount {
+  text-align: center;
+  margin-top: 10px;
 }/*# sourceMappingURL=adminpage.css.map */
