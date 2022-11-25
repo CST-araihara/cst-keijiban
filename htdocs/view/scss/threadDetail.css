@@ -174,6 +174,10 @@ select {
   width: 5%;
   height: 30px;
 }
+.threadDatail .noresponse {
+  text-align: center;
+  margin: 35px;
+}
 .threadDatail .thread, .threadDatail .tab {
   width: 70%;
   max-width: 1000px;
@@ -212,14 +216,25 @@ select {
 }
 .threadDatail .thread .contents__top, .threadDatail .thread .contents__bottom, .threadDatail .tab .contents__top, .threadDatail .tab .contents__bottom {
   width: 100%;
-  height: 50px;
 }
 .threadDatail .thread .contents__top, .threadDatail .tab .contents__top {
-  display: flex;
   border-bottom: 2px solid #CBCDFF;
+}
+.threadDatail .thread .contents__bottom, .threadDatail .tab .contents__bottom {
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
 }
 .threadDatail .thread .contents__middle, .threadDatail .tab .contents__middle {
   border-bottom: 2px solid #CBCDFF;
+  display: flex;
+  justify-content: left;
+}
+.threadDatail .thread .contents__title, .threadDatail .tab .contents__title {
+  padding-bottom: 5px;
+}
+.threadDatail .thread .contents__icon, .threadDatail .tab .contents__icon {
+  height: 30px;
 }
 .threadDatail .thread .contents__main, .threadDatail .tab .contents__main {
   position: relative;
@@ -231,46 +246,64 @@ select {
 .threadDatail .thread .contents__ribbon, .threadDatail .tab .contents__ribbon {
   position: absolute;
   top: -6px;
-  left: -6px;
+  left: -9px;
   height: 20px;
-  padding: 5px 10px;
-  padding-right: 40px;
+  padding: 5px 30px;
+  padding-right: 30px;
   color: black;
   background: #E7E8FF;
   line-height: 10px;
 }
-.threadDatail .thread .contents__ribbon::before, .threadDatail .tab .contents__ribbon::before {
+.threadDatail .thread .contents__ribbon-before, .threadDatail .tab .contents__ribbon-before {
   content: "";
   position: absolute;
   top: 100%;
   left: 0px;
   border: 3px solid transparent;
-  border-top: 3px solid #CBCDFF;
-  border-right: 3px solid #CBCDFF;
 }
-.threadDatail .thread .contents__ribbon::after, .threadDatail .tab .contents__ribbon::after {
+.threadDatail .thread .contents__ribbon-after, .threadDatail .tab .contents__ribbon-after {
   position: absolute;
   top: 0;
   right: -10px;
   content: "";
-  border-top: 10px solid #E7E8FF;
-  border-right: 0px solid transparent;
-  border-bottom: 10px solid #E7E8FF;
-  border-left: 0 solid #E7E8FF;
 }
-.threadDatail .thread .contents__title, .threadDatail .thread .contents__name, .threadDatail .tab .contents__title, .threadDatail .tab .contents__name {
+.threadDatail .thread .contents__name, .threadDatail .tab .contents__name {
   width: 60%;
   height: 100%;
   border-right: 2px solid #CBCDFF;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: left;
 }
 .threadDatail .thread .contents__datetime, .threadDatail .tab .contents__datetime {
   width: 40%;
   height: 100%;
   overflow: hidden;
+  padding: 5px;
+  margin: auto 0;
+  text-align: center;
+}
+.threadDatail .thread .contents__handlename, .threadDatail .tab .contents__handlename {
+  margin: auto 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-decoration: underline;
+}
+.threadDatail .thread .contents__handlename:hover, .threadDatail .tab .contents__handlename:hover {
+  color: #9530FA;
+  text-decoration: underline;
+}
+.threadDatail .thread .contents__file_path img, .threadDatail .thread .contents__file_path video, .threadDatail .tab .contents__file_path img, .threadDatail .tab .contents__file_path video {
+  height: 100px;
+  margin: 10px;
+  display: table-cell;
+  vertical-align: middle;
 }
 .threadDatail .thread .contents__sub, .threadDatail .tab .contents__sub {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 .threadDatail .thread .contents__admin, .threadDatail .tab .contents__admin {
   display: flex;
@@ -283,6 +316,7 @@ select {
   line-height: 28px;
   border-bottom: 3px solid #CBCDFF;
   border-left: 3px solid #CBCDFF;
+  border-right: 3px solid #CBCDFF;
 }
 .threadDatail .thread .contents__delete a, .threadDatail .tab .contents__delete a {
   color: red;
@@ -296,6 +330,7 @@ select {
   text-align: center;
   line-height: 28px;
   border-bottom: 3px solid #CBCDFF;
+  border-left: 3px solid #CBCDFF;
   border-right: 3px solid #CBCDFF;
 }
 .threadDatail .thread .contents__recover a, .threadDatail .tab .contents__recover a {
@@ -312,6 +347,7 @@ select {
   border-bottom: 3px solid #CBCDFF;
   border-right: 3px solid #CBCDFF;
   border-left: 3px solid #CBCDFF;
+  cursor: pointer;
 }
 .threadDatail .thread .contents__char-center, .threadDatail .tab .contents__char-center {
   padding-top: 20px;
@@ -320,13 +356,9 @@ select {
 .threadDatail .thread .contents__char-top, .threadDatail .tab .contents__char-top {
   padding: 5px 10px;
 }
-.threadDatail .thread #new_threadtab:checked ~ #thread_content,
-.threadDatail .thread #many_responsetab:checked ~ #response_content,
-.threadDatail .thread #many_goodtab:checked ~ #good_content, .threadDatail .thread #new_restab:checked ~ #newres_content,
-.threadDatail .thread #old_restab:checked ~ #oldres_content, .threadDatail .tab #new_threadtab:checked ~ #thread_content,
-.threadDatail .tab #many_responsetab:checked ~ #response_content,
-.threadDatail .tab #many_goodtab:checked ~ #good_content, .threadDatail .tab #new_restab:checked ~ #newres_content,
-.threadDatail .tab #old_restab:checked ~ #oldres_content {
+.threadDatail .thread #new_responsetab:checked ~ #newres_content,
+.threadDatail .thread #old_responsetab:checked ~ #oldres_content, .threadDatail .tab #new_responsetab:checked ~ #newres_content,
+.threadDatail .tab #old_responsetab:checked ~ #oldres_content {
   display: block;
 }
 .threadDatail .thread .page-btn, .threadDatail .tab .page-btn {
@@ -340,9 +372,6 @@ select {
   text-decoration: none;
   padding: 3px 8px;
 }
-.threadDatail .thread .page-btn--previous:hover, .threadDatail .thread .page-btn--next:hover, .threadDatail .thread .page-btn--first:hover, .threadDatail .thread .page-btn--last:hover, .threadDatail .tab .page-btn--previous:hover, .threadDatail .tab .page-btn--next:hover, .threadDatail .tab .page-btn--first:hover, .threadDatail .tab .page-btn--last:hover {
-  background-color: #F1F1F1;
-}
 .threadDatail .thread .page-btn--first, .threadDatail .tab .page-btn--first {
   border-radius: 30px 10px 10px 30px;
 }
@@ -351,7 +380,6 @@ select {
 }
 .threadDatail .thread .page-btn .page-text, .threadDatail .tab .page-btn .page-text {
   text-decoration: none;
-  color: black;
 }
 .threadDatail .thread .page-btn .page-text--previous, .threadDatail .thread .page-btn .page-text--first, .threadDatail .tab .page-btn .page-text--previous, .threadDatail .tab .page-btn .page-text--first {
   position: relative;
@@ -405,6 +433,18 @@ select {
   border-radius: 3px;
   background: #CBCDFF;
 }
+.threadDatail .thread .page-btn .enable-text, .threadDatail .tab .page-btn .enable-text {
+  color: black;
+}
+.threadDatail .thread .page-btn .disable-text, .threadDatail .tab .page-btn .disable-text {
+  opacity: 0.5;
+}
+.threadDatail .thread .page-btn .enable-color:hover, .threadDatail .tab .page-btn .enable-color:hover {
+  background: #E7E8FF;
+}
+.threadDatail .thread .page-btn .disable-color, .threadDatail .tab .page-btn .disable-color {
+  background-color: #F1F1F1;
+}
 .threadDatail .tab input:checked + .tab_item {
   background-color: #E7E8FF;
 }
@@ -430,4 +470,8 @@ select {
   height: 10px;
   border-radius: 10px;
   background: repeating-linear-gradient(-45deg, #CBCDFF, #CBCDFF 2px, white 4px, white 8px);
+}
+.threadDatail .pagecount {
+  text-align: center;
+  margin-top: 10px;
 }/*# sourceMappingURL=threadDetail.css.map */

@@ -1,9 +1,9 @@
-$(function(){
-    $(".change-btn").click(function(){
-        if($(this).text()==='並び替え（投稿が古い順）'){
-            $(this).text('並び替え（投稿が新しい順）');
-        }else{
-            $(this).text('並び替え（投稿が古い順）');
-        }
-    });
+// タブを押したときの判定
+$('.target').click(function() {
+    let url = new URL(window.location.href);
+    let params = url.searchParams;
+    // パラメータを末尾につける
+    if(params.has('thread_id')){
+        window.location.href = "../controller/threadDetail_controller.php?thread_id=" + params.get('thread_id') + "&res_tab=" + this.id
+    }
 });

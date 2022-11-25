@@ -24,10 +24,7 @@
     if(!isset($_GET['tab'])){
         $_GET['tab'] = "new_threadtab";
     }
-     //スレッド内容
-    // foreach($goodthread as $newthre){
-    //     echo $newthre[0].$newthre[1].$newthre[2].$newthre[3].$newthre[4].$newthre[5];
-    // }
+
     // print_r($resthread);
 
 ?>
@@ -88,73 +85,75 @@
                     <ul>
                         <?php //スレッド表示
                             foreach($newthread as $newthre){
+                                if($newthre['delete_flag'] == 0 || (isset($_SESSION['login']) && $_SESSION['login'] == 1)){
                         ?>
-                        <li class="tab__contents">
-                            <div class="contents__main">
-                                <div class="contents__top">
-                                    <div class="contents__ribbon" 
-                                        style="background-color:<?php echo $newthre['main_colorcode']; ?>;">
-                                        <div class="contents__ribbon-before" 
-                                            style="border-top: 3px solid <?php echo $newthre['sub_colorcode']; ?>;
-                                                border-right: 3px solid  <?php  echo $newthre['sub_colorcode']; ?>;">
+                            <li class="tab__contents">
+                                <a class="thread" href="../controller/threadDetail_controller.php?thread_id=<?php echo $newthre['id']; ?>">
+                                    <div class="contents__main">
+                                        <div class="contents__top">
+                                            <div class="contents__ribbon" 
+                                                style="background-color:<?php echo $newthre['main_colorcode']; ?>;">
+                                                <div class="contents__ribbon-before" 
+                                                    style="border-top: 3px solid <?php echo $newthre['sub_colorcode']; ?>;
+                                                        border-right: 3px solid  <?php  echo $newthre['sub_colorcode']; ?>;">
+                                                </div>
+                                                    <?php //カテゴリ
+                                                        echo $newthre['category_name'];
+                                                    ?>
+                                                <div class="contents__ribbon-after" 
+                                                    style="border-top: 10px solid <?php  echo $newthre['main_colorcode']; ?>;
+                                                        border-right: 10px solid transparent;
+                                                        border-bottom: 10px solid <?php  echo $newthre['main_colorcode']; ?>;
+                                                        border-left: 0 solid <?php  echo $newthre['main_colorcode'];?>;">
+                                                </div>
+                                            </div>
+                                            <p class="contents__title contents__char-center">
+                                                <?php //最近作成されたタイトル
+                                                    echo $newthre['title'];
+                                                ?>
+                                            </p>
+                                            <div class="contents__datetime contents__char-center">
+                                                <?php //時間 / HN / レス数(XX)
+                                                    echo $newthre['datetime']."/".$newthre['handlename']."/レス(".$newthre['rescount'].")";
+                                                ?>
+                                            </div>
                                         </div>
-                                            <?php //カテゴリ
-                                                echo $newthre['category_name'];
-                                            ?>
-                                        <div class="contents__ribbon-after" 
-                                            style="border-top: 10px solid <?php  echo $newthre['main_colorcode']; ?>;
-                                                border-right: 10px solid transparent;
-                                                border-bottom: 10px solid <?php  echo $newthre['main_colorcode']; ?>;
-                                                border-left: 0 solid <?php  echo $newthre['main_colorcode'];?>;">
-                                        </div>
-                                    </div>
-                                    <p class="contents__title contents__char-center">
-                                        <?php //最近作成されたタイトル
-                                            echo $newthre['title'];
-                                        ?>
-                                    </p>
-                                    <div class="contents__datetime contents__char-center">
-                                        <?php //時間 / HN / レス数(XX)
-                                            echo $newthre['datetime']."/".$newthre['handlename']."/レス(".$newthre['rescount'].")";
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="contents__bottom">
-                                    <div class="contents__detail contents__char-top">
-                                        <?php //スレッド内容
-                                            echo $newthre['contents'];
-                                        ?>
-                                    </div>
-
-                                    <?php if(isset($newthre['upload_file_path'])){ ?>
-                                        <div class="contents__imgicon">
-                                            <?php if(preg_match('/.mp4/',$newthre['upload_file_path'])){ ?>
-                                                <i class="fa-solid fa-film"></i>
-                                                <p>動画有</p>
-                                            <?php }else{ ?>
-                                                <i class="fa-regular fa-image"></i>
-                                                <p>写真有</p>
+                                        <div class="contents__bottom">
+                                            <div class="contents__detail contents__char-top">
+                                                <?php //スレッド内容
+                                                    echo $newthre['contents'];
+                                                ?>
+                                            </div>
+                                            <?php if(isset($newthre['upload_file_path'])){ ?>
+                                                <div class="contents__imgicon">
+                                                    <?php if(preg_match('/.mp4/',$newthre['upload_file_path'])){ ?>
+                                                        <i class="fa-solid fa-film"></i>
+                                                        <p>動画有</p>
+                                                    <?php }else{ ?>
+                                                        <i class="fa-regular fa-image"></i>
+                                                        <p>写真有</p>
+                                                    <?php } ?>
+                                                </div>
                                             <?php } ?>
                                         </div>
-                                    <?php } ?>
-
-                                </div>
-                            </div>
-                            <div class="contents__sub">
-                                <div class="contents__admin">
-                                    <div class="contents__delete">
-                                        <a href="#">削除</a>
                                     </div>
-                                    <div class="contents__recover">
-                                        <a href="#">復元</a>
+                                </a>
+                                <div class="contents__sub">
+                                    <div class="contents__admin">
+                                        <div class="contents__delete">
+                                            <a href="#">削除</a>
+                                        </div>
+                                        <div class="contents__recover">
+                                            <a href="#">復元</a>
+                                        </div>
+                                    </div>
+                                    <div class="contents__good">
+                                        いいね<i class="fa-regular fa-star"></i>
                                     </div>
                                 </div>
-                                <div class="contents__good">
-                                    いいね<i class="fa-regular fa-star"></i>
-                                </div>
-                            </div>
-                        </li>
-                        <?php } ?>
+                            </li>
+                        <?php }
+                            } ?>
                     </ul>
                     <div class="page-btn">
                     <!-- 最初へボタン -->
@@ -181,7 +180,6 @@
                                 <span class="page-text page-text--first disable-text">最初へ</span>
                             </div>
                         <?php } ?>
-
                     <!-- 前へボタン -->
                         <?php if($now >= 2){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
@@ -206,7 +204,6 @@
                                 <span class="page-text page-text--previous disable-text">前へ</span>
                             </div>
                         <?php } ?>
-
                     <!-- 次へボタン -->
                         <?php if($now < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
@@ -231,7 +228,6 @@
                                 <span class="page-text page-text--next disable-text disable-text">次へ</span>
                             </div>
                         <?php } ?>
-
                     <!-- 最後へボタン -->
                         <?php if($now < $pages){ 
                             if(isset($_GET['category']) && isset($_GET['keyword'])){ ?>
@@ -265,57 +261,59 @@
                     <ul>
                         <?php 
                             foreach($resthread as $resthre){
+                                if($resthre['delete_flag'] == 0 || (isset($_SESSION['login']) && $_SESSION['login'] == 1)){
                         ?>
                         <li class="tab__contents">
-                            <div class="contents__main">
-                                <div class="contents__top">
-                                    <div class="contents__ribbon"
-                                        style="background-color:<?php echo $resthre['main_colorcode']; ?>;">
-                                        <div class="contents__ribbon-before" 
-                                            style="border-top: 3px solid <?php echo $resthre['sub_colorcode']; ?>;
-                                                border-right: 3px solid  <?php  echo $resthre['sub_colorcode']; ?>;">
+                            <a class="thread" href="../controller/threadDetail_controller.php?thread_id=<?php echo $resthre['id']; ?>">
+                                <div class="contents__main">
+                                    <div class="contents__top">
+                                        <div class="contents__ribbon"
+                                            style="background-color:<?php echo $resthre['main_colorcode']; ?>;">
+                                            <div class="contents__ribbon-before" 
+                                                style="border-top: 3px solid <?php echo $resthre['sub_colorcode']; ?>;
+                                                    border-right: 3px solid  <?php  echo $resthre['sub_colorcode']; ?>;">
+                                            </div>
+                                                <?php //カテゴリ
+                                                    echo $resthre['category_name'];
+                                                ?>
+                                            <div class="contents__ribbon-after" 
+                                                style="border-top: 10px solid <?php  echo $resthre['main_colorcode']; ?>;
+                                                    border-right: 10px solid transparent;
+                                                    border-bottom: 10px solid <?php  echo $resthre['main_colorcode']; ?>;
+                                                    border-left: 0 solid <?php  echo $resthre['main_colorcode'];?>;">
+                                            </div>
                                         </div>
-                                            <?php //カテゴリ
-                                                echo $resthre['category_name'];
+                                        <p class="contents__title contents__char-center">
+                                            <?php //レス数の多いタイトル
+                                                echo $resthre['title'];
                                             ?>
-                                        <div class="contents__ribbon-after" 
-                                            style="border-top: 10px solid <?php  echo $resthre['main_colorcode']; ?>;
-                                                border-right: 10px solid transparent;
-                                                border-bottom: 10px solid <?php  echo $resthre['main_colorcode']; ?>;
-                                                border-left: 0 solid <?php  echo $resthre['main_colorcode'];?>;">
+                                        </p>
+                                        <div class="contents__datetime contents__char-center">
+                                            <?php //時間 / HN / レス数（XX）
+                                                echo $resthre['datetime']."/".$resthre['handlename']."/レス(".$resthre['rescount'].")";
+                                            ?>
                                         </div>
                                     </div>
-                                    <p class="contents__title contents__char-center">
-                                        <?php //レス数の多いタイトル
-                                            echo $resthre['title'];
-                                        ?>
-                                    </p>
-                                    <div class="contents__datetime contents__char-center">
-                                        <?php //時間 / HN / レス数（XX）
-                                            echo $resthre['datetime']."/".$resthre['handlename']."/レス(".$resthre['rescount'].")";
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="contents__bottom">
-                                    <div class="contents__detail contents__char-top">
-                                        <?php //スレッド内容
-                                            echo $resthre['contents'];
-                                        ?>
-                                    </div>
-                                    
-                                    <?php if(isset($resthre['upload_file_path'])){ ?>
-                                        <div class="contents__imgicon">
-                                            <?php if(preg_match('/.mp4/',$resthre['upload_file_path'])){ ?>
-                                                <i class="fa-solid fa-film"></i>
-                                                <p>動画有</p>
-                                            <?php }else{ ?>
-                                                <i class="fa-regular fa-image"></i>
-                                                <p>写真有</p>
-                                            <?php } ?>
+                                    <div class="contents__bottom">
+                                        <div class="contents__detail contents__char-top">
+                                            <?php //スレッド内容
+                                                echo $resthre['contents'];
+                                            ?>
                                         </div>
-                                    <?php } ?>
+                                        <?php if(isset($resthre['upload_file_path'])){ ?>
+                                            <div class="contents__imgicon">
+                                                <?php if(preg_match('/.mp4/',$resthre['upload_file_path'])){ ?>
+                                                    <i class="fa-solid fa-film"></i>
+                                                    <p>動画有</p>
+                                                <?php }else{ ?>
+                                                    <i class="fa-regular fa-image"></i>
+                                                    <p>写真有</p>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                             <div class="contents__sub">
                                 <div class="contents__admin">
                                     <div class="contents__delete">
@@ -330,7 +328,8 @@
                                 </div>
                             </div>
                         </li>
-                        <?php } ?>
+                        <?php }
+                            } ?>
                     </ul>
                     <div class="page-btn">
                     <!-- 最初へボタン -->
@@ -441,56 +440,60 @@
                     <ul>
                         <?php 
                             foreach($goodthread as $goodthre){
+                                if($goodthre['delete_flag'] == 0 || (isset($_SESSION['login']) && $_SESSION['login'] == 1)){
                         ?>
                         <li class="tab__contents">
-                            <div class="contents__main">
-                                <div class="contents__top">
-                                <div class="contents__ribbon" 
-                                        style="background-color:<?php echo $goodthre['main_colorcode']; ?>;">
-                                        <div class="contents__ribbon-before" 
-                                            style="border-top: 3px solid <?php echo $goodthre['sub_colorcode']; ?>;
-                                                border-right: 3px solid  <?php  echo $goodthre['sub_colorcode']; ?>;">
+                            <a class="thread" href="../controller/threadDetail_controller.php?thread_id=<?php echo $goodthre['id']; ?>">
+                                <div class="contents__main">
+                                    <div class="contents__top">
+                                    <div class="contents__ribbon" 
+                                            style="background-color:<?php echo $goodthre['main_colorcode']; ?>;">
+                                            <div class="contents__ribbon-before" 
+                                                style="border-top: 3px solid <?php echo $goodthre['sub_colorcode']; ?>;
+                                                    border-right: 3px solid  <?php  echo $goodthre['sub_colorcode']; ?>;">
+                                            </div>
+                                                <?php //カテゴリ
+                                                    echo $goodthre['category_name'];
+                                                ?>
+                                            <div class="contents__ribbon-after" 
+                                                style="border-top: 10px solid <?php  echo $goodthre['main_colorcode']; ?>;
+                                                    border-right: 10px solid transparent;
+                                                    border-bottom: 10px solid <?php  echo $goodthre['main_colorcode']; ?>;
+                                                    border-left: 0 solid <?php  echo $goodthre['main_colorcode'];?>;">
+                                            </div>
                                         </div>
-                                            <?php //カテゴリ
-                                                echo $goodthre['category_name'];
+                                        <p class="contents__title contents__char-center">
+                                            <?php //いいねの多いタイトル
+                                                echo $goodthre['title'];
                                             ?>
-                                        <div class="contents__ribbon-after" 
-                                            style="border-top: 10px solid <?php  echo $goodthre['main_colorcode']; ?>;
-                                                border-right: 10px solid transparent;
-                                                border-bottom: 10px solid <?php  echo $goodthre['main_colorcode']; ?>;
-                                                border-left: 0 solid <?php  echo $goodthre['main_colorcode'];?>;">
+                                        </p>
+                                        <div class="contents__datetime contents__char-center">
+                                            <?php //時間 / HN / いいね数（XX）
+                                                echo $goodthre['datetime']."/".$goodthre['handlename']."/いいね(".$goodthre['goodcount'].")";
+                                            ?>
                                         </div>
                                     </div>
-                                    <p class="contents__title contents__char-center">
-                                        <?php //いいねの多いタイトル
-                                            echo $goodthre['title'];
-                                        ?>
-                                    </p>
-                                    <div class="contents__datetime contents__char-center">
-                                        <?php //時間 / HN / いいね数（XX）
-                                            echo $goodthre['datetime']."/".$goodthre['handlename']."/いいね(".$goodthre['goodcount'].")";
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="contents__bottom">
-                                    <div class="contents__detail contents__char-top">
-                                        <?php //スレッド内容
-                                            echo $goodthre['contents'];
-                                        ?>
-                                    </div>
-                                    <?php if(isset($goodthre['upload_file_path'])){ ?>
-                                        <div class="contents__imgicon">
-                                            <?php if(preg_match('/.mp4/',$goodthre['upload_file_path'])){ ?>
-                                                <i class="fa-solid fa-film"></i>
-                                                <p>動画有</p>
-                                            <?php }else{ ?>
-                                                <i class="fa-regular fa-image"></i>
-                                                <p>写真有</p>
-                                            <?php } ?>
+                                
+                                    <div class="contents__bottom">
+                                        <div class="contents__detail contents__char-top">
+                                            <?php //スレッド内容
+                                                echo $goodthre['contents'];
+                                            ?>
                                         </div>
-                                    <?php } ?>
+                                        <?php if(isset($goodthre['upload_file_path'])){ ?>
+                                            <div class="contents__imgicon">
+                                                <?php if(preg_match('/.mp4/',$goodthre['upload_file_path'])){ ?>
+                                                    <i class="fa-solid fa-film"></i>
+                                                    <p>動画有</p>
+                                                <?php }else{ ?>
+                                                    <i class="fa-regular fa-image"></i>
+                                                    <p>写真有</p>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                             <div class="contents__sub">
                                 <div class="contents__admin">
                                     <div class="contents__delete">
@@ -505,7 +508,8 @@
                                 </div>
                             </div>
                         </li>
-                        <?php } ?>
+                        <?php }
+                            } ?>
                     </ul>
                     <div  class="page-btn">
                     <!-- 最初へボタン -->
