@@ -77,16 +77,32 @@
         .contents {
             &__top, &__bottom {
                 width: 100%;
-                height: 50px;
+                // height: 50px;
             }
     
             &__top {
-                display: flex;
+                // display: flex;
                 border-bottom: 2px solid variables.$dark_purple;
+            }
+
+            &__bottom{
+                display: flex;
+                justify-content: space-between;
+                min-height: 50px;
             }
 
             &__middle {
                 border-bottom: 2px solid variables.$dark_purple;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &__title{
+                padding-bottom: 5px;
+            }
+
+            &__icon{
+                height: 30px;
             }
 
             &__main {
@@ -97,58 +113,6 @@
                 background-color: white;
             }
 
-            &__sub {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            &__admin {
-                display: flex;
-                width: 50%;
-                // visibility: hidden;
-            }
-            
-            &__delete {
-                    width: 85px;
-                    text-align: center;
-                    border-bottom: 3px solid variables.$dark_purple;
-                    border-left: 3px solid variables.$dark_purple;
-
-                    & a {
-                        color:red;
-                        // visibility: hidden;
-                    }
-
-                    & a:hover {
-                        color: variables.$hover_purple;
-                    }
-            }
-
-            &__recover {
-                width: 85px;
-                text-align: center;
-                border-bottom: 3px solid variables.$dark_purple;
-                border-right: 3px solid variables.$dark_purple;
-
-                & a {
-                    color:blue;
-                    // visibility: hidden;
-                }
-
-                & a:hover {
-                    color: variables.$hover_purple;
-                }
-            }
-
-            &__good {
-                width: 85px;
-                min-width: 70px;
-                text-align: center;
-                border-bottom: 3px solid variables.$dark_purple;
-                border-right: 3px solid variables.$dark_purple;
-                border-left: 3px solid variables.$dark_purple;
-            }
-    
             &__char-center {
                 padding-top: 20px;
                 text-align: center;
@@ -161,55 +125,67 @@
             &__ribbon {
                 position: absolute;
                 top: -6px;
-                left: -6px;
+                left: -9px;
                 height: 20px;
-                padding: 5px 10px;
-                padding-right: 40px;
+                padding: 5px 30px;
+                padding-right: 30px;
                 color: black;
                 background: variables.$light_purple;
                 line-height: 10px;
-    
-                &::before {
+
+                &-before {
                     content: '';
                     position: absolute;
                     top: 100%;
                     left: 0px;
                     border: 3px solid transparent;
-                    border-top: 3px solid variables.$dark_purple;
-                    border-right: 3px solid variables.$dark_purple;
                 }
     
-                &::after {
+                &-after {
                     position: absolute;
                     top: 0;
                     right: -10px;
                     content: '';
-                    border-top: 10px solid variables.$light_purple;
-                    border-right: 10px solid transparent;
-                    border-bottom: 10px solid variables.$light_purple;
-                    border-left: 0 solid variables.$light_purple;
                 }
             }
     
-            &__title {
+            &__name {
                 width: 60%;
                 height: 100%;
                 border-right: 2px solid variables.$dark_purple;
-                
+                padding: 5px 10px;
+                display: flex;
+                justify-content: left;
             }
     
             &__datetime {
                 width: 40%;
                 height: 100%;
                 overflow: hidden;
+                padding: 5px;
+                margin: auto 0;
+                text-align: center;
+            }
+
+            &__handlename{
+                margin: auto 10px;
+            }
+
+            &__file_path{
+                img,video{
+                    height: 100px;
+                    margin: 10px;
+                    display: table-cell;
+                    vertical-align: middle;
+                }
             }
         }
     
-        #new_threadtab:checked ~ #thread_content,
-        #many_responsetab:checked ~ #response_content,
-        #many_goodtab:checked ~ #good_content {
-            display: block;
-        }
+        // #new_threadtab:checked ~ #thread_content,
+        // #many_responsetab:checked ~ #response_content,
+        // #many_goodtab:checked ~ #good_content {
+        //     display: block;
+        // }
     }
 
     &-form {
@@ -232,31 +208,127 @@
         .count-text {
             // text-align: right;
             display: flex;
-            // justify-content: right;
+            justify-content: right;
         }
 
-        &__info {
-            display: flex;
-            justify-content: space-between;
+        // &__info {
+        //     display: flex;
+        //     justify-content: space-between;
 
-            .error-message {
-                visibility: hidden;
-                color: red;
-                width: 80%;
-            }
+        //     .error-message {
+        //         // visibility: hidden;
+        //         color: red;
+        //         width: 80%;
+        //     }
+        // }
+        
+        .error-message {
+            color: red;
+            width: 80%;
         }
 
         textarea {
             display: block;
         }
     }
+
+    .icon {
+        &__label {
+            display: inline-block;
+            color: black;
+            padding: 5px 10px;
+            margin: 5px 10px 5px 60px;
+            border: solid 4px variables.$light_purple;
+            transition: 0.5s;
+
+            &:hover {
+                border: 4px solid variables.$dark_purple;
+                background-color: variables.$light_purple;
+                cursor: pointer;
+            }
+        }
+
+        &__input {
+            display: none;
+        }
+    }
+
+    #preview {
+        display: flex;
+        align-items: flex-end;
+        margin: 5px 0;
+        // margin-left: 15%;
+        // text-align: center;
+        // border: 2px solid variables.$dark_purple;
+        // border-radius: 5px;
+        // width: 80px;
+        // height: 80px;
+        // background-color: lightgreen;
+        // background-size: cover;
+    }
+
+    #preview img,video {
+        // width: 76px;
+        height: 100px;
+        // width: 80px;
+        // height: 80px;
+        // margin: 0 auto;
+        border:2px solid variables.$dark_purple;
+        border-radius: 5px;
+    }
+
+    .img-reset__btn {
+        border: 1px solid variables.$dark_purple;
+        font-size: small;
+        height: 25px;
+        width: 50px;
+        margin: 0 10px;
+
+        &:hover {
+            background-color: variables.$light_purple;
+            cursor: pointer;
+        }
+    }
     
     &__btn {
         display: flex;
         justify-content: center;
+        margin-top: 30px;
 
         .btn {
             margin: 10px 20px;
         }
+    }
+    
+    .hissu,.ninni {
+        // width: 40%;
+        // padding-right: 4rem;
+        position: relative;
+
+        &::before {
+            display: inline-block;
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            margin: -10px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            padding: 0 5px;
+            font-size: 11px;
+            font-family: 'Yu Gothic';
+            opacity: 0.8;
+        }
+    }
+
+    .hissu::before {
+        content: "必須";
+        background: #e23356;
+        color: #FFF;
+    }
+
+    .ninni::before {
+        content: "任意";
+        background: #abcdfc;
+        color: #333;
     }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -214,14 +215,25 @@ select {
 }
 .response .thread .contents__top, .response .thread .contents__bottom {
   width: 100%;
-  height: 50px;
 }
 .response .thread .contents__top {
-  display: flex;
   border-bottom: 2px solid #CBCDFF;
+}
+.response .thread .contents__bottom {
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
 }
 .response .thread .contents__middle {
   border-bottom: 2px solid #CBCDFF;
+  display: flex;
+  justify-content: space-between;
+}
+.response .thread .contents__title {
+  padding-bottom: 5px;
+}
+.response .thread .contents__icon {
+  height: 30px;
 }
 .response .thread .contents__main {
   position: relative;
@@ -229,46 +241,6 @@ select {
   width: 100%;
   border: 3px solid #CBCDFF;
   background-color: white;
-}
-.response .thread .contents__sub {
-  display: flex;
-  justify-content: space-between;
-}
-.response .thread .contents__admin {
-  display: flex;
-  width: 50%;
-}
-.response .thread .contents__delete {
-  width: 85px;
-  text-align: center;
-  border-bottom: 3px solid #CBCDFF;
-  border-left: 3px solid #CBCDFF;
-}
-.response .thread .contents__delete a {
-  color: red;
-}
-.response .thread .contents__delete a:hover {
-  color: #9530FA;
-}
-.response .thread .contents__recover {
-  width: 85px;
-  text-align: center;
-  border-bottom: 3px solid #CBCDFF;
-  border-right: 3px solid #CBCDFF;
-}
-.response .thread .contents__recover a {
-  color: blue;
-}
-.response .thread .contents__recover a:hover {
-  color: #9530FA;
-}
-.response .thread .contents__good {
-  width: 85px;
-  min-width: 70px;
-  text-align: center;
-  border-bottom: 3px solid #CBCDFF;
-  border-right: 3px solid #CBCDFF;
-  border-left: 3px solid #CBCDFF;
 }
 .response .thread .contents__char-center {
   padding-top: 20px;
@@ -280,47 +252,51 @@ select {
 .response .thread .contents__ribbon {
   position: absolute;
   top: -6px;
-  left: -6px;
+  left: -9px;
   height: 20px;
-  padding: 5px 10px;
-  padding-right: 40px;
+  padding: 5px 30px;
+  padding-right: 30px;
   color: black;
   background: #E7E8FF;
   line-height: 10px;
 }
-.response .thread .contents__ribbon::before {
+.response .thread .contents__ribbon-before {
   content: "";
   position: absolute;
   top: 100%;
   left: 0px;
   border: 3px solid transparent;
-  border-top: 3px solid #CBCDFF;
-  border-right: 3px solid #CBCDFF;
 }
-.response .thread .contents__ribbon::after {
+.response .thread .contents__ribbon-after {
   position: absolute;
   top: 0;
   right: -10px;
   content: "";
-  border-top: 10px solid #E7E8FF;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #E7E8FF;
-  border-left: 0 solid #E7E8FF;
 }
-.response .thread .contents__title {
+.response .thread .contents__name {
   width: 60%;
   height: 100%;
   border-right: 2px solid #CBCDFF;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: left;
 }
 .response .thread .contents__datetime {
   width: 40%;
   height: 100%;
   overflow: hidden;
+  padding: 5px;
+  margin: auto 0;
+  text-align: center;
 }
-.response .thread #new_threadtab:checked ~ #thread_content,
-.response .thread #many_responsetab:checked ~ #response_content,
-.response .thread #many_goodtab:checked ~ #good_content {
-  display: block;
+.response .thread .contents__handlename {
+  margin: auto 10px;
+}
+.response .thread .contents__file_path img, .response .thread .contents__file_path video {
+  height: 100px;
+  margin: 10px;
+  display: table-cell;
+  vertical-align: middle;
 }
 .response-form {
   margin: 50px auto;
@@ -338,23 +314,83 @@ select {
 }
 .response-form .count-text {
   display: flex;
+  justify-content: right;
 }
-.response-form__info {
-  display: flex;
-  justify-content: space-between;
-}
-.response-form__info .error-message {
-  visibility: hidden;
+.response-form .error-message {
   color: red;
   width: 80%;
 }
 .response-form textarea {
   display: block;
 }
+.response .icon__label {
+  display: inline-block;
+  color: black;
+  padding: 5px 10px;
+  margin: 5px 10px 5px 60px;
+  border: solid 4px #E7E8FF;
+  transition: 0.5s;
+}
+.response .icon__label:hover {
+  border: 4px solid #CBCDFF;
+  background-color: #E7E8FF;
+  cursor: pointer;
+}
+.response .icon__input {
+  display: none;
+}
+.response #preview {
+  display: flex;
+  align-items: flex-end;
+  margin: 5px 0;
+}
+.response #preview img, .response video {
+  height: 100px;
+  border: 2px solid #CBCDFF;
+  border-radius: 5px;
+}
+.response .img-reset__btn {
+  border: 1px solid #CBCDFF;
+  font-size: small;
+  height: 25px;
+  width: 50px;
+  margin: 0 10px;
+}
+.response .img-reset__btn:hover {
+  background-color: #E7E8FF;
+  cursor: pointer;
+}
 .response__btn {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 .response__btn .btn {
   margin: 10px 20px;
+}
+.response .hissu, .response .ninni {
+  position: relative;
+}
+.response .hissu::before, .response .ninni::before {
+  display: inline-block;
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  margin: -10px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-family: "Yu Gothic";
+  opacity: 0.8;
+}
+.response .hissu::before {
+  content: "必須";
+  background: #e23356;
+  color: #FFF;
+}
+.response .ninni::before {
+  content: "任意";
+  background: #abcdfc;
+  color: #333;
 }/*# sourceMappingURL=response.css.map */
