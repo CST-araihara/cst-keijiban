@@ -46,19 +46,13 @@
 
 ?>
 
-<!-- テスト用セッション解除ボタン -->
-<?php 
-    // if(isset($_POST['add'])){
-    //     unset($_SESSION['my_newthread']);
-    // }
-?>
-
 <main>
-        <!-- テスト用セッション解除ボタン -->
-            <!-- <form action="#" method="post">
-                <button type="submit" name="add">セッション解除</button>
-            </form> -->
-        <!-- テスト用セッション解除ボタン -->
+    <!-- 任意ユーザーに飛ぶための仮ボタン -->
+    <form action="../controller/userdetail_controller.php" method="get">
+        <input type="text" name="friend_id">
+        <input type="submit" value="ユーザー詳細">
+    </form>
+    <!-- 任意ユーザーに飛ぶための仮ボタン -->
     <div class="filter"></div>
     <div class="title-position">
         <div class="pagetitle">
@@ -77,7 +71,7 @@
             <div class="friends font-size--15">
                 <!-- 友達の人数は計算して出す -->
                 <a class="friends__people" href="../controller/friendslist_controller.php">友達:<?php echo $count; ?>人</a>
-                <a class="friends__request" href="friendsrequestlist.php">友達リクエスト</a>
+                <a class="friends__request" href="../controller/friendsrequestlist_controller.php">友達リクエスト</a>
             </div>
         </div>
         <div class="comment-position">
@@ -170,9 +164,24 @@
                                                     </div>
                                                 <?php } ?>
                                             </div>
-                                        <?php } ?>
-                                        <!-- <div class="contents__good">いいね<i class="fa-regular fa-star"></i></div> -->
-                                        <div class="contents__good">いいね<i id="star" class="fa-regular fa-star"></i></div>
+                                            <div>
+                                        <?php
+                                        }
+                                        if (isset($newthre['good_id'])) {
+                                        ?>
+                                            <div class="contents__good">いいね<i class="fa-regular fa-star goldstar"></i></div>
+                                        <?php
+                                        }
+                                        else {
+                                        ?>
+                                            <div class="contents__good">いいね<i class="fa-regular fa-star whitestar"></i></div>
+                                        <?php
+                                        }
+                                        ?>
+                                            <input type="hidden" value="type1">
+                                            <input type="hidden" value="<?php echo $newthre['good_id']; ?>">
+                                            <input type="hidden" value="<?php echo $newthre['id']; ?>">
+                                        </div>
                                     </div>
                                 </li>
                         <?php }
@@ -322,8 +331,24 @@
                                                     </div>
                                                 <?php } ?>
                                             </div>
-                                        <?php } ?>
-                                        <div class="contents__good">いいね<i class="fa-regular fa-star"></i></div>
+                                            <div>
+                                        <?php
+                                        }
+                                        if (isset($resthre['good_id'])) {
+                                        ?>
+                                            <div class="contents__good">いいね<i class="fa-regular fa-star goldstar"></i></div>
+                                        <?php
+                                        }
+                                        else {
+                                        ?>
+                                            <div class="contents__good">いいね<i class="fa-regular fa-star whitestar"></i></div>
+                                        <?php
+                                        }
+                                        ?>
+                                            <input type="hidden" value="type2">
+                                            <input type="hidden" value="<?php echo $resthre['good_id']; ?>">
+                                            <input type="hidden" value="<?php echo $resthre['id']; ?>">
+                                        </div>
                                     </div>
                                 </li>
                     <?php   }
@@ -508,8 +533,24 @@
                                                         </div>
                                                     <?php } ?>
                                                 </div>
-                                            <?php } ?>
-                                            <div class="contents__good">いいね<i class="fa-regular fa-star"></i></div>
+                                            <div>
+                                            <?php
+                                            }
+                                            if (isset($goodthre['good_id'])) {
+                                            ?>
+                                                <div class="contents__good">いいね<i class="fa-regular fa-star goldstar"></i></div>
+                                            <?php
+                                            }
+                                            else {
+                                            ?>
+                                                <div class="contents__good">いいね<i class="fa-regular fa-star whitestar"></i></div>
+                                            <?php
+                                            }
+                                            ?>
+                                                <input type="hidden" value="type1">
+                                                <input type="hidden" value="<?php echo $goodthre['good_id']; ?>">
+                                                <input type="hidden" value="<?php echo $goodthre['target_id']; ?>">
+                                            </div>
                                         </div>
                                     <!-- 削除復元ボタン・レス -->
                                     <?php }elseif($goodthre['type'] == 2){ ?>
@@ -530,8 +571,24 @@
                                                         </div>
                                                     <?php } ?>
                                                 </div>
-                                            <?php } ?>
-                                            <div class="contents__good">いいね<i class="fa-regular fa-star"></i></div>
+                                            <div>
+                                            <?php
+                                            }
+                                            if (isset($goodthre['good_id'])) {
+                                            ?>
+                                                <div class="contents__good">いいね<i class="fa-regular fa-star goldstar"></i></div>
+                                            <?php
+                                            }
+                                            else {
+                                            ?>
+                                                <div class="contents__good">いいね<i class="fa-regular fa-star whitestar"></i></div>
+                                            <?php
+                                            }
+                                            ?>
+                                                <input type="hidden" value="type2">
+                                                <input type="hidden" value="<?php echo $goodthre['good_id']; ?>">
+                                                <input type="hidden" value="<?php echo $goodthre['target_id']; ?>">
+                                            </div>
                                         </div>
                                     <?php } ?>
                                 </li>
@@ -589,6 +646,5 @@
 
 <!-- jsの適用 -->
 <?php $js_url = "js/mypage.js"; ?>
-<?php //$js_url = "js/good.js"; ?>
 <!-- footer共通部分 -->
 <?php include("components/footer.php"); ?>
