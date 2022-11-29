@@ -4,7 +4,10 @@
     //必要なページ数を求める
     function count_page(){
         $dbh = connect();
-        $count = $dbh->prepare("SELECT COUNT(*) AS count FROM thread;");
+        $count = $dbh->prepare("SELECT COUNT(*) 
+                                AS count 
+                                FROM thread;
+                                ");
         $count->execute();
         $total_count = $count->fetch(PDO::FETCH_ASSOC);
         return $total_count;
@@ -60,15 +63,18 @@
     //最近作成されたスレッド
     function newstmt($now){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name
+        $newstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -99,15 +105,18 @@
     //最近作成されたスレッドkeyword
     function keynewstmt($now,$keyword){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name
+        $newstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
                                         ,datetime
+                                        ,thread.delete_flag
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -141,15 +150,18 @@
     //最近作成されたスレッドcategory
     function categorynewstmt($now,$category){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name
+        $newstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -180,15 +192,18 @@
     //最近作成されたスレッドcategorykeyword
     function catekeynewstmt($now,$category,$keyword){
         $dbh = connect();
-        $newstmt = $dbh->prepare("SELECT category_name
+        $newstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -223,15 +238,18 @@
     // レスの多い順
     function resstmt($now_res){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name
+        $resstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -261,15 +279,18 @@
     // レスの多い順keyword
     function keyresstmt($now_res,$keyword){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name
+        $resstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -303,15 +324,18 @@
     // レスの多い順category
     function categoryresstmt($now_res,$category){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name
+        $resstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -342,15 +366,18 @@
     // レスの多い順categorykeyword
     function catekeyresstmt($now_res,$category,$keyword){
         $dbh = connect();
-        $resstmt = $dbh->prepare("SELECT category_name
+        $resstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM response
-                                            WHERE thread_id = thread.id)
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
@@ -385,11 +412,13 @@
     // いいねの多い順
     function goodstmt($now_good){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name
+        $goodstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM good
@@ -424,11 +453,13 @@
     // いいねの多い順keyword
     function keygoodstmt($now_good,$keyword){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name
+        $goodstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM good
@@ -467,11 +498,13 @@
     // いいねの多い順category
     function categorygoodstmt($now_good,$category){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name
+        $goodstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM good
@@ -507,11 +540,13 @@
     // いいねの多い順categprykeyword
     function catekeygoodstmt($now_good,$category,$keyword){
         $dbh = connect();
-        $goodstmt = $dbh->prepare("SELECT category_name
+        $goodstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
                                         ,title
                                         ,contents
                                         ,upload_file_path
                                         ,handlename
+                                        ,thread.delete_flag
                                         ,datetime
                                         ,(SELECT count(*)
                                             FROM good

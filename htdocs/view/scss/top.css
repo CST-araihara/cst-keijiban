@@ -275,6 +275,10 @@ select {
 .top .tab__contents {
   list-style: none;
 }
+.top .tab .thread {
+  text-decoration: none;
+  color: black;
+}
 .top .tab .contents__top, .top .tab .contents__bottom {
   width: 100%;
   height: 50px;

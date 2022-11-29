@@ -148,6 +148,11 @@
         &__contents {
             list-style: none;
         }
+
+        .thread{
+            text-decoration: none;
+            color: black;
+        }
     
         .contents {
             &__top, &__bottom {
@@ -269,27 +274,6 @@
                 color: black;
                 background: variables.$light_purple;
                 line-height: 10px;
-    
-                // &::before {
-                //     content: '';
-                //     position: absolute;
-                //     top: 100%;
-                //     left: 0px;
-                //     border: 3px solid transparent;
-                //     border-top: 3px solid variables.$dark_purple;
-                //     border-right: 3px solid variables.$dark_purple;
-                // }
-    
-                // &::after {
-                //     position: absolute;
-                //     top: 0;
-                //     right: -10px;
-                //     content: '';
-                //     border-top: 10px solid variables.$light_purple;
-                //     border-right: 10px solid transparent;
-                //     border-bottom: 10px solid variables.$light_purple;
-                //     border-left: 0 solid variables.$light_purple;
-                // }
 
                 &-before {
                     content: '';
@@ -297,8 +281,6 @@
                     top: 100%;
                     left: 0px;
                     border: 3px solid transparent;
-                    // border-top: 3px solid variables.$dark_purple;
-                    // border-right: 3px solid variables.$dark_purple;
                 }
     
                 &-after {
@@ -306,10 +288,6 @@
                     top: 0;
                     right: -10px;
                     content: '';
-                    // border-top: 10px solid variables.$light_purple;
-                    // border-right: 10px solid transparent;
-                    // border-bottom: 10px solid variables.$light_purple;
-                    // border-left: 0 solid variables.$light_purple;
                 }
             }
             
