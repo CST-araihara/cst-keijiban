@@ -93,6 +93,12 @@
                                         AS rescount
                                         ,main_colorcode
                                         ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 1
+                                            AND user_id = $id) 
+                                        AS good_id
                                 FROM thread
                                 INNER JOIN users 
                                 ON thread.user_id = users.id
@@ -147,6 +153,12 @@
                                         AS res_datetime
                                         ,response.delete_flag
                                         AS res_delete_flag
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = response.id
+                                            AND type= 2
+                                            AND user_id = $id) 
+                                        AS good_id
                                 FROM thread
                                 INNER JOIN users
                                 ON thread.user_id = users.id
@@ -233,6 +245,8 @@
                                         AS res_datetime
                                         ,response.delete_flag
                                         AS res_delete_flag
+                                        ,good.id
+                                        AS good_id
                                 FROM good
                                 LEFT JOIN thread AS thread_1
                                 ON good.target_id = thread_1.id AND type = 1
@@ -269,5 +283,72 @@
         $newthread = $newstmt->fetchAll(PDO::FETCH_BOTH);
         return $newthread;
     }
+
+// いいねの追加時重複回避
+function duplicationgood($type, $target_id, $user_id) {
+    $dbh = connect();
+    $sql = 'SELECT
+                *
+            FROM
+                good
+            WHERE
+                type = :type
+            AND
+                target_id = :target_id
+            AND
+                user_id = :user_id
+            ;
+            ';
+    $sth = $dbh->prepare($sql);
+    $sth->bindValue(':type',$type);
+    $sth->bindValue(':target_id',$target_id);
+    $sth->bindValue(':user_id',$user_id);
+    $sth -> execute();
+
+    $aryList = $sth -> fetchAll(PDO::FETCH_ASSOC);
+    return $aryList;
+}
+
+// いいねを追加
+function addgood($type, $target_id, $user_id) {
+    $dbh = connect();
+    $sql = 'INSERT INTO good
+                (type
+                ,target_id
+                ,user_id
+                ,inserted_date)
+            VALUES
+                (:type
+                ,:target_id
+                ,:user_id
+                ,CURRENT_TIMESTAMP)
+                ;
+                ';
+    $sth = $dbh->prepare($sql);
+    $sth->bindValue(':type',$type);
+    $sth->bindValue(':target_id',$target_id);
+    $sth->bindValue(':user_id',$user_id);
+    $sth -> execute();
+}
+
+// いいねを削除
+function removegood($type, $target_id, $user_id) {
+    $dbh = connect();
+    $sql = 'DELETE FROM
+                good
+            WHERE
+                type = :type
+            AND
+                target_id = :target_id
+            AND
+                user_id = :user_id
+            ;
+            ';
+    $sth = $dbh->prepare($sql);
+    $sth->bindValue(':type',$type);
+    $sth->bindValue(':target_id',$target_id);
+    $sth->bindValue(':user_id',$user_id);
+    $sth -> execute();
+}
 
 ?>

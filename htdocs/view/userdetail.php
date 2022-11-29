@@ -12,6 +12,7 @@ $login_id = $_SESSION['friends_of_friends'][2];
 $comment = $_SESSION['friends_of_friends'][3];
 $count = $_SESSION['friends_of_friends'][4];
 $id = $_SESSION['friends_of_friends'][5];
+$btn_judge = $_SESSION['friends_of_friends'][6];
 ?>
 
 <main>
@@ -41,13 +42,41 @@ $id = $_SESSION['friends_of_friends'][5];
             </div>
         </div>
         <div class="btn-position">
-            <button class="btn btn--normal none" type="button">友達申請する</button>
-            <button class="btn btn--back none" type="button">申請を解除する</button>
-            <button class="btn btn--back none" type="button">友達を解除する</button>
-            <button class="btn btn--normal none" type="button">リクエストを許可する</button>
-            <button class="btn btn--back" type="button">リクエストを拒否する</button>
-            <button class="btn btn--back none" type="button">削除</button>
-            <button class="btn btn--normal none" type="button">復元</button>
+            <?php
+            switch ($btn_judge) {
+                case 1:
+            ?>
+                    <button class="btn btn--normal" type="button"  onclick="location.href='../controller/userdetail_controller.php?request=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">友達申請する</button>
+            <?php
+                    break;
+                case 2:
+            ?>
+                    <button class="btn btn--back" type="button" onclick="location.href='../controller/userdetail_controller.php?request_cancel=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">友達申請を解除する</button>
+            <?php
+                    break;
+                case 3:
+            ?>
+                    <button class="btn btn--back" type="button" onclick="location.href='../controller/userdetail_controller.php?delete=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">友達を解除する</button>
+            <?php
+                    break;
+                case 4:
+            ?>
+                    <button class="btn btn--normal" type="button" onclick="location.href='../controller/userdetail_controller.php?permission=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">リクエストを許可する</button>
+                    <button class="btn btn--back" type="button" onclick="location.href='../controller/userdetail_controller.php?rejection=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">リクエストを拒否する</button>
+            <?php
+                    break;
+                case 5:
+            ?>
+                    <button class="btn btn--back" type="button" onclick="location.href='../controller/userdetail_controller.php?delete_user=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">削除</button>
+            <?php
+                    break;
+                case 6:
+            ?>
+                    <button class="btn btn--normal" type="button" onclick="location.href='../controller/userdetail_controller.php?restoration_user=<?php echo $id; ?>&friend_id=<?php echo $id; ?>'">復元</button>
+            <?php
+                    break;
+            }
+            ?>
         </div>
     </div>
     <div class="profile-bottom">

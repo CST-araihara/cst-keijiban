@@ -365,6 +365,31 @@
                 border-right: 3px solid variables.$dark_purple;
                 border-left: 3px solid variables.$dark_purple;
                 cursor: pointer;
+
+                .goldstar::before {
+                    content: "\f005";
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    color: gold;
+                    // transform:rotateX(180deg);
+                    // transition: 1s;
+                    animation: inherit star 1s linear infinite;
+                }
+                
+                @keyframes star {
+                    0% {
+                        transform: rotateX(0deg);
+                    }
+                    100% {
+                        transform: rotateX(360deg);
+                    }
+                }
+
+                .whitestar::before {
+                    content: "\f005";
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-text-stroke: 1px white;
+                }
             }
 
             &__char-center {
