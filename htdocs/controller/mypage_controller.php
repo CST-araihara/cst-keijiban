@@ -4,6 +4,27 @@
 
     include('../model/mypage_model.php');
 
+    if (isset($_POST['type'])) {
+        if ($_POST['type'] == 'type1') {
+            $type = 1;
+        }
+        elseif ($_POST['type'] == 'type2') {
+            $type = 2;
+        }
+    
+        $target_id = $_POST['target_id'];
+        $user_id = $_SESSION['login'];
+    
+        $duplication = duplicationgood($type, $target_id, $user_id);
+    
+        if (!empty($duplication)) {
+            removegood($type, $target_id, $user_id);
+        }
+        else {
+            addgood($type, $target_id, $user_id);
+        }
+    }
+
     // tabに何も入っていないときnew_threadtabを入れる
     if(!isset($_GET['mypage_tab'])){
         $_GET['mypage_tab'] = "my_threadtab";
@@ -104,8 +125,4 @@
             exit;
         }
     }
-
-    // header("Location: ../view/mypage.php");
-    // exit;
-
 ?>

@@ -19,6 +19,13 @@ function delete_friends($id, $friend_id) {
     $sth->bindValue(':id',$id);
     $sth->bindValue(':friend_id',$friend_id);
     $sth -> execute();
+
+    $dbh2 = connect();
+    $sql2 = 'DELETE FROM friend WHERE my_user_id = :friend_id AND your_user_id = :id;';
+    $sth2 = $dbh2->prepare($sql2);
+    $sth2->bindValue(':id',$id);
+    $sth2->bindValue(':friend_id',$friend_id);
+    $sth2 -> execute();
 }
 
 ?>
