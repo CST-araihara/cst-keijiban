@@ -43,31 +43,31 @@ if(!isset($_GET['adminpage_tab'])){
         </div>
     </div>
     <div class="search-position font-size--15">
-        <form class="search" action="#" method="#">
-            <input class="search__box" type="text" placeholder="キーワード入力">
+        <form class="search" action="../controller/index_controller.php" method="post">
+            <input name="word" class="search__box" type="text" placeholder="検索ワード">
             <button class="search__btn border_radius--small" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             <div class="search__condition">
                 <div class="conditions">
                     <div>
-                        <input name="type1" id="user_check" value="" type="radio" checked><label class="space" for="user_check">ハンドルネーム</label>
+                        <input name="terms1" id="user_check" value="handlename" type="radio" checked><label class="space" for="user_check">ハンドルネーム</label>
                     </div>
                     <div>
-                        <input name="type1" id="keyword_check" value="" type="radio"><label class="space" for="keyword_check">キーワード</label>
+                        <input name="terms1" id="keyword_check" value="keyword" type="radio"><label class="space" for="keyword_check">キーワード</label>
                     </div>
                     <div>
-                        <input name="type1" id="user_key_check" value="" type="radio"><label class="space" for="user_key_check">ハンドルネームとキーワード</label>
+                        <input name="terms1" id="user_key_check" value="name_keyword" type="radio"><label class="space" for="user_key_check">ハンドルネームとキーワード</label>
                     </div>
                 </div>
                 <div class="char-center">で</div>
                 <div class="conditions">
                     <div>
-                        <input name="type2" id="thread_check" value="" type="radio" checked><label for="thread_check">スレッド</label>
+                        <input name="terms2" id="thread_check" value="thread" type="radio" checked><label for="thread_check">スレッド</label>
                     </div>
                     <div>
-                        <input name="type2" id="res_check" value="" type="radio"><label for="res_check">レス</label>
+                        <input name="terms2" id="res_check" value="response" type="radio"><label for="res_check">レス</label>
                     </div>
                     <div>
-                        <input name="type2" id="thread_res_check" value="" type="radio"><label for="thread_res_check">スレッドとレス</label>
+                        <input name="terms2" id="thread_res_check" value="thread_res" type="radio"><label for="thread_res_check">スレッドとレス</label>
                     </div>
                 </div>
                 <div class="char-center">を検索する</div>

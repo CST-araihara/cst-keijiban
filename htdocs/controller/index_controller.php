@@ -16,6 +16,10 @@
         $_SESSION['page'] = ceil(count_categorykey_page($_GET['category'],$_GET['keyword'])['count'] / max_view);
     }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
         $_SESSION['page'] = ceil(count_category_page($_GET['category'])['count'] / max_view);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'handlename'){ //
+        $_SESSION['page'] = ceil(count_adminname_page($_POST['word'])['count'] / max_view);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'keyword'){ //
+        $_SESSION['page'] = ceil(count_adminkey_page($_POST['word'])['count'] / max_view);
     }else{ //初期
         $_SESSION['page'] = ceil(count_page()['count'] / max_view);
     }
@@ -35,6 +39,10 @@
         $_SESSION['newthread'] = catekeynewstmt($_SESSION['now'],$_GET['category'],$_GET['keyword']);
     }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
         $_SESSION['newthread'] = categorynewstmt($_SESSION['now'],$_GET['category']);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'handlename'){ //
+        $_SESSION['newthread'] = adminnamenewstmt($_SESSION['now'],$_SESSION['login'],$_POST['word']);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'keyword'){ //
+        $_SESSION['newthread'] = adminkeynewstmt($_SESSION['now'],$_SESSION['login'],$_POST['word']);
     }else{ //初期
         $_SESSION['newthread'] = newstmt($_SESSION['now']);
     }
@@ -54,6 +62,10 @@
         $_SESSION['resthread'] = catekeyresstmt( $_SESSION['now_res'],$_GET['category'],$_GET['keyword']);
     }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
         $_SESSION['resthread'] = categoryresstmt( $_SESSION['now_res'],$_GET['category']);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'handlename'){ //
+        $_SESSION['resthread'] = adminnameresstmt($_SESSION['now_res'],$_SESSION['login'],$_POST['word']);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'keyword'){ //
+        $_SESSION['resthread'] = adminkeyresstmt($_SESSION['now_res'],$_SESSION['login'],$_POST['word']);
     }else{ //初期
         $_SESSION['resthread'] = resstmt( $_SESSION['now_res']);
     }
@@ -73,6 +85,10 @@
         $_SESSION['goodthread'] = catekeygoodstmt( $_SESSION['now_good'],$_GET['category'],$_GET['keyword']);
     }else if(isset($_GET['category']) && !isset($_GET['keyword'])){ //カテゴリ選択無し以外キーワード無
         $_SESSION['goodthread'] = categorygoodstmt( $_SESSION['now_good'],$_GET['category']);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'handlename'){ //
+        $_SESSION['goodthread'] = adminnamegoodstmt($_SESSION['now_good'],$_SESSION['login'],$_POST['word']);
+    }else if(!isset($_GET['category']) && $_POST['terms1'] == 'keyword'){ //
+        $_SESSION['goodthread'] = adminkeygoodstmt($_SESSION['now_good'],$_SESSION['login'],$_POST['word']);
     }else{
         $_SESSION['goodthread'] = goodstmt($_SESSION['now_good']);
     }
@@ -125,6 +141,32 @@
                 exit;
             }else if(!isset($_GET['page_id']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
                 header("Location:../view/index.php?tab=new_threadtab&keyword=".$_GET['keyword']);
+                exit;
+            }else if(isset($_GET['page_id']) && $_POST['terms1']){ //ページネーション有かつ条件1有
+                if ($_POST['terms1'] == 'handlename') {
+                    $terms1 = 'ハンドルネーム';
+                }
+                elseif ($_POST['terms1'] == 'keyword') {
+                    $terms1 = 'キーワード';
+                }
+
+                if ($_POST['terms2'] == 'thread') {
+                    $terms2 = 'スレッド';
+                }
+                header("Location:../view/index.php?tab=new_threadtab&word=".$_POST['word']."&page_id=".$_GET['page_id']."&terms1=".$terms1."&terms2=".$terms2);
+                exit;
+            }else if(!isset($_GET['page_id']) && $_POST['terms1']){ //ページネーション無かつ条件1有
+                if ($_POST['terms1'] == 'handlename') {
+                    $terms1 = 'ハンドルネーム';
+                }
+                elseif ($_POST['terms1'] == 'keyword') {
+                    $terms1 = 'キーワード';
+                }
+
+                if ($_POST['terms2'] == 'thread') {
+                    $terms2 = 'スレッド';
+                }
+                header("Location:../view/index.php?tab=new_threadtab&word=".$_POST['word']."&terms1=".$terms1."&terms2=".$terms2);
                 exit;
             }else{
                 header("Location:../view/index.php?tab=new_threadtab");
@@ -182,6 +224,32 @@
             }else if(!isset($_GET['page_id_res']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
                 header("Location:../view/index.php?tab=many_responsetab&keyword=".$_GET['keyword']);
                 exit;
+            }else if(isset($_GET['page_id_res']) && $_POST['terms1']){ //ページネーション有かつ条件1有
+                if ($_POST['terms1'] == 'handlename') {
+                    $terms1 = 'ハンドルネーム';
+                }
+                elseif ($_POST['terms1'] == 'keyword') {
+                    $terms1 = 'キーワード';
+                }
+
+                if ($_POST['terms2'] == 'thread') {
+                    $terms2 = 'スレッド';
+                }
+                header("Location:../view/index.php?tab=many_responsetab&word=".$_POST['word']."&page_id_res=".$_GET['page_id_res']."&terms1=".$terms1."&terms2=".$terms2);
+                exit;
+            }else if(!isset($_GET['page_id_res']) && $_POST['terms1']){ //ページネーション無かつ条件1有
+                if ($_POST['terms1'] == 'handlename') {
+                    $terms1 = 'ハンドルネーム';
+                }
+                elseif ($_POST['terms1'] == 'keyword') {
+                    $terms1 = 'キーワード';
+                }
+
+                if ($_POST['terms2'] == 'thread') {
+                    $terms2 = 'スレッド';
+                }
+                header("Location:../view/index.php?tab=many_responsetab&word=".$_POST['word']."&terms1=".$terms1."&terms2=".$terms2);
+                exit;
             }else{ //それ以外
                 header("Location:../view/index.php?tab=many_responsetab");
                 exit;
@@ -236,6 +304,32 @@
                 exit;
             }else if(!isset($_GET['page_id_good']) && isset($_GET['keyword'])){ //ページネーション無かつキーワード有
                 header("Location:../view/index.php?tab=many_goodtab&keyword=".$_GET['keyword']);
+                exit;
+            }else if(isset($_GET['page_id_good']) && $_POST['terms1']){ //ページネーション有かつ条件1有
+                if ($_POST['terms1'] == 'handlename') {
+                    $terms1 = 'ハンドルネーム';
+                }
+                elseif ($_POST['terms1'] == 'keyword') {
+                    $terms1 = 'キーワード';
+                }
+
+                if ($_POST['terms2'] == 'thread') {
+                    $terms2 = 'スレッド';
+                }
+                header("Location:../view/index.php?tab=many_goodtab&word=".$_POST['word']."&page_id_res=".$_GET['page_id_good']."&terms1=".$terms1."&terms2=".$terms2);
+                exit;
+            }else if(!isset($_GET['page_id_good']) && $_POST['terms1']){ //ページネーション無かつ条件1有
+                if ($_POST['terms1'] == 'handlename') {
+                    $terms1 = 'ハンドルネーム';
+                }
+                elseif ($_POST['terms1'] == 'keyword') {
+                    $terms1 = 'キーワード';
+                }
+
+                if ($_POST['terms2'] == 'thread') {
+                    $terms2 = 'スレッド';
+                }
+                header("Location:../view/index.php?tab=many_goodtab&word=".$_POST['word']."&terms1=".$terms1."&terms2=".$terms2);
                 exit;
             }else{
                 header("Location:../view/index.php?tab=many_goodtab");
