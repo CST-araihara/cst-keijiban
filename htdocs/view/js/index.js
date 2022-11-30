@@ -9,6 +9,8 @@ $('.target').click(function() {
         window.location.href = "../controller/index_controller.php?category=" + params.get('category') + "&tab=" + this.id
     }else if(params.has('keyword')){
         window.location.href = "../controller/index_controller.php?keyword=" + params.get('keyword') + "&tab=" + this.id
+    }else if(params.has('terms1')){
+        window.location.href = "../controller/index_controller.php?terms1=" + params.post('terms1') + "&tab=" + this.id
     }else{
         window.location.href = "../controller/index_controller.php" + "?tab=" + this.id
     }

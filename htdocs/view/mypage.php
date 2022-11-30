@@ -47,12 +47,6 @@
 ?>
 
 <main>
-    <!-- 任意ユーザーに飛ぶための仮ボタン -->
-    <form action="../controller/userdetail_controller.php" method="get">
-        <input type="text" name="friend_id">
-        <input type="submit" value="ユーザー詳細">
-    </form>
-    <!-- 任意ユーザーに飛ぶための仮ボタン -->
     <div class="filter"></div>
     <div class="title-position">
         <div class="pagetitle">

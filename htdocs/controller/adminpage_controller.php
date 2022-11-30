@@ -33,6 +33,43 @@ if (isset($_POST['type'])) {
     }
 }
 
+// ↓これをindexのcontrollerで処理する？
+// if (isset($_POST['terms1'])) {
+//     $terms1 = $_POST['terms1'];
+//     $terms2 = $_POST['terms2'];
+//     $word = $_POST['word'];
+
+//     if ($terms1 == 'handlename' && $terms2 == 'thread') {
+
+//     }
+//     elseif ($terms1 == 'handlename' && $terms2 == 'response') {
+
+//     }
+//     elseif ($terms1 == 'handlename' && $terms2 == 'thread_res') {
+        
+//     }
+//     elseif ($terms1 == 'keyword' && $terms2 == 'thread') {
+        
+//     }
+//     elseif ($terms1 == 'keyword' && $terms2 == 'response') {
+        
+//     }
+//     elseif ($terms1 == 'keyword' && $terms2 == 'thread_res') {
+        
+//     }
+//     elseif ($terms1 == 'name_keyword' && $terms2 == 'thread') {
+        
+//     }
+//     elseif ($terms1 == 'name_keyword' && $terms2 == 'response') {
+        
+//     }
+//     elseif ($terms1 == 'name_keyword' && $terms2 == 'thread_res') {
+        
+//     }
+
+//     exit;
+// }
+
 // tabに何も入っていないときnew_threadtabを入れる
 if(!isset($_GET['adminpage_tab'])){
     $_GET['adminpage_tab'] = "admin_threadtab";

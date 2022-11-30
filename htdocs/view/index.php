@@ -32,7 +32,7 @@
 <main>
     <div class="top">
         <!-- 検索したとき戻るボタンを表示する -->
-        <?php if(isset($_GET['keyword'])||isset($_GET['category'])){ ?>
+        <?php if(isset($_GET['keyword'])||isset($_GET['category']) ||isset($_GET['terms1'])){ ?>
             <div class="top-position">
                 <!-- <button class="btn btn--back" type="button" onclick="history.back();">戻る</button> -->
                 <!-- トップへ戻る -->
@@ -65,6 +65,8 @@
             <div class="keyword font-size--20">カテゴリー:<?php echo $_GET['category']; ?>/キーワード:<?php if($_GET['keyword']==""){echo "入力されていません";}else{echo $_GET['keyword'];} ?></div>
         <?php }elseif(isset($_GET['category'])){ ?>
             <div class="keyword font-size--20">カテゴリー:<?php echo $_GET['category']; ?></div>
+        <?php }elseif(!isset($_GET['category']) && isset($_GET['word'])){ ?>
+            <div class="keyword font-size--20">"<?php echo $_GET['word']; ?>"を含む<?php echo $_GET['terms1']; ?>で<?php echo $_GET['terms2']; ?>を検索</div>
         <?php } ?>
 
         <!-- ヒットしなかったとき(検索してpagesが0の時)エラーメッセージ表示 -->

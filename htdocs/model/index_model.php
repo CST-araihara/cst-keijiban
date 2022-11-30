@@ -60,6 +60,39 @@
         return $total_count;
     }
 
+    //必要なページ数を求めるadminname
+    function count_adminname_page($handlename){
+        $dbh = connect();
+        $count = $dbh->prepare("SELECT COUNT(*) AS count
+                                FROM thread
+                                INNER JOIN users
+                                ON users.id = thread.user_id
+                                WHERE users.handlename
+                                LIKE '%".$handlename."%';
+                                ");
+        $count->execute();
+        $total_count = $count->fetch(PDO::FETCH_ASSOC);
+        return $total_count;
+    }
+
+    //必要なページ数を求めるadminkeyword
+    function count_adminkey_page($keyword){
+        $dbh = connect();
+        $count = $dbh->prepare("SELECT COUNT(*) AS count
+                                FROM thread
+                                INNER JOIN users
+                                ON users.id = thread.user_id
+                                WHERE 
+                                    title 
+                                    LIKE '%".$keyword."%'
+                                OR contents
+                                    LIKE '%".$keyword."%'
+                                ");
+        $count->execute();
+        $total_count = $count->fetch(PDO::FETCH_ASSOC);
+        return $total_count;
+    }
+
     //最近作成されたスレッド
     function newstmt($now){
         $dbh = connect();
@@ -217,6 +250,107 @@
                                     LIKE '%".$keyword."%'
                                     OR contents
                                     LIKE '%".$keyword."%')
+                                ORDER BY datetime DESC
+                                LIMIT :start,:max ;
+                                ");
+        if ($now == 1){
+            //1ページ目の処理
+            $newstmt->bindValue(":start",$now -1,PDO::PARAM_INT);
+            $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        } else {
+            //1ページ目以外の処理
+            $newstmt->bindValue(":start",($now -1 ) * max_view,PDO::PARAM_INT);
+            $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        }
+        //実行し結果を取り出しておく
+        $newstmt->execute();
+        $newthread = $newstmt->fetchAll(PDO::FETCH_BOTH);
+        return $newthread;
+    }
+
+    //最近作成されたスレッド(管理者)ハンドルネーム検索
+    function adminnamenewstmt($now,$id,$handlename){
+        $dbh = connect();
+        $newstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
+                                        ,title
+                                        ,contents
+                                        ,upload_file_path
+                                        ,handlename
+                                        ,thread.delete_flag
+                                        ,datetime
+                                        ,(SELECT count(*)
+                                            FROM response
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
+                                        AS rescount
+                                        ,main_colorcode
+                                        ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 1
+                                            AND user_id = $id) 
+                                        AS good_id
+                                FROM thread
+                                INNER JOIN users
+                                ON thread.user_id = users.id
+                                INNER JOIN category
+                                ON category.id = thread.category_id
+                                WHERE handlename
+                                LIKE '%".$handlename."%'
+                                ORDER BY datetime DESC
+                                LIMIT :start,:max ;
+                                ");
+        if ($now == 1){
+            //1ページ目の処理
+            $newstmt->bindValue(":start",$now -1,PDO::PARAM_INT);
+            $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        } else {
+            //1ページ目以外の処理
+            $newstmt->bindValue(":start",($now -1 ) * max_view,PDO::PARAM_INT);
+            $newstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        }
+        //実行し結果を取り出しておく
+        $newstmt->execute();
+        $newthread = $newstmt->fetchAll(PDO::FETCH_BOTH);
+        return $newthread;
+    }
+
+    //最近作成されたスレッド(管理者)キーワード検索
+    function adminkeynewstmt($now,$id,$keyword){
+        $dbh = connect();
+        $newstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
+                                        ,title
+                                        ,contents
+                                        ,upload_file_path
+                                        ,handlename
+                                        ,thread.delete_flag
+                                        ,datetime
+                                        ,(SELECT count(*)
+                                            FROM response
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
+                                        AS rescount
+                                        ,main_colorcode
+                                        ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 1
+                                            AND user_id = $id) 
+                                        AS good_id
+                                FROM thread
+                                INNER JOIN users
+                                ON thread.user_id = users.id
+                                INNER JOIN category
+                                ON category.id = thread.category_id
+                                WHERE 
+                                    title 
+                                    LIKE '%".$keyword."%'
+                                OR contents
+                                    LIKE '%".$keyword."%'
                                 ORDER BY datetime DESC
                                 LIMIT :start,:max ;
                                 ");
@@ -409,6 +543,109 @@
         return $resthread;
     }
 
+    // レスの多い順(管理者)ハンドルネーム検索
+    function adminnameresstmt($now_res,$id,$handlename){
+        $dbh = connect();
+        $resstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
+                                        ,title
+                                        ,contents
+                                        ,upload_file_path
+                                        ,user_id
+                                        ,handlename
+                                        ,datetime
+                                        ,thread.delete_flag
+                                        ,(SELECT count(*)
+                                            FROM response
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
+                                        AS rescount
+                                        ,main_colorcode
+                                        ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 1
+                                            AND user_id = 1) 
+                                        AS good_id
+                                FROM thread
+                                INNER JOIN users
+                                ON thread.user_id = users.id
+                                INNER JOIN category
+                                ON category.id = thread.category_id
+                                WHERE handlename
+                                LIKE '%".$handlename."%'
+                                ORDER BY rescount DESC , datetime DESC
+                                LIMIT :start,:max ;
+                                ");
+        if ($now_res == 1){
+            //1ページ目の処理
+            $resstmt->bindValue(":start",$now_res -1,PDO::PARAM_INT);
+            $resstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        } else {
+            //1ページ目以外の処理
+            $resstmt->bindValue(":start",($now_res -1 ) * max_view,PDO::PARAM_INT);
+            $resstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        }
+        //実行し結果を取り出しておく
+        $resstmt->execute();
+        $resthread = $resstmt->fetchAll(PDO::FETCH_BOTH);
+        return $resthread;
+    }
+
+    // レスの多い順(管理者)キーワード検索
+    function adminkeyresstmt($now_res,$id,$keyword){
+        $dbh = connect();
+        $resstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
+                                        ,title
+                                        ,contents
+                                        ,upload_file_path
+                                        ,user_id
+                                        ,handlename
+                                        ,datetime
+                                        ,thread.delete_flag
+                                        ,(SELECT count(*)
+                                            FROM response
+                                            WHERE thread_id = thread.id
+                                            AND delete_flag = 0)
+                                        AS rescount
+                                        ,main_colorcode
+                                        ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 1
+                                            AND user_id = 1) 
+                                        AS good_id
+                                FROM thread
+                                INNER JOIN users
+                                ON thread.user_id = users.id
+                                INNER JOIN category
+                                ON category.id = thread.category_id
+                                WHERE 
+                                    title 
+                                    LIKE '%".$keyword."%'
+                                OR contents
+                                    LIKE '%".$keyword."%'
+                                ORDER BY rescount DESC , datetime DESC
+                                LIMIT :start,:max ;
+                                ");
+        if ($now_res == 1){
+            //1ページ目の処理
+            $resstmt->bindValue(":start",$now_res -1,PDO::PARAM_INT);
+            $resstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        } else {
+            //1ページ目以外の処理
+            $resstmt->bindValue(":start",($now_res -1 ) * max_view,PDO::PARAM_INT);
+            $resstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        }
+        //実行し結果を取り出しておく
+        $resstmt->execute();
+        $resthread = $resstmt->fetchAll(PDO::FETCH_BOTH);
+        return $resthread;
+    }
+
     // いいねの多い順
     function goodstmt($now_good){
         $dbh = connect();
@@ -565,6 +802,107 @@
                                     LIKE '%".$keyword."%'
                                     OR contents 
                                     LIKE '%".$keyword."%')
+                                ORDER BY goodcount DESC , datetime DESC
+                                LIMIT :start,:max ;
+                                ");
+        if ($now_good == 1){
+            //1ページ目の処理
+            $goodstmt->bindValue(":start",$now_good -1,PDO::PARAM_INT);
+            $goodstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        } else {
+            //1ページ目以外の処理
+            $goodstmt->bindValue(":start",($now_good -1 ) * max_view,PDO::PARAM_INT);
+            $goodstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        }
+        //実行し結果を取り出しておく
+        $goodstmt->execute();
+        $goodthread = $goodstmt->fetchAll(PDO::FETCH_BOTH);
+        return $goodthread;
+    }
+
+    // いいねの多い順(管理者)handlename
+    function adminnamegoodstmt($now_good,$id,$handlename){
+        $dbh = connect();
+        $goodstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
+                                        ,title
+                                        ,contents
+                                        ,upload_file_path
+                                        ,handlename
+                                        ,thread.delete_flag
+                                        ,datetime
+                                        ,(SELECT count(*)
+                                            FROM good
+                                            WHERE target_id = thread.id 
+                                            AND type=1)
+                                        AS goodcount
+                                        ,main_colorcode
+                                        ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 2
+                                            AND user_id = $id) 
+                                        AS good_id
+                                FROM thread
+                                INNER JOIN users
+                                ON thread.user_id = users.id
+                                INNER JOIN category
+                                ON category.id = thread.category_id
+                                WHERE handlename
+                                LIKE '%".$handlename."%'
+                                ORDER BY goodcount DESC , datetime DESC
+                                LIMIT :start,:max ;
+                                ");
+        if ($now_good == 1){
+            //1ページ目の処理
+            $goodstmt->bindValue(":start",$now_good -1,PDO::PARAM_INT);
+            $goodstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        } else {
+            //1ページ目以外の処理
+            $goodstmt->bindValue(":start",($now_good -1 ) * max_view,PDO::PARAM_INT);
+            $goodstmt->bindValue(":max",max_view,PDO::PARAM_INT);
+        }
+        //実行し結果を取り出しておく
+        $goodstmt->execute();
+        $goodthread = $goodstmt->fetchAll(PDO::FETCH_BOTH);
+        return $goodthread;
+    }
+
+    // いいねの多い順(管理者)keyword
+    function adminkeygoodstmt($now_good,$id,$keyword){
+        $dbh = connect();
+        $goodstmt = $dbh->prepare("SELECT thread.id
+                                        ,category_name
+                                        ,title
+                                        ,contents
+                                        ,upload_file_path
+                                        ,handlename
+                                        ,thread.delete_flag
+                                        ,datetime
+                                        ,(SELECT count(*)
+                                            FROM good
+                                            WHERE target_id = thread.id 
+                                            AND type=1)
+                                        AS goodcount
+                                        ,main_colorcode
+                                        ,sub_colorcode
+                                        ,(SELECT id
+                                            FROM good 
+                                            WHERE target_id = thread.id
+                                            AND type= 2
+                                            AND user_id = $id) 
+                                        AS good_id
+                                FROM thread
+                                INNER JOIN users
+                                ON thread.user_id = users.id
+                                INNER JOIN category
+                                ON category.id = thread.category_id
+                                WHERE 
+                                    title 
+                                    LIKE '%".$keyword."%'
+                                OR contents
+                                    LIKE '%".$keyword."%'
                                 ORDER BY goodcount DESC , datetime DESC
                                 LIMIT :start,:max ;
                                 ");
